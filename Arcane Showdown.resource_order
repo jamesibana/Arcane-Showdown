@@ -4,5 +4,9 @@
     {"name":"obj_player1","order":2,"path":"objects/obj_player1/obj_player1.yy",},
     {"name":"obj_player2","order":3,"path":"objects/obj_player2/obj_player2.yy",},
     {"name":"rm_arena","order":1,"path":"rooms/rm_arena/rm_arena.yy",},
+    {"name":"char_player1","order":4,"path":"sprites/char_player1/char_player1.yy",},
+    {"name":"char_player2","order":5,"path":"sprites/char_player2/char_player2.yy",},
+    {"name":"char_player3","order":6,"path":"sprites/char_player3/char_player3.yy",},
+    {"name":"char_player4","order":7,"path":"sprites/char_player4/char_player4.yy",},
   ],
 }
