@@ -1,9 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"obj_player2",
+  "%Name":"obj_enemy",
   "eventList":[],
   "managed":true,
-  "name":"obj_player2",
+  "name":"obj_enemy",
   "overriddenProperties":[],
   "parent":{
     "name":"Arcane Showdown",

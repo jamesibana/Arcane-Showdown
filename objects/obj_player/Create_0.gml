@@ -1,0 +1,1 @@
+owner_player=0;
