@@ -46,28 +46,20 @@ is_locked = (c.unlock_wins > player_wins);
 // ============================
 // SELECT CHARACTER (ENTER)
 // ============================
-// get current character AFTER index updates
-var c = global.characters[index];
-
-// ENTER to select
 if (keyboard_check_pressed(vk_enter)) {
 
     if (!is_locked) {
 
+        // assign character to correct player
         if (global.current_player == 1) {
             global.p1_character = c;
-            show_debug_message("P1 set: " + c.name);
-
             global.current_player = 2;
-            index = 0;
+            index = 0; // reset selection for player 2
         }
         else {
             global.p2_character = c;
-            show_debug_message("P2 set: " + c.name);
 
-            // DEBUG CHECK BEFORE ROOM CHANGE
-            show_debug_message("Going to PvE");
-
+            // proceed to PvE
             room_goto(rm_crawler);
         }
     }
