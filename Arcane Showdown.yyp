@@ -44,6 +44,7 @@
     {"id":{"name":"char_player3","path":"sprites/char_player3/char_player3.yy",},},
     {"id":{"name":"char_player4","path":"sprites/char_player4/char_player4.yy",},},
     {"id":{"name":"spr_button","path":"sprites/spr_button/spr_button.yy",},},
+    {"id":{"name":"spr_logo","path":"sprites/spr_logo/spr_logo.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",

@@ -23,5 +23,6 @@
     {"name":"char_player3","order":6,"path":"sprites/char_player3/char_player3.yy",},
     {"name":"char_player4","order":7,"path":"sprites/char_player4/char_player4.yy",},
     {"name":"spr_button","order":12,"path":"sprites/spr_button/spr_button.yy",},
+    {"name":"spr_logo","order":22,"path":"sprites/spr_logo/spr_logo.yy",},
   ],
 }
