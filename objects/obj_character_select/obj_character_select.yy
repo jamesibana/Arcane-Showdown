@@ -10,8 +10,8 @@
   "name":"obj_character_select",
   "overriddenProperties":[],
   "parent":{
-    "name":"Arcane Showdown",
-    "path":"Arcane Showdown.yyp",
+    "name":"selection",
+    "path":"folders/selection.yy",
   },
   "parentObjectId":null,
   "persistent":false,

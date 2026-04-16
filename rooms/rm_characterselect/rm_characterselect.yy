@@ -17,8 +17,8 @@
   ],
   "name":"rm_characterselect",
   "parent":{
-    "name":"Arcane Showdown",
-    "path":"Arcane Showdown.yyp",
+    "name":"characters",
+    "path":"folders/characters.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Arcane Showdown",
-    "path":"Arcane Showdown.yyp",
+    "name":"characters",
+    "path":"folders/characters.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

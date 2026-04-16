@@ -27,8 +27,8 @@
   ],
   "name":"rm_menu",
   "parent":{
-    "name":"Arcane Showdown",
-    "path":"Arcane Showdown.yyp",
+    "name":"startmenu",
+    "path":"folders/startmenu.yy",
   },
   "parentRoom":null,
   "physicsSettings":{
