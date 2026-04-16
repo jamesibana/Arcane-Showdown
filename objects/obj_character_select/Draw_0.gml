@@ -3,7 +3,7 @@ var c = global.characters[index];
 var cx = room_width / 2;
 var cy = room_height / 2;
 
-draw_set_color(c_yellow);
+draw_set_color(c_blue);
 draw_rectangle(cx - 150, cy - 100, cx + 150, cy + 100, false);
 
 //SELECTION
@@ -33,7 +33,7 @@ if (variable_struct_exists(c, "desc")) {
 }
 
 // NAV HELP
-draw_text(cx, room_height - 60, "< LEFT / RIGHT >  |  ENTER TO SELECT");
+draw_text(cx, room_height - 200, "< LEFT / RIGHT >  |  ENTER TO SELECT");
 
 //LOCK DRAW
 var player_wins = 0;
