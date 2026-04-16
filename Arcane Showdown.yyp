@@ -39,7 +39,7 @@
     {"id":{"name":"obj_game_manager","path":"objects/obj_game_manager/obj_game_manager.yy",},},
     {"id":{"name":"obj_menu","path":"objects/obj_menu/obj_menu.yy",},},
     {"id":{"name":"obj_player1","path":"objects/obj_player1/obj_player1.yy",},},
-    {"id":{"name":"obj_player2","path":"objects/obj_player2/obj_player2.yy",},},
+    {"id":{"name":"obj_pve_controller","path":"objects/obj_pve_controller/obj_pve_controller.yy",},},
     {"id":{"name":"rm_arena","path":"rooms/rm_arena/rm_arena.yy",},},
     {"id":{"name":"rm_characterselect","path":"rooms/rm_characterselect/rm_characterselect.yy",},},
     {"id":{"name":"rm_crawler","path":"rooms/rm_crawler/rm_crawler.yy",},},

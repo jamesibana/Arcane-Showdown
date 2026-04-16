@@ -15,6 +15,7 @@
     {"name":"obj_button_quit","order":4,"path":"objects/obj_button_quit/obj_button_quit.yy",},
     {"name":"obj_controls","order":5,"path":"objects/obj_controls/obj_controls.yy",},
     {"name":"obj_menu","order":6,"path":"objects/obj_menu/obj_menu.yy",},
+    {"name":"obj_pve_controller","order":15,"path":"objects/obj_pve_controller/obj_pve_controller.yy",},
     {"name":"rm_characterselect","order":4,"path":"rooms/rm_characterselect/rm_characterselect.yy",},
     {"name":"rm_menu","order":7,"path":"rooms/rm_menu/rm_menu.yy",},
     {"name":"scr_characters","order":5,"path":"scripts/scr_characters/scr_characters.yy",},
