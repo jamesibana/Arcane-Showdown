@@ -50,6 +50,7 @@
     {"id":{"name":"char_player2_Warlock","path":"sprites/char_player2_Warlock/char_player2_Warlock.yy",},},
     {"id":{"name":"char_player3_Assasin","path":"sprites/char_player3_Assasin/char_player3_Assasin.yy",},},
     {"id":{"name":"char_player4_Colossus","path":"sprites/char_player4_Colossus/char_player4_Colossus.yy",},},
+    {"id":{"name":"game_logo","path":"sprites/game_logo/game_logo.yy",},},
     {"id":{"name":"spr_bg_menu","path":"sprites/spr_bg_menu/spr_bg_menu.yy",},},
     {"id":{"name":"spr_bg_select","path":"sprites/spr_bg_select/spr_bg_select.yy",},},
     {"id":{"name":"spr_blow_dart","path":"sprites/spr_blow_dart/spr_blow_dart.yy",},},

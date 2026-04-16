@@ -22,6 +22,7 @@
     {"name":"char_player2_Warlock","order":1,"path":"sprites/char_player2_Warlock/char_player2_Warlock.yy",},
     {"name":"char_player3_Assasin","order":2,"path":"sprites/char_player3_Assasin/char_player3_Assasin.yy",},
     {"name":"char_player4_Colossus","order":3,"path":"sprites/char_player4_Colossus/char_player4_Colossus.yy",},
+    {"name":"game_logo","order":16,"path":"sprites/game_logo/game_logo.yy",},
     {"name":"spr_bg_select","order":5,"path":"sprites/spr_bg_select/spr_bg_select.yy",},
     {"name":"spr_blow_dart","order":2,"path":"sprites/spr_blow_dart/spr_blow_dart.yy",},
     {"name":"spr_btn_help","order":8,"path":"sprites/spr_btn_help/spr_btn_help.yy",},
