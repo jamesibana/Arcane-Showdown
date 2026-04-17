@@ -9,8 +9,8 @@
   "name":"obj_enemy",
   "overriddenProperties":[],
   "parent":{
-    "name":"Arcane Showdown",
-    "path":"Arcane Showdown.yyp",
+    "name":"object functions",
+    "path":"folders/object functions.yy",
   },
   "parentObjectId":null,
   "persistent":false,

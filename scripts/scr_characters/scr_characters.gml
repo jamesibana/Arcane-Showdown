@@ -9,17 +9,7 @@ global.characters = [
 		unlock_wins: 0,
 		sprite: char_player1_Knight
     },
-    {
-        name: "Assassin",
-        hp: 100,
-		armor: 15,
-        speed: 7,
-        luck: 1.0,
-        desc: "Fast assassin with burst damage",
-		unlock_wins: 5,
-		sprite: char_player3_Assasin
-    },
-    {
+	   {
         name: "Iron Colossus",
         hp: 100,
 		armor: 30,
@@ -30,10 +20,20 @@ global.characters = [
 		sprite: char_player4_Colossus
     },
     {
+        name: "Assassin",
+        hp: 100,
+		armor: 15,
+        speed: 7,
+        luck: 1.0,
+        desc: "Speedy but fragile fighter",
+		unlock_wins: 5,
+		sprite: char_player3_Assasin
+    },
+    {
         name: "Warlock",
         hp: 100,
 		armor: 18,
-        speed: 5,
+        speed: 4.5,
         luck: 1.3,
         desc: "High-luck warrior",
 		unlock_wins: 8,

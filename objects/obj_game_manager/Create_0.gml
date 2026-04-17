@@ -5,7 +5,7 @@ global.p1_character = undefined;
 global.p2_character = undefined;
 
 // wins system	
-global.p1_wins = 8;
+global.p1_wins = 0;
 global.p2_wins = 0;
 
 // persistence

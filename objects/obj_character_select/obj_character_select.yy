@@ -10,8 +10,8 @@
   "name":"obj_character_select",
   "overriddenProperties":[],
   "parent":{
-    "name":"selection",
-    "path":"folders/selection.yy",
+    "name":"object functions",
+    "path":"folders/object functions.yy",
   },
   "parentObjectId":null,
   "persistent":false,

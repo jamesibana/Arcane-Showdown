@@ -12,7 +12,7 @@
   "Folders":[
     {"$GMFolder":"","%Name":"characters","folderPath":"folders/characters.yy","name":"characters","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"monsters","folderPath":"folders/monsters.yy","name":"monsters","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"selection","folderPath":"folders/selection.yy","name":"selection","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"object functions","folderPath":"folders/object functions.yy","name":"object functions","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"startmenu","folderPath":"folders/startmenu.yy","name":"startmenu","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"weapons","folderPath":"folders/weapons.yy","name":"weapons","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"melee","folderPath":"folders/weapons/melee.yy","name":"melee","resourceType":"GMFolder","resourceVersion":"2.0",},
