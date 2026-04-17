@@ -3,7 +3,7 @@
   "%Name":"spr_Fodder_Slime",
   "bboxMode":0,
   "bbox_bottom":46,
-  "bbox_left":16,
+  "bbox_left":14,
   "bbox_right":47,
   "bbox_top":29,
   "collisionKind":1,
