@@ -14,7 +14,11 @@
     {"name":"obj_button_play","order":2,"path":"objects/obj_button_play/obj_button_play.yy",},
     {"name":"obj_button_quit","order":4,"path":"objects/obj_button_quit/obj_button_quit.yy",},
     {"name":"obj_controls","order":5,"path":"objects/obj_controls/obj_controls.yy",},
+    {"name":"obj_enemy_spawner","order":17,"path":"objects/obj_enemy_spawner/obj_enemy_spawner.yy",},
+    {"name":"obj_enemy","order":18,"path":"objects/obj_enemy/obj_enemy.yy",},
+    {"name":"obj_lane_divider","order":19,"path":"objects/obj_lane_divider/obj_lane_divider.yy",},
     {"name":"obj_menu","order":6,"path":"objects/obj_menu/obj_menu.yy",},
+    {"name":"obj_mid_wall","order":20,"path":"objects/obj_mid_wall/obj_mid_wall.yy",},
     {"name":"obj_pve_controller","order":15,"path":"objects/obj_pve_controller/obj_pve_controller.yy",},
     {"name":"rm_characterselect","order":4,"path":"rooms/rm_characterselect/rm_characterselect.yy",},
     {"name":"rm_menu","order":7,"path":"rooms/rm_menu/rm_menu.yy",},
@@ -35,5 +39,6 @@
     {"name":"spr_poison_spray","order":1,"path":"sprites/spr_poison_spray/spr_poison_spray.yy",},
     {"name":"spr_spear","order":2,"path":"sprites/spr_spear/spr_spear.yy",},
     {"name":"spr_sword","order":3,"path":"sprites/spr_sword/spr_sword.yy",},
+    {"name":"spr_wall","order":21,"path":"sprites/spr_wall/spr_wall.yy",},
   ],
 }

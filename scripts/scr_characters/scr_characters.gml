@@ -6,7 +6,8 @@ global.characters = [
         speed: 5,
         luck: 1.0,
         desc: "Basic default fighter",
-		unlock_wins: 0
+		unlock_wins: 0,
+		sprite: char_player1_Knight
     },
     {
         name: "Assassin",
@@ -15,7 +16,8 @@ global.characters = [
         speed: 7,
         luck: 1.0,
         desc: "Fast assassin with burst damage",
-		unlock_wins: 5
+		unlock_wins: 5,
+		sprite: char_player2_Warlock
     },
     {
         name: "Iron Colossus",
@@ -24,7 +26,8 @@ global.characters = [
         speed: 3.5,
         luck: 0.9,
         desc: "Slow tank with high durability",
-		unlock_wins: 1
+		unlock_wins: 1,
+		sprite: char_player3_Assasin
     },
     {
         name: "Warlock",
@@ -33,6 +36,7 @@ global.characters = [
         speed: 5,
         luck: 1.3,
         desc: "High-luck warrior",
-		unlock_wins: 8
+		unlock_wins: 8,
+		sprite: char_player4_Colossus
     }
 ];
