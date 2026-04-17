@@ -42,6 +42,5 @@
     {"name":"spr_poison_spray","order":1,"path":"sprites/spr_poison_spray/spr_poison_spray.yy",},
     {"name":"spr_spear","order":2,"path":"sprites/spr_spear/spr_spear.yy",},
     {"name":"spr_sword","order":3,"path":"sprites/spr_sword/spr_sword.yy",},
-    {"name":"spr_wall","order":21,"path":"sprites/spr_wall/spr_wall.yy",},
   ],
 }
