@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_characters",
   "parent":{
-    "name":"Arcane Showdown",
-    "path":"Arcane Showdown.yyp",
+    "name":"characters",
+    "path":"folders/characters.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

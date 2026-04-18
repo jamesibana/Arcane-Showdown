@@ -12,8 +12,8 @@
   "name":"obj_button_parent",
   "overriddenProperties":[],
   "parent":{
-    "name":"Arcane Showdown",
-    "path":"Arcane Showdown.yyp",
+    "name":"startmenu",
+    "path":"folders/startmenu.yy",
   },
   "parentObjectId":null,
   "persistent":false,

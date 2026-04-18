@@ -1,13 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"obj_player2",
+  "%Name":"obj_fade",
   "eventList":[],
   "managed":true,
-  "name":"obj_player2",
+  "name":"obj_fade",
   "overriddenProperties":[],
   "parent":{
-    "name":"Arcane Showdown",
-    "path":"Arcane Showdown.yyp",
+    "name":"object functions",
+    "path":"folders/object functions.yy",
   },
   "parentObjectId":null,
   "persistent":false,

@@ -1,2 +1,2 @@
-room_goto(rm_characterselect);
+room_goto(rm_character_select);
 

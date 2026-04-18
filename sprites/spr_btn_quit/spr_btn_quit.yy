@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Arcane Showdown",
-    "path":"Arcane Showdown.yyp",
+    "name":"startmenu",
+    "path":"folders/startmenu.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

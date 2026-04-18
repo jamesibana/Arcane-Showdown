@@ -8,8 +8,8 @@
   "name":"obj_menu",
   "overriddenProperties":[],
   "parent":{
-    "name":"Arcane Showdown",
-    "path":"Arcane Showdown.yyp",
+    "name":"startmenu",
+    "path":"folders/startmenu.yy",
   },
   "parentObjectId":null,
   "persistent":false,
