@@ -17,6 +17,7 @@
     {"$GMFolder":"","%Name":"weapons","folderPath":"folders/weapons.yy","name":"weapons","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"melee","folderPath":"folders/weapons/melee.yy","name":"melee","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"ranged","folderPath":"folders/weapons/ranged.yy","name":"ranged","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Projectiles","folderPath":"folders/weapons/ranged/Projectiles.yy","name":"Projectiles","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
   "ForcedPrefabProjectReferences":[
     {"link":"io.gamemaker.sdfshaders-1.0.0","name":"io.gamemaker.sdfshaders-1.0.0","path":"io.gamemaker.sdfshaders-1.0.0.yyp",},
@@ -25,7 +26,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.14.4.221",
+    "IDEVersion":"2024.14.4.222",
   },
   "name":"Arcane Showdown",
   "resources":[
@@ -59,6 +60,7 @@
     {"id":{"name":"spr_bg_menu","path":"sprites/spr_bg_menu/spr_bg_menu.yy",},},
     {"id":{"name":"spr_bg_select","path":"sprites/spr_bg_select/spr_bg_select.yy",},},
     {"id":{"name":"spr_blow_dart","path":"sprites/spr_blow_dart/spr_blow_dart.yy",},},
+    {"id":{"name":"spr_Bow_Arrow","path":"sprites/spr_Bow_Arrow/spr_Bow_Arrow.yy",},},
     {"id":{"name":"spr_bow","path":"sprites/spr_bow/spr_bow.yy",},},
     {"id":{"name":"spr_btn_help","path":"sprites/spr_btn_help/spr_btn_help.yy",},},
     {"id":{"name":"spr_btn_play","path":"sprites/spr_btn_play/spr_btn_play.yy",},},
@@ -73,9 +75,12 @@
     {"id":{"name":"spr_Fodder_Minion","path":"sprites/spr_Fodder_Minion/spr_Fodder_Minion.yy",},},
     {"id":{"name":"spr_Fodder_Slime","path":"sprites/spr_Fodder_Slime/spr_Fodder_Slime.yy",},},
     {"id":{"name":"spr_mace","path":"sprites/spr_mace/spr_mace.yy",},},
+    {"id":{"name":"spr_Metal_Arrow","path":"sprites/spr_Metal_Arrow/spr_Metal_Arrow.yy",},},
     {"id":{"name":"spr_MidTier_Golem","path":"sprites/spr_MidTier_Golem/spr_MidTier_Golem.yy",},},
     {"id":{"name":"spr_MidTier_Serpent","path":"sprites/spr_MidTier_Serpent/spr_MidTier_Serpent.yy",},},
+    {"id":{"name":"spr_Poison_Cloud","path":"sprites/spr_Poison_Cloud/spr_Poison_Cloud.yy",},},
     {"id":{"name":"spr_poison_spray","path":"sprites/spr_poison_spray/spr_poison_spray.yy",},},
+    {"id":{"name":"spr_Quick_Dart","path":"sprites/spr_Quick_Dart/spr_Quick_Dart.yy",},},
     {"id":{"name":"spr_spear","path":"sprites/spr_spear/spr_spear.yy",},},
     {"id":{"name":"spr_sword","path":"sprites/spr_sword/spr_sword.yy",},},
   ],
