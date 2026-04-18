@@ -1,9 +1,11 @@
 {
   "$GMObject":"",
-  "%Name":"obj_mid_wall",
-  "eventList":[],
+  "%Name":"obj_wall_segment",
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
-  "name":"obj_mid_wall",
+  "name":"obj_wall_segment",
   "overriddenProperties":[],
   "parent":{
     "name":"object functions",
@@ -27,7 +29,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_wall_collision",
+    "path":"sprites/spr_wall_collision/spr_wall_collision.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

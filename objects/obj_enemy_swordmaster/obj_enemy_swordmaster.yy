@@ -1,17 +1,17 @@
 {
   "$GMObject":"",
-  "%Name":"obj_enemy_spawner",
+  "%Name":"obj_enemy_swordmaster",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":1,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_enemy_spawner",
+  "name":"obj_enemy_swordmaster",
   "overriddenProperties":[],
   "parent":{
-    "name":"monsters",
-    "path":"folders/monsters.yy",
+    "name":"functions",
+    "path":"folders/monsters/functions.yy",
   },
   "parentObjectId":null,
   "persistent":false,

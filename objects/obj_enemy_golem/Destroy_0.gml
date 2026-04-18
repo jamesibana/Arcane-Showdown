@@ -1,0 +1,1 @@
+global.enemy_kills += 1;
