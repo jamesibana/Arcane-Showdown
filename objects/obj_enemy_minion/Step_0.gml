@@ -58,6 +58,10 @@ else if (state == "return") {
     vsp = lengthdir_y(move_speed, dir);
 }
 
+if (keyboard_check_pressed(ord("1"))) {
+    instance_destroy();
+}
+
 // SMALL JITTER GUARD
 if (abs(hsp) < 0.05) hsp = 0;
 if (abs(vsp) < 0.05) vsp = 0;

@@ -9,48 +9,6 @@ initialized = false;
 weapon_sprite = spr_sword; // fallback default
 
 /// =====================
-/// WEAPON DATABASE
-/// =====================
-
-weapon_data = {
-    melee: {
-        sprite: spr_sword,
-        damage: 10,
-        cooldown: 20,
-        range: 40
-    },
-
-    dagger: {
-        sprite: spr_dagger,
-        damage: 6,
-        cooldown: 10,
-        range: 30
-    },
-
-    spear: {
-        sprite: spr_spear,
-        damage: 14,
-        cooldown: 25,
-        range: 70
-    },
-
-    mace: {
-        sprite: spr_mace,
-        damage: 18,
-        cooldown: 35,
-        range: 40
-    }
-};
-
-/// =====================
-/// CURRENT WEAPON STATE
-/// =====================
-
-current_weapon = "melee";
-current_weapon_data = weapon_data[$ current_weapon];
-weapon_sprite = current_weapon_data.sprite;
-
-/// =====================
 /// PLAYER BASE STATS
 /// =====================
 
@@ -59,3 +17,22 @@ move_speed = 4;
 owner_player = 0;
 character_data = undefined;
 initialized = false;
+
+current_weapon = "melee";
+current_weapon_data = undefined;
+
+weapon_melee = "sword";
+weapon_ranged = "bow";
+
+weapon_melee_data = variable_struct_get(global.weapon_data, weapon_melee);
+weapon_ranged_data = variable_struct_get(global.weapon_data, weapon_ranged);
+
+active_weapon_type = "melee";
+
+// active stats (what combat uses)
+current_weapon_data = weapon_melee_data;
+weapon_sprite = current_weapon_data.sprite;
+
+damage = current_weapon_data.damage;
+cooldown = current_weapon_data.cooldown;
+range = current_weapon_data.range;
