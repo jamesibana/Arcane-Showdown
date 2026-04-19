@@ -32,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_wall_collision",
-    "path":"sprites/spr_wall_collision/spr_wall_collision.yy",
+    "name":"spr_Bow_Arrow",
+    "path":"sprites/spr_Bow_Arrow/spr_Bow_Arrow.yy",
   },
   "spriteMaskId":null,
   "visible":true,
