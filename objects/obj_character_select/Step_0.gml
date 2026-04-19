@@ -7,6 +7,18 @@ var wins = (global.current_player == 1)
 var locked = (c.unlock_wins > wins);
 
 // ============================
+// SCREEN SHAKE UPDATE (NEW)
+// ============================
+if (shake_timer > 0) {
+    shake_timer--;
+}
+
+// ============================
+// CHARACTER MOVE ANIMATION (NEW)
+// ============================
+move_anim = lerp(move_anim, index, 0.2);
+
+// ============================
 // NAVIGATION (TURN-BASED INPUT)
 // ============================
 if (global.current_player == 1) {
@@ -21,28 +33,41 @@ if (global.current_player == 2) {
     if (keyboard_check_pressed(vk_left))  index--;
 }
 
-
 // ============================
 // WRAP INDEX
 // ============================
 var char_count = array_length(global.characters);
 index = (index + char_count) mod char_count;
 
-
+// ============================
+// CONFIRM SELECTION
+// ============================
 if (keyboard_check_pressed(vk_enter)) {
 
     c = global.characters[index];
 
-     wins = (global.current_player == 1)
+    wins = (global.current_player == 1)
         ? global.p1_wins
         : global.p2_wins;
 
-     locked = (c.unlock_wins > wins);
+    locked = (c.unlock_wins > wins);
 
-    // ❌ BLOCK IF LOCKED
+    // BLOCK IF LOCKED
     if (locked) {
-        exit; // or just do nothing
+        shake_timer = 10;
+        shake_power = 5;
+        exit;
     }
+
+    // ============================
+    // CONFIRM EFFECT (NEW)
+    // ============================
+    shake_timer = 12;
+    shake_power = 6;
+
+// audio_play_sound(snd_select, 1, false);
+
+    confirming = true;
 
     // ============================
     // SELECT CHARACTER

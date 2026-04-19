@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"snd_music",
+  "%Name":"mus_select",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,9 +10,9 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.889229,
+  "duration":213.47372,
   "exportDir":"",
-  "name":"snd_music",
+  "name":"mus_select",
   "parent":{
     "name":"Arcane Showdown",
     "path":"Arcane Showdown.yyp",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_music.mp3",
+  "soundFile":"mus_select.mp3",
   "volume":1.0,
 }
