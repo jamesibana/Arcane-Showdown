@@ -26,6 +26,7 @@ persistent = true;
 
 global.weapon_data = {
     sword: {
+		type: "melee",
         sprite: spr_sword,
         damage: 10,
         cooldown: 20,
@@ -33,6 +34,7 @@ global.weapon_data = {
     },
 
     dagger: {
+		type: "melee",
         sprite: spr_dagger,
         damage: 6,
         cooldown: 10,
@@ -40,6 +42,7 @@ global.weapon_data = {
     },
 
     spear: {
+		type: "melee",
         sprite: spr_spear,
         damage: 14,
         cooldown: 25,
@@ -47,6 +50,7 @@ global.weapon_data = {
     },
 
     mace: {
+		type: "melee",
         sprite: spr_mace,
         damage: 18,
         cooldown: 35,
@@ -54,6 +58,7 @@ global.weapon_data = {
     },
 
     bow: {
+		type: "ranged",
         sprite: spr_bow,
         damage: 12,
         cooldown: 30,
@@ -61,6 +66,7 @@ global.weapon_data = {
     },
 
     crossbow: {
+		type: "ranged",
         sprite: spr_crossbow,
         damage: 16,
         cooldown: 40,
@@ -68,6 +74,7 @@ global.weapon_data = {
     },
 
     poison_spray: {
+		type: "ranged",
         sprite: spr_poison_spray,
         damage: 8,
         cooldown: 15,
@@ -75,6 +82,7 @@ global.weapon_data = {
     },
 
     blow_dart: {
+		type: "ranged",
         sprite: spr_blow_dart,
         damage: 20,
         cooldown: 45,
@@ -83,3 +91,4 @@ global.weapon_data = {
 };
 
 show_debug_message("weapon_data initialized");
+

@@ -49,6 +49,7 @@
     {"id":{"name":"obj_lane_divider","path":"objects/obj_lane_divider/obj_lane_divider.yy",},},
     {"id":{"name":"obj_menu","path":"objects/obj_menu/obj_menu.yy",},},
     {"id":{"name":"obj_player1","path":"objects/obj_player1/obj_player1.yy",},},
+    {"id":{"name":"obj_projectile","path":"objects/obj_projectile/obj_projectile.yy",},},
     {"id":{"name":"obj_pve_controller","path":"objects/obj_pve_controller/obj_pve_controller.yy",},},
     {"id":{"name":"obj_wall_segment","path":"objects/obj_wall_segment/obj_wall_segment.yy",},},
     {"id":{"name":"obj_weapon_pickup","path":"objects/obj_weapon_pickup/obj_weapon_pickup.yy",},},

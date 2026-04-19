@@ -6,8 +6,7 @@
     {"name":"object functions","order":6,"path":"folders/object functions.yy",},
     {"name":"startmenu","order":5,"path":"folders/startmenu.yy",},
     {"name":"weapons","order":8,"path":"folders/weapons.yy",},
-    {"name":"melee","order":4,"path":"folders/weapons/melee.yy",},
-    {"name":"ranged","order":5,"path":"folders/weapons/ranged.yy",},
+    {"name":"ranged","order":1,"path":"folders/weapons/ranged.yy",},
   ],
   "ResourceOrderSettings":[
     {"name":"fnt_menu","order":1,"path":"fonts/fnt_menu/fnt_menu.yy",},
@@ -26,6 +25,7 @@
     {"name":"obj_lane_divider","order":2,"path":"objects/obj_lane_divider/obj_lane_divider.yy",},
     {"name":"obj_menu","order":6,"path":"objects/obj_menu/obj_menu.yy",},
     {"name":"obj_player1","order":3,"path":"objects/obj_player1/obj_player1.yy",},
+    {"name":"obj_projectile","order":2,"path":"objects/obj_projectile/obj_projectile.yy",},
     {"name":"obj_pve_controller","order":4,"path":"objects/obj_pve_controller/obj_pve_controller.yy",},
     {"name":"obj_wall_segment","order":6,"path":"objects/obj_wall_segment/obj_wall_segment.yy",},
     {"name":"obj_weapon_pickup","order":7,"path":"objects/obj_weapon_pickup/obj_weapon_pickup.yy",},
