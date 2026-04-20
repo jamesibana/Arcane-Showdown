@@ -68,3 +68,8 @@ if (keyboard_check_pressed(ord("1"))) {
     }
 }
 **/
+
+if (keyboard_check_pressed(ord("O"))) {
+    global.p1_wins = 10;
+    show_debug_message("SET P1 WINS TO 10");
+}
