@@ -63,37 +63,50 @@ global.weapon_data = {
     },
 
     bow: {
-		type: "ranged",
+        type: "ranged",
         sprite: spr_bow,
+        projectile_sprite: spr_Bow_Arrow,
         damage: 12,
         cooldown: 30,
         range: 200
     },
 
     crossbow: {
-		type: "ranged",
+        type: "ranged",
         sprite: spr_crossbow,
+        projectile_sprite: spr_Metal_Arrow,
         damage: 16,
         cooldown: 40,
         range: 220
     },
 
-    poison_spray: {
-		type: "ranged",
-        sprite: spr_poison_spray,
-        damage: 8,
-        cooldown: 15,
-        range: 160
-    },
+poison_spray: {
+    type: "ranged",
+    sprite: spr_poison_spray,
+    projectile_sprite: spr_Poison_Cloud,
+    damage: 8,
+    cooldown: 15,
+    range: 160,
+
+    // 🔥 ADD THESE
+    proj_speed: 2,
+    cloud_lifetime: 120,
+    poison_tick: 10,
+    poison_damage: 1
+},
 
     blow_dart: {
-		type: "ranged",
+        type: "ranged",
         sprite: spr_blow_dart,
+        projectile_sprite: spr_Quick_Dart,
         damage: 20,
         cooldown: 45,
         range: 50
     }
 };
+
+
+
 
 show_debug_message("weapon_data initialized");
 

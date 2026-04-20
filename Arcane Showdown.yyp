@@ -52,6 +52,7 @@
     {"id":{"name":"obj_menu","path":"objects/obj_menu/obj_menu.yy",},},
     {"id":{"name":"obj_music_controller","path":"objects/obj_music_controller/obj_music_controller.yy",},},
     {"id":{"name":"obj_player1","path":"objects/obj_player1/obj_player1.yy",},},
+    {"id":{"name":"obj_poison_puff","path":"objects/obj_poison_puff/obj_poison_puff.yy",},},
     {"id":{"name":"obj_projectile","path":"objects/obj_projectile/obj_projectile.yy",},},
     {"id":{"name":"obj_pve_controller","path":"objects/obj_pve_controller/obj_pve_controller.yy",},},
     {"id":{"name":"obj_wall_segment","path":"objects/obj_wall_segment/obj_wall_segment.yy",},},

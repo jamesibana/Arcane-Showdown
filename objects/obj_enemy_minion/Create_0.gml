@@ -15,3 +15,6 @@ state = "idle";
 state_timer = 0;
 
 sprite_index = spr_Fodder_Minion; // IMPORTANT
+
+poison_timer = 0;
+poison_tick = 0;

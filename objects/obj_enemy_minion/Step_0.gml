@@ -74,3 +74,15 @@ if (abs(vsp) < 0.05) vsp = 0;
 // COLLISION MOVEMENT
 if (!place_meeting(x + hsp, y, obj_wall_segment)) x += hsp;
 if (!place_meeting(x, y + vsp, obj_wall_segment)) y += vsp;
+
+if (poison_timer > 0) {
+
+    poison_timer--;
+
+    poison_tick++;
+
+    if (poison_tick >= 15) { // damage every 15 frames
+        hp -= 1; // or scale this
+        poison_tick = 0;
+    }
+}
