@@ -18,8 +18,13 @@ global.current_wave = 1;
 
 
 // wins system	
-global.p1_wins = 0;
-global.p2_wins = 0;
+if (!variable_global_exists("p1_wins")) {
+    global.p1_wins = 0;
+}
+
+if (!variable_global_exists("p2_wins")) {
+    global.p2_wins = 0;
+}
 
 // persistence
 persistent = true;
