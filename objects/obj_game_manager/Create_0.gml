@@ -8,7 +8,11 @@ global.p2_character = undefined;
 global.enemy_kills = 0;
 global.spawn_lock = false;
 
+global.spawner_list = [];
+global.initial_spawn_done = false;
+
 // how many kills before next spawn
+
 global.kills_to_spawn = 3;
 
 
@@ -35,7 +39,7 @@ global.weapon_data = {
         sprite: spr_sword,
         damage: 10,
         cooldown: 20,
-        range: 40
+        range: 65
     },
 
     dagger: {
@@ -43,7 +47,7 @@ global.weapon_data = {
         sprite: spr_dagger,
         damage: 6,
         cooldown: 10,
-        range: 30
+        range: 40
     },
 
     spear: {
@@ -51,7 +55,7 @@ global.weapon_data = {
         sprite: spr_spear,
         damage: 14,
         cooldown: 25,
-        range: 70
+        range: 100
     },
 
     mace: {
@@ -59,7 +63,7 @@ global.weapon_data = {
         sprite: spr_mace,
         damage: 18,
         cooldown: 35,
-        range: 40
+        range: 58
     },
 
     bow: {
@@ -67,7 +71,7 @@ global.weapon_data = {
         sprite: spr_bow,
         projectile_sprite: spr_Bow_Arrow,
         damage: 12,
-        cooldown: 30,
+        cooldown: 65,
         range: 200
     },
 
@@ -76,7 +80,7 @@ global.weapon_data = {
         sprite: spr_crossbow,
         projectile_sprite: spr_Metal_Arrow,
         damage: 16,
-        cooldown: 40,
+        cooldown: 140,
         range: 220
     },
 
@@ -85,8 +89,8 @@ poison_spray: {
     sprite: spr_poison_spray,
     projectile_sprite: spr_Poison_Cloud,
     damage: 8,
-    cooldown: 15,
-    range: 160,
+    cooldown: 100,
+    range: 40,
 
     // 🔥 ADD THESE
     proj_speed: 2,
@@ -100,11 +104,12 @@ poison_spray: {
         sprite: spr_blow_dart,
         projectile_sprite: spr_Quick_Dart,
         damage: 20,
-        cooldown: 45,
+        cooldown: 25,
         range: 50
     }
 };
 
+randomize();
 
 
 

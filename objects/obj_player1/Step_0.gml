@@ -210,12 +210,13 @@ if (attack_pressed && attack_cooldown <= 0) {
         var hit = instance_place(
             x + lengthdir_x(range, facing_dir),
             y + lengthdir_y(range, facing_dir),
-            obj_enemy_minion
+            obj_enemy_parent
         );
 
         if (hit != noone) {
             with (hit) {
                 hp -= other.damage;
+				hurt_timer = 10; // short red flash
             }
         }
 
@@ -233,4 +234,15 @@ proj.damage = damage;
 // 👇 CRITICAL LINE
 proj.weapon_data = current_weapon_data;
     }
+}
+
+// =====================
+// ARMOR BREAKDOWN LOGIC
+// =====================
+
+if (hurt_timer > 0) {
+    hurt_timer--;
+    image_blend = c_red;
+} else {
+    image_blend = c_white;
 }

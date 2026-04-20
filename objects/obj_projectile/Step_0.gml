@@ -20,12 +20,9 @@ if (!initialized) {
         }
     }
 
-    // OPTIONAL SAFETY INIT FOR POISON CLOUD
     cloud_radius = 0;
     cloud_growth = 1.5;
     cloud_max_radius = 60;
-
-cloud_init = false;
 
     initialized = true;
 }
@@ -56,9 +53,13 @@ if (!is_poison) {
         exit;
     }
 
-    var hit = instance_place(nx, ny, obj_enemy_minion);
+    var hit = instance_place(nx, ny, obj_enemy_parent);
+
     if (hit != noone) {
-        with (hit) hp -= other.damage;
+
+        hit.hp -= damage;
+        hit.hurt_timer = 10;
+
         instance_destroy();
         exit;
     }
@@ -73,14 +74,16 @@ if (!is_poison) {
 
 
 // =====================================================
-// 🟣 POISON PROJECTILE STATE MACHINE
+// 🟣 TRAVEL MODE
 // =====================================================
-
-
-// ---------- TRAVEL ----------
 if (mode == "travel") {
 
     image_speed = 0.2;
+
+    cloud_radius += 0.5;
+
+    image_xscale = cloud_radius / 20;
+    image_yscale = image_xscale;
 
     var nx = x + lengthdir_x(speed, direction);
     var ny = y + lengthdir_y(speed, direction);
@@ -90,7 +93,6 @@ if (mode == "travel") {
         mode = "cloud";
         speed = 0;
 
-        // INIT CLOUD (IMPORTANT FIX)
         cloud_radius = 5;
         cloud_growth = 1.5;
         cloud_max_radius = 60;
@@ -116,12 +118,12 @@ if (mode == "travel") {
 }
 
 
-// =====================
-// CLOUD STATE
-// =====================
+// =====================================================
+// 🟣 CLOUD MODE
+// =====================================================
 if (mode == "cloud") {
 
-    // init once
+    // init safety
     if (cloud_radius == 0) {
         cloud_radius = 10;
         cloud_growth = 1.5;
@@ -138,64 +140,32 @@ if (mode == "cloud") {
     // grow cloud
     cloud_radius = min(cloud_radius + cloud_growth, cloud_max_radius);
 
-    // visual scaling
     image_xscale = cloud_radius / 20;
     image_yscale = image_xscale;
 
-    image_speed = 0.3;
-
     image_alpha = lifetime / 60;
 
-    // debug
-    draw_text(x, y - 20, string(cloud_radius));
+    image_speed = 0.3;
 
     // =====================
-    // POISON EFFECT
+    // POISON HIT CHECK (FIXED)
     // =====================
-    with (obj_enemy_minion) {
+    var enemy = instance_place(x, y, obj_enemy_parent);
 
-        var poison_time = 60;
+    if (enemy != noone) {
 
-        if (other.weapon_data != undefined &&
-            variable_struct_exists(other.weapon_data, "poison_duration")) {
-            poison_time = other.weapon_data.poison_duration;
-        }
+        var hit_radius = cloud_radius * 2.5;
 
-        if (point_distance(x, y, other.x, other.y) < other.cloud_radius) {
-            poison_timer = poison_time;
+        if (point_distance(x, y, enemy.x, enemy.y) < hit_radius) {
+            enemy.poison_timer = 60;
         }
     }
 
-    // lifetime
     lifetime--;
 
     if (lifetime <= 0) {
         instance_destroy();
     }
 
-    exit; // IMPORTANT: stop here
+    exit;
 }
-
-    // =====================================================
-    // POISON EFFECT
-    // =====================================================
-    with (obj_enemy_minion) {
-
-        var poison_time = 60;
-
-        if (other.weapon_data != undefined &&
-            variable_struct_exists(other.weapon_data, "poison_duration")) {
-            poison_time = other.weapon_data.poison_duration;
-        }
-
-        if (point_distance(x, y, other.x, other.y) < other.cloud_radius) {
-            poison_timer = poison_time;
-        }
-    }
-
-    // =====================================================
-    // DESTROY
-    // =====================================================
-    if (lifetime <= 0) {
-        instance_destroy();
-    }

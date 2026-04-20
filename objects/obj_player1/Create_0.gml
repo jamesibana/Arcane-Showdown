@@ -1,14 +1,15 @@
-function get_weapon(_key) {
-    if (is_struct(global.weapon_data) && variable_struct_exists(global.weapon_data, _key)) {
-        return variable_struct_get(global.weapon_data, _key);
-    }
-    return undefined;
-}
 
 // =====================
 // BASE STATS
 // =====================
-hp = 100;
+max_hp = 100;
+hp = max_hp;
+
+max_armor = 50;
+armor = max_armor;
+
+hurt_timer = 0;
+
 move_speed = 4;
 initialized = false;
 
@@ -53,3 +54,4 @@ range = current_weapon_data.range;
 // =====================
 a_tap_timer = 0;
 a_tap_count = 0;
+
