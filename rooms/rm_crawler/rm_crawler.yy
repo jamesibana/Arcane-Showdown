@@ -1,7 +1,7 @@
 {
   "$GMRoom":"v1",
   "%Name":"rm_crawler",
-  "creationCodeFile":"",
+  "creationCodeFile":"rooms/rm_crawler/RoomCreationCode.gml",
   "inheritCode":false,
   "inheritCreationOrder":false,
   "inheritLayers":false,

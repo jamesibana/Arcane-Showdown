@@ -5,9 +5,6 @@ global.game_state = "game";
 audio_stop_all();
 global.music_id = -1;
 
-// go to arena
-room_goto(rm_arena);
-
 // NOTE: play music AFTER room loads (IMPORTANT)
 
 if (global.music_id != -1) {
