@@ -13,10 +13,7 @@
   "For3D":false,
   "frames":[
     {"$GMSpriteFrame":"v1","%Name":"24e994e9-e6eb-4ac7-8c8d-f4973365c1da","name":"24e994e9-e6eb-4ac7-8c8d-f4973365c1da","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"v1","%Name":"38e2ef3b-1df7-426c-b2cd-461a3f9dd79a","name":"38e2ef3b-1df7-426c-b2cd-461a3f9dd79a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"v1","%Name":"20c65f01-fd19-4895-beff-9ab615e92839","name":"20c65f01-fd19-4895-beff-9ab615e92839","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"v1","%Name":"7a705583-2913-445f-a3e2-a482682db9ba","name":"7a705583-2913-445f-a3e2-a482682db9ba","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"v1","%Name":"57791184-7622-4837-971a-381627b564ba","name":"57791184-7622-4837-971a-381627b564ba","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"v1","%Name":"ae165a20-d544-4408-b69f-dc8dbb78df12","name":"ae165a20-d544-4408-b69f-dc8dbb78df12","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
@@ -54,7 +51,7 @@
     },
     "eventStubScript":null,
     "eventToFunction":{},
-    "length":6.0,
+    "length":3.0,
     "lockOrigin":false,
     "moments":{
       "$KeyframeStore<MomentsEventKeyframe>":"",
@@ -77,20 +74,11 @@
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"24e994e9-e6eb-4ac7-8c8d-f4973365c1da","path":"sprites/Anim_ATK_Colossus/Anim_ATK_Colossus.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"05cbee51-af8c-4edf-8d89-86f5305c84d6","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"38e2ef3b-1df7-426c-b2cd-461a3f9dd79a","path":"sprites/Anim_ATK_Colossus/Anim_ATK_Colossus.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"62502c65-ecd7-4801-b2f2-96649eeeba24","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"20c65f01-fd19-4895-beff-9ab615e92839","path":"sprites/Anim_ATK_Colossus/Anim_ATK_Colossus.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"0a818bba-98dc-4c65-b582-7b3270295005","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"7a705583-2913-445f-a3e2-a482682db9ba","path":"sprites/Anim_ATK_Colossus/Anim_ATK_Colossus.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"843316b2-00b3-40be-96a2-fa309a738af9","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"57791184-7622-4837-971a-381627b564ba","path":"sprites/Anim_ATK_Colossus/Anim_ATK_Colossus.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"8df0b5f7-6985-4554-9069-9fdebc44a2f0","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+              },"Disabled":false,"id":"843316b2-00b3-40be-96a2-fa309a738af9","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"ae165a20-d544-4408-b69f-dc8dbb78df12","path":"sprites/Anim_ATK_Colossus/Anim_ATK_Colossus.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"61eee7f0-33df-4e3f-ab9a-5bb539b2caa0","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+              },"Disabled":false,"id":"61eee7f0-33df-4e3f-ab9a-5bb539b2caa0","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

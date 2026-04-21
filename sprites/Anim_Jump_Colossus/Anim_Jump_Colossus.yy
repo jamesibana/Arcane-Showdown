@@ -5,19 +5,18 @@
   "bbox_bottom":104,
   "bbox_left":0,
   "bbox_right":127,
-  "bbox_top":30,
+  "bbox_top":40,
   "collisionKind":1,
   "collisionTolerance":0,
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
+    {"$GMSpriteFrame":"v1","%Name":"b18f52c1-25e0-439f-940d-1b85b08f02b2","name":"b18f52c1-25e0-439f-940d-1b85b08f02b2","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"v1","%Name":"3aa4d1a4-84d9-4c11-9d9d-c5c53ce18a39","name":"3aa4d1a4-84d9-4c11-9d9d-c5c53ce18a39","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"v1","%Name":"1a26c9ee-6d44-4f3f-bdb0-e1f0dbccbcb2","name":"1a26c9ee-6d44-4f3f-bdb0-e1f0dbccbcb2","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"7305367d-6f7e-46e9-8305-18cdfa656149","name":"7305367d-6f7e-46e9-8305-18cdfa656149","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"v1","%Name":"5332ba35-bbc1-487e-b09b-819a9505cf8c","name":"5332ba35-bbc1-487e-b09b-819a9505cf8c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"v1","%Name":"b18f52c1-25e0-439f-940d-1b85b08f02b2","name":"b18f52c1-25e0-439f-940d-1b85b08f02b2","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"v1","%Name":"e0a13da6-51c2-4b11-81e3-be208759b9da","name":"e0a13da6-51c2-4b11-81e3-be208759b9da","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"v1","%Name":"9ee62f93-c8d8-4f38-95dd-70803be0be2e","name":"9ee62f93-c8d8-4f38-95dd-70803be0be2e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -54,7 +53,7 @@
     },
     "eventStubScript":null,
     "eventToFunction":{},
-    "length":6.0,
+    "length":5.0,
     "lockOrigin":false,
     "moments":{
       "$KeyframeStore<MomentsEventKeyframe>":"",
@@ -74,23 +73,20 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"b18f52c1-25e0-439f-940d-1b85b08f02b2","path":"sprites/Anim_Jump_Colossus/Anim_Jump_Colossus.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"986ae1a9-50e3-49ac-b20e-04b6316125ff","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"3aa4d1a4-84d9-4c11-9d9d-c5c53ce18a39","path":"sprites/Anim_Jump_Colossus/Anim_Jump_Colossus.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"65a3895b-e8e5-4145-a0c1-b8d70651e48d","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+              },"Disabled":false,"id":"65a3895b-e8e5-4145-a0c1-b8d70651e48d","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"1a26c9ee-6d44-4f3f-bdb0-e1f0dbccbcb2","path":"sprites/Anim_Jump_Colossus/Anim_Jump_Colossus.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"88b3e724-6733-4380-9eb7-620598b887d2","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+              },"Disabled":false,"id":"88b3e724-6733-4380-9eb7-620598b887d2","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"7305367d-6f7e-46e9-8305-18cdfa656149","path":"sprites/Anim_Jump_Colossus/Anim_Jump_Colossus.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"eab0d69d-263b-4c25-a089-4f8da41af2c4","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"5332ba35-bbc1-487e-b09b-819a9505cf8c","path":"sprites/Anim_Jump_Colossus/Anim_Jump_Colossus.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"2bd2e6cd-493a-4fc8-a583-44ae98a8095b","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"b18f52c1-25e0-439f-940d-1b85b08f02b2","path":"sprites/Anim_Jump_Colossus/Anim_Jump_Colossus.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"986ae1a9-50e3-49ac-b20e-04b6316125ff","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"e0a13da6-51c2-4b11-81e3-be208759b9da","path":"sprites/Anim_Jump_Colossus/Anim_Jump_Colossus.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"b6285df8-a372-4ded-8d19-bf0e20469c68","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"9ee62f93-c8d8-4f38-95dd-70803be0be2e","path":"sprites/Anim_Jump_Colossus/Anim_Jump_Colossus.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"c5f8bb0a-bc3a-4c20-a458-784d420f6fc2","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+              },"Disabled":false,"id":"2bd2e6cd-493a-4fc8-a583-44ae98a8095b","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,
