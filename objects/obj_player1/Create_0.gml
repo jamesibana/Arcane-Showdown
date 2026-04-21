@@ -31,11 +31,12 @@ knockback_hsp = 0;
 knockback_vsp = 0;
 
 attack_buffer = 0;
+
 // =====================
 // INVENTORY INIT
 // =====================
-weapon_melee = "sword";
-weapon_ranged = "bow";
+weapon_melee = "spear";
+weapon_ranged = "poison_spray";
 
 weapon_melee_data = get_weapon(weapon_melee);
 weapon_ranged_data = get_weapon(weapon_ranged);
