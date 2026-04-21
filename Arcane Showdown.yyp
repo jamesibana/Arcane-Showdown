@@ -90,6 +90,8 @@
     {"id":{"name":"spr_Elite_Swordmaster","path":"sprites/spr_Elite_Swordmaster/spr_Elite_Swordmaster.yy",},},
     {"id":{"name":"spr_Fodder_Minion","path":"sprites/spr_Fodder_Minion/spr_Fodder_Minion.yy",},},
     {"id":{"name":"spr_Fodder_Slime","path":"sprites/spr_Fodder_Slime/spr_Fodder_Slime.yy",},},
+    {"id":{"name":"spr_indicator_1","path":"sprites/spr_indicator_1/spr_indicator_1.yy",},},
+    {"id":{"name":"spr_indicator_2","path":"sprites/spr_indicator_2/spr_indicator_2.yy",},},
     {"id":{"name":"spr_mace","path":"sprites/spr_mace/spr_mace.yy",},},
     {"id":{"name":"spr_Metal_Arrow","path":"sprites/spr_Metal_Arrow/spr_Metal_Arrow.yy",},},
     {"id":{"name":"spr_MidTier_Golem","path":"sprites/spr_MidTier_Golem/spr_MidTier_Golem.yy",},},

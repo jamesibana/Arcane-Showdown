@@ -1,8 +1,22 @@
+
 // draw player
 draw_self();
 
 // draw weapon
 draw_sprite(weapon_sprite, 0, x, y);
+
+// ============================
+// PLAYER INDICATOR (SPRITE VERSION)
+// ============================
+
+var ind_y = y - sprite_get_bbox_top(sprite_index) - 50;
+var ind_x = x;
+
+var spr = (owner_player == 1)
+    ? spr_indicator_1
+    : spr_indicator_2;
+
+draw_sprite(spr, 0, ind_x, ind_y);
 
 // =====================
 // PLAYER BARS

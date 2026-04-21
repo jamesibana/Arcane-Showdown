@@ -11,19 +11,22 @@ global.spawn_lock = false;
 global.spawner_list = [];
 global.initial_spawn_done = false;
 
-// how many kills before next spawn
+global.time_spawn_timer = room_speed * 5; // first spawn after 5s
+global.time_spawn_interval = room_speed * 8; // repeat every 8s
 
+// how many kills before next spawn
 global.kills_to_spawn = 3;
 
 
 // optional: wave system prep
 global.current_wave = 1;
 
-
+// hitpause init
+global.hitpause = 0;
 
 // wins system	
 if (!variable_global_exists("p1_wins")) {
-    global.p1_wins = 0;
+    global.p1_wins = 10;
 }
 
 if (!variable_global_exists("p2_wins")) {
@@ -79,7 +82,7 @@ global.weapon_data = {
         type: "ranged",
         sprite: spr_crossbow,
         projectile_sprite: spr_Metal_Arrow,
-        damage: 16,
+        damage: 24,
         cooldown: 140,
         range: 220
     },
@@ -89,7 +92,7 @@ poison_spray: {
     sprite: spr_poison_spray,
     projectile_sprite: spr_Poison_Cloud,
     damage: 8,
-    cooldown: 100,
+    cooldown: 110,
     range: 40,
 
     // 🔥 ADD THESE
@@ -103,8 +106,8 @@ poison_spray: {
         type: "ranged",
         sprite: spr_blow_dart,
         projectile_sprite: spr_Quick_Dart,
-        damage: 20,
-        cooldown: 25,
+        damage: 6,
+        cooldown: 30,
         range: 50
     }
 };

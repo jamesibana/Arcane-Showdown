@@ -1,5 +1,3 @@
-show_debug_message("mode: " + string(mode));
-
 // =====================================================
 // INIT (SAFE ONCE)
 // =====================================================
@@ -57,26 +55,33 @@ if (!is_poison) {
 
     if (hit != noone) {
 
-        var dmg = other.damage;
+        // ❌ ignore shooter
+        if (hit.id == owner_id) {
+            x = nx;
+            y = ny;
+            exit;
+        }
 
-// safety fallback (prevents crashes)
-if (!variable_instance_exists(id, "armor")) armor = 0;
-if (!variable_instance_exists(id, "hp")) hp = 1;
+        with (hit) {
 
-// 1. armor absorbs first
-if (armor > 0) {
+            var dmg = other.damage;
 
-    var absorbed = min(armor, dmg);
-    armor -= absorbed;
-    dmg -= absorbed;
-}
+            if (!variable_instance_exists(id, "armor")) armor = 0;
+            if (!variable_instance_exists(id, "hp")) hp = 1;
 
-// 2. leftover goes to hp
-if (dmg > 0) {
-    hp -= dmg;
-}
-        hit.hurt_timer = 10;
+            // armor first
+            if (armor > 0) {
+                var absorbed = min(armor, dmg);
+                armor -= absorbed;
+                dmg -= absorbed;
+            }
 
+            // hp damage
+            if (dmg > 0) hp -= dmg;
+
+            hurt_timer = 10;
+        }
+		global.hitpause = 4;
         instance_destroy();
         exit;
     }
@@ -91,16 +96,11 @@ if (dmg > 0) {
 
 
 // =====================================================
-// 🟣 TRAVEL MODE
+// 🟣 TRAVEL MODE (POISON PROJECTILE)
 // =====================================================
 if (mode == "travel") {
 
     image_speed = 0.2;
-
-    cloud_radius += 0.5;
-
-    image_xscale = cloud_radius / 20;
-    image_yscale = image_xscale;
 
     var nx = x + lengthdir_x(speed, direction);
     var ny = y + lengthdir_y(speed, direction);
@@ -136,45 +136,34 @@ if (mode == "travel") {
 
 
 // =====================================================
-// 🟣 CLOUD MODE
+// 🟣 CLOUD MODE (POISON)
 // =====================================================
 if (mode == "cloud") {
 
-    // init safety
-    if (cloud_radius == 0) {
-        cloud_radius = 10;
-        cloud_growth = 1.5;
-        cloud_max_radius = 60;
-
-        lifetime = variable_struct_exists(weapon_data, "cloud_lifetime")
-            ? weapon_data.cloud_lifetime
-            : 60;
-
-        image_index = 0;
-        image_speed = 0.3;
-    }
-
-    // grow cloud
     cloud_radius = min(cloud_radius + cloud_growth, cloud_max_radius);
 
     image_xscale = cloud_radius / 20;
     image_yscale = image_xscale;
 
     image_alpha = lifetime / 60;
-
     image_speed = 0.3;
 
-    // =====================
-    // POISON HIT CHECK (FIXED)
-    // =====================
-    var enemy = instance_place(x, y, obj_damageable);
+    // =========================
+    // 🔥 FIXED: MULTI TARGET POISON
+    // =========================
+    with (obj_damageable) {
 
-    if (enemy != noone) {
+        // ignore shooter
+        if (id == other.owner_id) continue;
 
-        var hit_radius = cloud_radius * 2.5;
+        var dist = point_distance(x, y, other.x, other.y);
 
-        if (point_distance(x, y, enemy.x, enemy.y) < hit_radius) {
-            enemy.poison_timer = 60;
+        if (dist < other.cloud_radius * 2.5) {
+
+            poison_timer = 60;
+            poison_damage = 1;
+
+            hurt_timer = 5;
         }
     }
 

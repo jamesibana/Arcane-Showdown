@@ -12,8 +12,8 @@
   "name":"obj_player1",
   "overriddenProperties":[],
   "parent":{
-    "name":"object functions",
-    "path":"folders/object functions.yy",
+    "name":"characters",
+    "path":"folders/characters.yy",
   },
   "parentObjectId":{
     "name":"obj_damageable",

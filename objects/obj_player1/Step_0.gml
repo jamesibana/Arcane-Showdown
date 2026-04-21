@@ -15,17 +15,31 @@ if (!variable_instance_exists(id, "hitstun_timer")) hitstun_timer = 0;
 if (!variable_instance_exists(id, "knockback_hsp")) knockback_hsp = 0;
 if (!variable_instance_exists(id, "knockback_vsp")) knockback_vsp = 0;
 
+if (!variable_instance_exists(id, "attack_buffer")) attack_buffer = 0;
 if (!variable_instance_exists(id, "initialized")) initialized = false;
 
+
+// =====================================================
+// HIT PAUSE FREEZE
+// =====================================================
+if (global.hitpause > 0) {
+
+    // allow only visual effects during pause
+    if (hurt_timer > 0) hurt_timer--;
+
+    exit;
+}
 
 // =====================================================
 // 1. DEATH TRIGGER
 // =====================================================
 if (hp <= 0 && state != "dead") {
     state = "dead";
+
     attack_cooldown = 0;
     swap_cooldown = 0;
     vsp = 0;
+
     image_speed = 0;
     image_blend = c_red;
 }
@@ -35,6 +49,7 @@ if (hp <= 0 && state != "dead") {
 // 2. DEATH STATE
 // =====================================================
 if (state == "dead") {
+
     vsp = 0;
     image_alpha -= 0.05;
     image_angle += 5;
@@ -49,8 +64,14 @@ if (state == "dead") {
 // =====================================================
 if (attack_cooldown > 0) attack_cooldown--;
 if (swap_cooldown > 0) swap_cooldown--;
+if (attack_buffer > 0) attack_buffer--;
 
+
+// =====================================================
+// 4. HITSTUN (OVERRIDES CONTROL)
+// =====================================================
 if (hitstun_timer > 0) {
+
     hitstun_timer--;
 
     x += knockback_hsp;
@@ -64,7 +85,7 @@ if (hitstun_timer > 0) {
 
 
 // =====================================================
-// 4. SAFE CHARACTER INIT
+// 5. SAFE CHARACTER INIT
 // =====================================================
 if (!initialized && is_struct(character_data)) {
     hp = character_data.hp;
@@ -74,7 +95,7 @@ if (!initialized && is_struct(character_data)) {
 
 
 // =====================================================
-// 5. DOUBLE TAP DETECTION (ATTACK BUFFER)
+// 6. DOUBLE TAP → ATTACK BUFFER
 // =====================================================
 var move_key = -1;
 
@@ -90,8 +111,6 @@ if (owner_player == 1) {
     else if (keyboard_check_pressed(vk_right)) move_key = vk_right;
 }
 
-var attack_pressed = false;
-
 if (last_move_timer > 0) last_move_timer--;
 else {
     last_move_count = 0;
@@ -99,14 +118,17 @@ else {
 }
 
 if (move_key != -1) {
+
     if (last_move_timer > 0 && last_move_key == move_key) {
+
         last_move_count++;
 
         if (last_move_count >= 2) {
-            attack_pressed = true;
+            attack_buffer = 6;
             last_move_count = 0;
             last_move_timer = 0;
         }
+
     } else {
         last_move_count = 1;
         last_move_key = move_key;
@@ -117,15 +139,13 @@ if (move_key != -1) {
 
 
 // =====================================================
-// 6. MOVEMENT SYSTEM
+// 7. MOVEMENT
 // =====================================================
 var h = 0;
 var v = 0;
 
 
-// =====================
-// PLATFORM MODE (rm_arena)
-// =====================
+// ---------- SIDE VIEW (ARENA) ----------
 if (room == rm_arena) {
 
     var jump_pressed = false;
@@ -146,21 +166,22 @@ if (room == rm_arena) {
         on_ground = false;
     }
 
-    var input_speed = move_speed;
-
-    // horizontal move
-    var nx = x + h * input_speed;
+    // horizontal
+    var nx = x + h * move_speed;
     if (!place_meeting(nx, y, obj_wall_segment)) x = nx;
 
-    // vertical move
+    // vertical
     var ny = y + vsp;
 
     if (place_meeting(x, ny, obj_wall_segment)) {
+
         while (!place_meeting(x, y + sign(vsp), obj_wall_segment)) {
             y += sign(vsp);
         }
+
         vsp = 0;
         on_ground = true;
+
     } else {
         y = ny;
         on_ground = false;
@@ -168,9 +189,7 @@ if (room == rm_arena) {
 }
 
 
-// =====================
-// TOP DOWN MODE (rm_crawler)
-// =====================
+// ---------- TOP-DOWN (CRAWLER) ----------
 else {
 
     if (owner_player == 1) {
@@ -181,10 +200,8 @@ else {
         v = keyboard_check(vk_down) - keyboard_check(vk_up);
     }
 
-    var input_speed = move_speed;
-
-    var nx = x + h * input_speed;
-    var ny = y + v * input_speed;
+    var nx = x + h * move_speed;
+    var ny = y + v * move_speed;
 
     if (!place_meeting(nx, y, obj_wall_segment)) x = nx;
     if (!place_meeting(x, ny, obj_wall_segment)) y = ny;
@@ -192,7 +209,7 @@ else {
 
 
 // =====================================================
-// 7. FACING
+// 8. FACING
 // =====================================================
 if (h != 0) image_xscale = sign(h);
 
@@ -202,7 +219,7 @@ if (h != 0 || v != 0) {
 
 
 // =====================================================
-// 8. SWAP SYSTEM
+// 9. SWAP SYSTEM
 // =====================================================
 var pressed = false;
 
@@ -251,7 +268,7 @@ if (pressed) {
 
 
 // =====================================================
-// 9. WEAPON RESOLVE
+// 10. WEAPON RESOLVE
 // =====================================================
 var resolved;
 
@@ -273,12 +290,14 @@ range = resolved.range;
 
 
 // =====================================================
-// 10. ATTACK LOGIC
+// 11. ATTACK
 // =====================================================
-if (attack_pressed && attack_cooldown <= 0) {
+if (attack_buffer > 0 && attack_cooldown <= 0) {
 
+    attack_buffer = 0;
     attack_cooldown = cooldown;
 
+    // ---------- MELEE ----------
     if (active_weapon_type == "melee") {
 
         var hit = collision_circle(
@@ -290,7 +309,7 @@ if (attack_pressed && attack_cooldown <= 0) {
             true
         );
 
-        if (hit != noone && hit.state != "dead") {
+        if (hit != noone && hit.id != id && hit.state != "dead") {
 
             with (hit) {
 
@@ -306,7 +325,6 @@ if (attack_pressed && attack_cooldown <= 0) {
                     dmg -= absorbed;
                 }
 
-                // hp damage
                 if (dmg > 0) hp -= dmg;
 
                 // knockback
@@ -317,10 +335,14 @@ if (attack_pressed && attack_cooldown <= 0) {
 
                 hitstun_timer = 10;
                 hurt_timer = 10;
+				
+				global.hitpause = 6; // 3–5 feels good
             }
         }
+    }
 
-    } else {
+    // ---------- RANGED ----------
+    else {
 
         var proj = instance_create_layer(
             x + lengthdir_x(20, facing_dir),
@@ -333,12 +355,45 @@ if (attack_pressed && attack_cooldown <= 0) {
         proj.speed = 10;
         proj.damage = damage;
         proj.weapon_data = current_weapon_data;
+
+        proj.owner_id = id;
+        proj.owner_player = owner_player;
     }
 }
 
 
 // =====================================================
-// 11. HURT FLASH
+// 12. POISON
+// =====================================================
+if (!variable_instance_exists(id, "poison_timer")) poison_timer = 0;
+if (!variable_instance_exists(id, "poison_tick")) poison_tick = 0;
+if (!variable_instance_exists(id, "poison_damage")) poison_damage = 100;
+
+if (poison_timer > 0) {
+
+    poison_timer--;
+    poison_tick++;
+
+    if (poison_tick >= 15) {
+
+        var dmg = poison_damage;
+
+        if (armor > 0) {
+            var absorbed = min(armor, dmg);
+            armor -= absorbed;
+            dmg -= absorbed;
+        }
+
+        if (dmg > 0) hp -= dmg;
+
+        hurt_timer = 10;
+        poison_tick = 0;
+    }
+}
+
+
+// =====================================================
+// 13. HURT FLASH
 // =====================================================
 if (hurt_timer > 0) {
     hurt_timer--;

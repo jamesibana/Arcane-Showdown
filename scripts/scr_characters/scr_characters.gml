@@ -22,8 +22,8 @@ global.characters = [
     {
         name: "Assassin",
         hp: 100,
-		armor: 15,
-        speed: 7,
+		armor: 10,
+        speed: 6.5,
         luck: 1.0,
         desc: "Speedy but fragile fighter",
 		unlock_wins: 5,

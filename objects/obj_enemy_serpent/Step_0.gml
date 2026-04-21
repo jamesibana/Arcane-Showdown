@@ -92,7 +92,7 @@ if (dist < attack_range) {
 
         with (target) {
             armor -= other.attack_damage;
-			
+
 // safety fallback (prevents crashes)
 if (!variable_instance_exists(id, "armor")) armor = 0;
 if (!variable_instance_exists(id, "hp")) hp = 1;
