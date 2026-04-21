@@ -2,6 +2,7 @@
 
 hp = 50;
 move_speed = 1.5;
+armor = 0;
 
 // Aggro system
 aggro_enter = 140;

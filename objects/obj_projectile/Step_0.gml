@@ -53,11 +53,28 @@ if (!is_poison) {
         exit;
     }
 
-    var hit = instance_place(nx, ny, obj_enemy_parent);
+    var hit = instance_place(nx, ny, obj_damageable);
 
     if (hit != noone) {
 
-        hit.hp -= damage;
+        var dmg = other.damage;
+
+// safety fallback (prevents crashes)
+if (!variable_instance_exists(id, "armor")) armor = 0;
+if (!variable_instance_exists(id, "hp")) hp = 1;
+
+// 1. armor absorbs first
+if (armor > 0) {
+
+    var absorbed = min(armor, dmg);
+    armor -= absorbed;
+    dmg -= absorbed;
+}
+
+// 2. leftover goes to hp
+if (dmg > 0) {
+    hp -= dmg;
+}
         hit.hurt_timer = 10;
 
         instance_destroy();
@@ -150,7 +167,7 @@ if (mode == "cloud") {
     // =====================
     // POISON HIT CHECK (FIXED)
     // =====================
-    var enemy = instance_place(x, y, obj_enemy_parent);
+    var enemy = instance_place(x, y, obj_damageable);
 
     if (enemy != noone) {
 

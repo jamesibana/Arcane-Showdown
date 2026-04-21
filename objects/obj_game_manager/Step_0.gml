@@ -76,17 +76,6 @@ while (global.enemy_kills >= global.kills_to_spawn) {
 
 }
 
-//DEBUG
-if (keyboard_check_pressed(ord("K"))) {
-    global.enemy_kills += 1;
-    show_debug_message("KILL +1 → " + string(global.enemy_kills));
-}
-
-if (keyboard_check_pressed(ord("P"))) {
-    instance_create_layer(x + 64, y, "Instances", obj_enemy_slime);
-}
-
-
 /**
 if (keyboard_check_pressed(ord("1"))) {
 

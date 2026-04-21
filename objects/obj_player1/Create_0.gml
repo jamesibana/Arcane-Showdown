@@ -24,6 +24,13 @@ last_move_key = -1;
 last_move_timer = 0;
 last_move_count = 0;
 
+persistent = true;
+
+hitstun_timer = 0;
+knockback_hsp = 0;
+knockback_vsp = 0;
+
+attack_buffer = 0;
 // =====================
 // INVENTORY INIT
 // =====================
@@ -55,3 +62,21 @@ range = current_weapon_data.range;
 a_tap_timer = 0;
 a_tap_count = 0;
 
+// SPAWN SAFETY CHECK
+if (!variable_instance_exists(id, "owner_player")) {
+    instance_destroy();
+    exit;
+}
+
+// CHARACTER DATA CHECK
+if (!is_struct(character_data)) {
+    show_debug_message("ERROR: player lost character_data");
+}
+
+vsp = 0;
+grav = 0.4;
+on_ground = false;
+
+// HEALTH AND DEATH
+state = "alive";
+death_timer = 0;

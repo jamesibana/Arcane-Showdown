@@ -10,5 +10,3 @@ global.music_id = -1;
 if (global.music_id != -1) {
     audio_stop_sound(global.music_id);
 }
-
-global.music_id = audio_play_sound(snd_music, 1, true);

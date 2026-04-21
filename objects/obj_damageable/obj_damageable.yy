@@ -1,18 +1,15 @@
 {
   "$GMObject":"",
-  "%Name":"obj_enemy_parent",
+  "%Name":"obj_damageable",
   "eventList":[],
   "managed":true,
-  "name":"obj_enemy_parent",
+  "name":"obj_damageable",
   "overriddenProperties":[],
   "parent":{
     "name":"functions",
     "path":"folders/monsters/functions.yy",
   },
-  "parentObjectId":{
-    "name":"obj_damageable",
-    "path":"objects/obj_damageable/obj_damageable.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

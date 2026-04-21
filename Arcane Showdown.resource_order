@@ -15,6 +15,7 @@
     {"name":"obj_button_play","order":2,"path":"objects/obj_button_play/obj_button_play.yy",},
     {"name":"obj_button_quit","order":4,"path":"objects/obj_button_quit/obj_button_quit.yy",},
     {"name":"obj_controls","order":5,"path":"objects/obj_controls/obj_controls.yy",},
+    {"name":"obj_damageable","order":8,"path":"objects/obj_damageable/obj_damageable.yy",},
     {"name":"obj_enemy_minion","order":1,"path":"objects/obj_enemy_minion/obj_enemy_minion.yy",},
     {"name":"obj_enemy_obelisk","order":2,"path":"objects/obj_enemy_obelisk/obj_enemy_obelisk.yy",},
     {"name":"obj_enemy_parent","order":7,"path":"objects/obj_enemy_parent/obj_enemy_parent.yy",},
