@@ -8,7 +8,11 @@ global.p2_character = undefined;
 global.enemy_kills = 0;
 global.spawn_lock = false;
 
+global.spawner_list = [];
+global.initial_spawn_done = false;
+
 // how many kills before next spawn
+
 global.kills_to_spawn = 3;
 
 
@@ -18,8 +22,13 @@ global.current_wave = 1;
 
 
 // wins system	
-global.p1_wins = 0;
-global.p2_wins = 0;
+if (!variable_global_exists("p1_wins")) {
+    global.p1_wins = 0;
+}
+
+if (!variable_global_exists("p2_wins")) {
+    global.p2_wins = 0;
+}
 
 // persistence
 persistent = true;
@@ -30,7 +39,7 @@ global.weapon_data = {
         sprite: spr_sword,
         damage: 10,
         cooldown: 20,
-        range: 40
+        range: 65
     },
 
     dagger: {
@@ -38,7 +47,7 @@ global.weapon_data = {
         sprite: spr_dagger,
         damage: 6,
         cooldown: 10,
-        range: 30
+        range: 40
     },
 
     spear: {
@@ -46,7 +55,7 @@ global.weapon_data = {
         sprite: spr_spear,
         damage: 14,
         cooldown: 25,
-        range: 70
+        range: 100
     },
 
     mace: {
@@ -54,41 +63,55 @@ global.weapon_data = {
         sprite: spr_mace,
         damage: 18,
         cooldown: 35,
-        range: 40
+        range: 58
     },
 
     bow: {
-		type: "ranged",
+        type: "ranged",
         sprite: spr_bow,
+        projectile_sprite: spr_Bow_Arrow,
         damage: 12,
-        cooldown: 30,
+        cooldown: 65,
         range: 200
     },
 
     crossbow: {
-		type: "ranged",
+        type: "ranged",
         sprite: spr_crossbow,
+        projectile_sprite: spr_Metal_Arrow,
         damage: 16,
-        cooldown: 40,
+        cooldown: 140,
         range: 220
     },
 
-    poison_spray: {
-		type: "ranged",
-        sprite: spr_poison_spray,
-        damage: 8,
-        cooldown: 15,
-        range: 160
-    },
+poison_spray: {
+    type: "ranged",
+    sprite: spr_poison_spray,
+    projectile_sprite: spr_Poison_Cloud,
+    damage: 8,
+    cooldown: 100,
+    range: 40,
+
+    // 🔥 ADD THESE
+    proj_speed: 2,
+    cloud_lifetime: 120,
+    poison_tick: 10,
+    poison_damage: 1
+},
 
     blow_dart: {
-		type: "ranged",
+        type: "ranged",
         sprite: spr_blow_dart,
+        projectile_sprite: spr_Quick_Dart,
         damage: 20,
-        cooldown: 45,
+        cooldown: 25,
         range: 50
     }
 };
+
+randomize();
+
+
 
 show_debug_message("weapon_data initialized");
 

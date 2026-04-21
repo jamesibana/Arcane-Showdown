@@ -1,15 +1,28 @@
+// =====================
+// KILL COUNT
+// =====================
 global.enemy_kills += 1;
 
-// chance to drop weapon
-if (irandom(100) < 33) { // 33% drop chance
+// =====================
+// DROP SETTINGS
+// =====================
+var drop_chance = 55;
 
-    var drop = instance_create_layer(x, y, "Instances", obj_weapon_pickup);
+// roll
+if (irandom(99) < drop_chance) {
 
-    var keys = ["sword","dagger","spear","mace","bow","crossbow","blow_dart","poison_spray"];
-    var chosen = keys[irandom(array_length(keys) - 1)];
+    var names = variable_struct_get_names(global.weapon_data);
 
-    with (drop) {
-        weapon_key = chosen;
-        sprite_index = global.weapon_data[chosen].sprite;
+    if (array_length(names) > 0) {
+
+        var drop_key = names[irandom(array_length(names) - 1)];
+        var data = get_weapon(drop_key);
+
+        if (data != undefined) {
+
+            var drop = instance_create_layer(x, y, "Instances", obj_weapon_pickup);
+            drop.weapon_key = drop_key;
+            drop.weapon_sprite = data.sprite;
+        }
     }
 }
