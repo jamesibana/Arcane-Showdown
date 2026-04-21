@@ -26,8 +26,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"characters",
-    "path":"folders/characters.yy",
+    "name":"Anims_Colossus",
+    "path":"folders/characters/Anims_Colossus.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

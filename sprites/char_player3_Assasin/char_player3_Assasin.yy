@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"characters",
-    "path":"folders/characters.yy",
+    "name":"Anims_Assasin",
+    "path":"folders/characters/Anims_Assasin.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
