@@ -232,7 +232,7 @@ if (pressed) {
 
     var pickup = instance_nearest(x, y, obj_weapon_pickup);
 
-    if (pickup != noone && point_distance(x, y, pickup.x, pickup.y) < 40) {
+    if (pickup != noone && point_distance(x, y, pickup.x, pickup.y) < 80) {
 
         var new_key = pickup.weapon_key;
         var new_data = get_weapon(new_key);

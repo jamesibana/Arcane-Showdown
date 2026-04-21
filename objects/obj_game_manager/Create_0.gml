@@ -50,7 +50,7 @@ global.weapon_data = {
         sprite: spr_dagger,
         damage: 6,
         cooldown: 10,
-        range: 40
+        range: 35
     },
 
     spear: {
@@ -58,7 +58,7 @@ global.weapon_data = {
         sprite: spr_spear,
         damage: 14,
         cooldown: 25,
-        range: 100
+        range: 110
     },
 
     mace: {
@@ -82,7 +82,7 @@ global.weapon_data = {
         type: "ranged",
         sprite: spr_crossbow,
         projectile_sprite: spr_Metal_Arrow,
-        damage: 24,
+        damage: 30,
         cooldown: 140,
         range: 220
     },

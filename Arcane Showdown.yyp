@@ -36,6 +36,7 @@
     {"id":{"name":"obj_button_parent","path":"objects/obj_button_parent/obj_button_parent.yy",},},
     {"id":{"name":"obj_button_play","path":"objects/obj_button_play/obj_button_play.yy",},},
     {"id":{"name":"obj_button_quit","path":"objects/obj_button_quit/obj_button_quit.yy",},},
+    {"id":{"name":"obj_char_select","path":"objects/obj_char_select/obj_char_select.yy",},},
     {"id":{"name":"obj_character_select","path":"objects/obj_character_select/obj_character_select.yy",},},
     {"id":{"name":"obj_controls","path":"objects/obj_controls/obj_controls.yy",},},
     {"id":{"name":"obj_damageable","path":"objects/obj_damageable/obj_damageable.yy",},},
