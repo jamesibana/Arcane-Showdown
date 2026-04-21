@@ -11,6 +11,7 @@
   ],
   "ResourceOrderSettings":[
     {"name":"fnt_menu","order":1,"path":"fonts/fnt_menu/fnt_menu.yy",},
+    {"name":"obj_arena_poison_ring","order":5,"path":"objects/obj_arena_poison_ring/obj_arena_poison_ring.yy",},
     {"name":"obj_button_parent","order":3,"path":"objects/obj_button_parent/obj_button_parent.yy",},
     {"name":"obj_button_play","order":2,"path":"objects/obj_button_play/obj_button_play.yy",},
     {"name":"obj_button_quit","order":4,"path":"objects/obj_button_quit/obj_button_quit.yy",},
@@ -67,6 +68,7 @@
     {"name":"spr_Metal_Arrow","order":1,"path":"sprites/spr_Metal_Arrow/spr_Metal_Arrow.yy",},
     {"name":"spr_MidTier_Golem","order":2,"path":"sprites/spr_MidTier_Golem/spr_MidTier_Golem.yy",},
     {"name":"spr_MidTier_Serpent","order":4,"path":"sprites/spr_MidTier_Serpent/spr_MidTier_Serpent.yy",},
+    {"name":"spr_player_mask","order":9,"path":"sprites/spr_player_mask/spr_player_mask.yy",},
     {"name":"spr_Poison_Cloud","order":2,"path":"sprites/spr_Poison_Cloud/spr_Poison_Cloud.yy",},
     {"name":"spr_poison_spray","order":1,"path":"sprites/spr_poison_spray/spr_poison_spray.yy",},
     {"name":"spr_Quick_Dart","order":3,"path":"sprites/spr_Quick_Dart/spr_Quick_Dart.yy",},

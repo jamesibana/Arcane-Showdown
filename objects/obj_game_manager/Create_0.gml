@@ -113,8 +113,3 @@ poison_spray: {
 };
 
 randomize();
-
-
-
-show_debug_message("weapon_data initialized");
-

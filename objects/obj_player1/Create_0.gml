@@ -31,6 +31,7 @@ knockback_hsp = 0;
 knockback_vsp = 0;
 
 attack_buffer = 0;
+
 // =====================
 // INVENTORY INIT
 // =====================
