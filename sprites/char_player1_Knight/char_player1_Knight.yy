@@ -19,15 +19,14 @@
   "height":64,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"a6cf987d-8441-4f96-a38d-ec988c74fb5f","blendMode":0,"displayName":"Layer 1","isLocked":false,"name":"a6cf987d-8441-4f96-a38d-ec988c74fb5f","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
     {"$GMImageLayer":"","%Name":"6af059c4-54e3-4cfe-a529-5f4b0fcbb299","blendMode":0,"displayName":"default","isLocked":false,"name":"6af059c4-54e3-4cfe-a529-5f4b0fcbb299","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"char_player1_Knight",
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"characters",
-    "path":"folders/characters.yy",
+    "name":"Anim_Knight",
+    "path":"folders/characters/Anim_Knight.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
