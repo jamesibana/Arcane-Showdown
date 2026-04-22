@@ -229,6 +229,12 @@ if (room == rm_arena) {
         h = keyboard_check(vk_right) - keyboard_check(vk_left);
         if (keyboard_check_pressed(vk_up)) jump_pressed = true;
     }
+	
+	// --- NEW: BLOCK MOVEMENT ---
+    if (room == rm_arena && (!global.round_active || global.round_over)) {
+        h = 0;
+        jump_pressed = false;
+    }
 
     // 1. Execute Jump first, relying on the 'on_ground' state from the previous frame
     if (jump_pressed && on_ground) {
@@ -306,6 +312,11 @@ if (swap_cooldown <= 0) {
     if (owner_player == 2 && keyboard_check_pressed(vk_control)) pressed = true;
 }
 
+// --- NEW: BLOCK WEAPON SWAP ---
+if (room == rm_arena && (!global.round_active || global.round_over)) {
+    pressed = false;
+}
+
 if (pressed) {
 
     var pickup = instance_nearest(x, y, obj_weapon_pickup);
@@ -370,8 +381,12 @@ range = resolved.range;
 // =====================================================
 // 11. ATTACK
 // =====================================================
-// Trigger if EITHER a normal attack OR a combo attack is buffered
-if ((attack_buffer > 0 || combo_buffer > 0) && attack_cooldown <= 0) {
+
+var can_attack = true;
+if (room == rm_arena && (!global.round_active || global.round_over)) can_attack = false;
+
+// Trigger if allowed to attack AND a normal/combo attack is buffered
+if (can_attack && (attack_buffer > 0 || combo_buffer > 0) && attack_cooldown <= 0) {
 
     var is_combo = (combo_buffer > 0); // Remember if this was a combo!
     
@@ -401,7 +416,7 @@ if ((attack_buffer > 0 || combo_buffer > 0) && attack_cooldown <= 0) {
             
             var p_dmg = actual_damage; 
             var p_dir = facing_dir;
-            var p_scale = image_xscale; // --- NEW: Grab player's visual facing ---
+            var p_scale = image_xscale; // Grab player's visual facing
 
             with (hit) {
 
@@ -420,7 +435,7 @@ if ((attack_buffer > 0 || combo_buffer > 0) && attack_cooldown <= 0) {
                 // ==========================================
                 // 💥 HIT EFFECTS: NORMAL vs COMBO
                 // ==========================================
-				if (is_combo) {
+                if (is_combo) {
                     // --- HEAVY COMBO HIT ---
                     knockback_hsp = lengthdir_x(10, p_dir); 
                     knockback_vsp = lengthdir_y(6, p_dir);
@@ -435,13 +450,11 @@ if ((attack_buffer > 0 || combo_buffer > 0) && attack_cooldown <= 0) {
                     
                     var fx = instance_create_layer(fx_x, fx_y, "Instances", obj_combo_effect);
                     fx.image_xscale = p_scale * 2; 
-					fx.image_yscale = p_scale * 2;
+                    fx.image_yscale = p_scale * 2;
                     
                     // --- NEW: WEAPON-SPECIFIC SPRITE ---
-                    // Default fallback sprite just in case the weapon has no combo_fx
                     fx.sprite_index = Anim_Slash_Melee; 
                     
-                    // Check if the current weapon has a specific combo effect
                     if (variable_struct_exists(other.current_weapon_data, "combo_fx")) {
                         fx.sprite_index = other.current_weapon_data.combo_fx;
                     }
@@ -457,31 +470,27 @@ if ((attack_buffer > 0 || combo_buffer > 0) && attack_cooldown <= 0) {
                 }
             }
         }
-	}
+    }
+    // ---------- RANGED ----------
+    else {
+        var spawn_y = y - 45; 
+        
+        var proj = instance_create_layer(
+            x + lengthdir_x(20, facing_dir),
+            spawn_y + lengthdir_y(20, facing_dir), 
+            "Instances",
+            obj_projectile
+        );
 
-// ---------- RANGED ----------
-else {
-    // 1. Define where the "chest/gun" level is visually
-    var spawn_y = y - 45; // 'y' is feet, -32 is center, -45 is chest/hands
-    
-    // 2. Create the projectile at the new height
-    var proj = instance_create_layer(
-        x + lengthdir_x(20, facing_dir),
-        spawn_y + lengthdir_y(20, facing_dir), // Use spawn_y here
-        "Instances",
-        obj_projectile
-    );
+        proj.direction = facing_dir;
+        proj.speed = 10;
+        proj.damage = damage;
+        proj.weapon_data = current_weapon_data;
 
-    proj.direction = facing_dir;
-    proj.speed = 10;
-    proj.damage = damage;
-    proj.weapon_data = current_weapon_data;
-
-    proj.owner_id = id;
-    proj.owner_player = owner_player;
-}
-}
-
+        proj.owner_id = id;
+        proj.owner_player = owner_player;
+    }
+} // <--- THIS is the closing bracket that was missing!
 
 // =====================================================
 // 12. POISON

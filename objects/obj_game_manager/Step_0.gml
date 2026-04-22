@@ -147,56 +147,72 @@ if (room != rm_arena) exit;
 
 
 // =====================================================
-// 6. FIND PLAYERS (WITH STRING-TO-NUMBER FIX)
+// 6. FIND PLAYERS 
 // =====================================================
-var p1_exists = false;
-var p2_exists = false;
+// Notice: We removed "var " so these are now Instance Variables shared with Draw GUI!
+p1_exists = false;
+p2_exists = false;
 
 with (obj_player1) {
     
-    // Safety check in case they are still initializing
     if (!variable_instance_exists(id, "owner_player")) continue; 
 
-    // Force the ID to be a number, and state to be lowercase
     var my_id = real(owner_player); 
     var my_state = string_lower(string(state));
 
-    // Notice: No "other." used here!
-    if (my_id == 1 && my_state != "dead") p1_exists = true;
-    if (my_id == 2 && my_state != "dead") p2_exists = true;
+    // Notice: We put "other." back because p1_exists is now an instance variable on the manager!
+    if (my_id == 1 && my_state != "dead") other.p1_exists = true;
+    if (my_id == 2 && my_state != "dead") other.p2_exists = true;
 }
 
-
 // =====================================================
-// 7. WIN LOGIC
+// 7. ROUND FLOW & WIN LOGIC
 // =====================================================
 if (!global.round_over) {
 
-    // A. ROUND ACTIVATION
+    // A. ROUND START COUNTDOWN
     if (!global.round_active) {
         if (p1_exists && p2_exists) {
-            global.round_active = true;
-            show_debug_message("ROUND STARTED - FIGHT!"); 
+            if (global.start_timer > 0) {
+                global.start_timer--;
+                
+                // At 60 frames (1 second left), activate the round and say FIGHT!
+                if (global.start_timer == 60) {
+                    global.round_active = true;
+                }
+            }
         }
     } 
-    // B. MONITOR FOR WINNER
-    else {
+    // B. FADE OUT "FIGHT!" TEXT
+    else if (global.start_timer > 0) {
+        // Keep ticking down the last 60 frames to hide the text
+        global.start_timer--;
+    }
+
+    // C. MONITOR FOR WINNER (Only if round is active!)
+    if (global.round_active) {
         if (p1_exists && !p2_exists) {
             global.p1_wins += 1;
             global.round_over = true;
-            show_debug_message("P1 WINS!");
-            alarm[0] = room_speed * 2;
+            global.winner_text = "PLAYER 1 WINS!";
         }
         else if (p2_exists && !p1_exists) {
             global.p2_wins += 1;
             global.round_over = true;
-            show_debug_message("P2 WINS!");
-            alarm[0] = room_speed * 2;
+            global.winner_text = "PLAYER 2 WINS!";
         }
         else if (!p1_exists && !p2_exists) {
             global.round_over = true;
-            show_debug_message("DRAW!");
-            alarm[0] = room_speed * 2;
+            global.winner_text = "DOUBLE K.O.!";
         }
+    }
+} 
+// D. ROUND END (K.O.) COUNTDOWN
+else {
+    if (global.end_timer > 0) {
+        global.end_timer--;
+    } else {
+        // Time is up! Trigger the cleanup alarm
+        if (alarm[0] < 0) alarm[0] = 1; 
     }
 }

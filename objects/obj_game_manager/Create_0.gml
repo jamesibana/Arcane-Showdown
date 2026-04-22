@@ -123,3 +123,7 @@ poison_spray: {
 randomize();
 
 global.round_active = false;
+
+// Arena player tracking
+p1_exists = false;
+p2_exists = false;
