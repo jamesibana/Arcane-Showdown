@@ -85,4 +85,7 @@ if (keyboard_check_pressed(vk_enter)) {
     }
 }
 
-show_debug_message("INDEX: " + string(index) + " CHAR: " + global.characters[index].name);
+
+// DEBUG CHAR WINS
+if (keyboard_check_pressed(ord("B"))) global.p1_wins += 1;
+if (keyboard_check_pressed(ord("N"))) global.p2_wins += 1;

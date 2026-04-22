@@ -26,7 +26,7 @@ global.hitpause = 0;
 
 // wins system	
 if (!variable_global_exists("p1_wins")) {
-    global.p1_wins = 10;
+    global.p1_wins = 0;
 }
 
 if (!variable_global_exists("p2_wins")) {
