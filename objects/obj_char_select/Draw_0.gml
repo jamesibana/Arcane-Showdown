@@ -63,11 +63,19 @@ var top_y = 90;
 draw_set_halign(fa_center);
 draw_set_color(c_white);
 
+// 1. Main Title
 draw_text(room_width / 2, top_y, "SELECT YOUR CHARACTER");
 
+// 2. Player Turn
 draw_text(room_width / 2, top_y + 30,
     (global.current_player == 1) ? "PLAYER 1 TURN" : "PLAYER 2 TURN"
 );
+
+// 3. Player Wins (NEW)
+// Draws in a yellow/gold color so it stands out, then resets to white
+draw_set_color(c_yellow);
+draw_text(room_width / 2, top_y + 60, "LEVEL: " + string(wins));
+draw_set_color(c_white);
 
 
 // ============================
@@ -283,7 +291,7 @@ if (locked) {
     line += line_h;
 
     draw_text(ix + padding, iy + line,
-        "Requires " + string(c.unlock_wins) + " wins");
+        "Requires level " + string(c.unlock_wins));
 
     draw_set_color(c_black);
 }

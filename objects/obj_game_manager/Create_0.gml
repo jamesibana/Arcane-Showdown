@@ -42,7 +42,9 @@ global.weapon_data = {
         sprite: spr_sword,
         damage: 10,
         cooldown: 20,
-        range: 65
+        range: 65,
+		combo: 22,
+		combo_fx: Anim_Slash_Melee
     },
 
     dagger: {
@@ -50,23 +52,29 @@ global.weapon_data = {
         sprite: spr_dagger,
         damage: 6,
         cooldown: 10,
-        range: 35
+        range: 35,
+		combo: 15,
+		combo_fx: Anim_Poke_Melee
     },
 
     spear: {
 		type: "melee",
         sprite: spr_spear,
-        damage: 14,
-        cooldown: 25,
-        range: 110
+        damage: 16,
+        cooldown: 32,
+        range: 110,
+		combo: 22,
+		combo_fx: Anim_Poke_Melee
     },
 
     mace: {
 		type: "melee",
         sprite: spr_mace,
-        damage: 18,
-        cooldown: 35,
-        range: 58
+        damage: 12,
+        cooldown: 75,
+        range: 58,
+		combo: 28,
+		combo_fx: Anim_Hit_Melee
     },
 
     bow: {
@@ -113,3 +121,5 @@ poison_spray: {
 };
 
 randomize();
+
+global.round_active = false;

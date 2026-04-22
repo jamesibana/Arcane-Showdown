@@ -44,6 +44,7 @@
     {"id":{"name":"obj_button_quit","path":"objects/obj_button_quit/obj_button_quit.yy",},},
     {"id":{"name":"obj_char_select","path":"objects/obj_char_select/obj_char_select.yy",},},
     {"id":{"name":"obj_character_select","path":"objects/obj_character_select/obj_character_select.yy",},},
+    {"id":{"name":"obj_combo_effect","path":"objects/obj_combo_effect/obj_combo_effect.yy",},},
     {"id":{"name":"obj_controls","path":"objects/obj_controls/obj_controls.yy",},},
     {"id":{"name":"obj_damageable","path":"objects/obj_damageable/obj_damageable.yy",},},
     {"id":{"name":"obj_enemy_golem","path":"objects/obj_enemy_golem/obj_enemy_golem.yy",},},

@@ -23,21 +23,17 @@ if (!global.initial_spawn_done) {
         var sp = global.spawner_list[s];
 
         with (sp) {
-
             var total = 0;
-
             for (var i = 0; i < array_length(spawn_pool); i++) {
                 total += spawn_pool[i].weight;
             }
 
             var roll = irandom(total - 1);
             var running = 0;
-
             var chosen_enemy = obj_enemy_minion;
 
             for (var i = 0; i < array_length(spawn_pool); i++) {
                 running += spawn_pool[i].weight;
-
                 if (roll < running) {
                     chosen_enemy = spawn_pool[i].obj;
                     break;
@@ -68,21 +64,17 @@ while (global.enemy_kills >= global.kills_to_spawn) {
     var chosen_spawner = global.spawner_list[rand_index];
 
     with (chosen_spawner) {
-
         var total = 0;
-
         for (var i = 0; i < array_length(spawn_pool); i++) {
             total += spawn_pool[i].weight;
         }
 
         var roll = irandom(total - 1);
         var running = 0;
-
         var chosen_enemy = obj_enemy_minion;
 
         for (var i = 0; i < array_length(spawn_pool); i++) {
             running += spawn_pool[i].weight;
-
             if (roll < running) {
                 chosen_enemy = spawn_pool[i].obj;
                 break;
@@ -105,26 +97,21 @@ if (array_length(global.spawner_list) > 0) {
 
         // prevent overcrowding (DOES NOT break entire step)
         if (instance_number(obj_enemy_parent) <= 30) {
-
             var rand_index = irandom(array_length(global.spawner_list) - 1);
             var chosen_spawner = global.spawner_list[rand_index];
 
             with (chosen_spawner) {
-
                 var total = 0;
-
                 for (var i = 0; i < array_length(spawn_pool); i++) {
                     total += spawn_pool[i].weight;
                 }
 
                 var roll = irandom(total - 1);
                 var running = 0;
-
                 var chosen_enemy = obj_enemy_minion;
 
                 for (var i = 0; i < array_length(spawn_pool); i++) {
                     running += spawn_pool[i].weight;
-
                     if (roll < running) {
                         chosen_enemy = spawn_pool[i].obj;
                         break;
@@ -153,9 +140,63 @@ if (global.hitpause > 0) {
 
 
 // =====================================================
-// 5. DEBUG (OPTIONAL)
+// 5. ARENA-ONLY LOGIC BARRIER
 // =====================================================
-if (keyboard_check_pressed(ord("B"))) {
-    global.p1_wins = 10;
-    show_debug_message("SET P1 WINS TO 10");
+// EVERYTHING below this line will ONLY run if we are in the arena!
+if (room != rm_arena) exit;
+
+
+// =====================================================
+// 6. FIND PLAYERS (WITH STRING-TO-NUMBER FIX)
+// =====================================================
+var p1_exists = false;
+var p2_exists = false;
+
+with (obj_player1) {
+    
+    // Safety check in case they are still initializing
+    if (!variable_instance_exists(id, "owner_player")) continue; 
+
+    // Force the ID to be a number, and state to be lowercase
+    var my_id = real(owner_player); 
+    var my_state = string_lower(string(state));
+
+    // Notice: No "other." used here!
+    if (my_id == 1 && my_state != "dead") p1_exists = true;
+    if (my_id == 2 && my_state != "dead") p2_exists = true;
+}
+
+
+// =====================================================
+// 7. WIN LOGIC
+// =====================================================
+if (!global.round_over) {
+
+    // A. ROUND ACTIVATION
+    if (!global.round_active) {
+        if (p1_exists && p2_exists) {
+            global.round_active = true;
+            show_debug_message("ROUND STARTED - FIGHT!"); 
+        }
+    } 
+    // B. MONITOR FOR WINNER
+    else {
+        if (p1_exists && !p2_exists) {
+            global.p1_wins += 1;
+            global.round_over = true;
+            show_debug_message("P1 WINS!");
+            alarm[0] = room_speed * 2;
+        }
+        else if (p2_exists && !p1_exists) {
+            global.p2_wins += 1;
+            global.round_over = true;
+            show_debug_message("P2 WINS!");
+            alarm[0] = room_speed * 2;
+        }
+        else if (!p1_exists && !p2_exists) {
+            global.round_over = true;
+            show_debug_message("DRAW!");
+            alarm[0] = room_speed * 2;
+        }
+    }
 }

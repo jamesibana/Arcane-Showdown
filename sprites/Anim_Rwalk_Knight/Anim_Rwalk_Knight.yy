@@ -28,7 +28,7 @@
   ],
   "name":"Anim_Rwalk_Knight",
   "nineSlice":null,
-  "origin":4,
+  "origin":9,
   "parent":{
     "name":"Anim_Knight",
     "path":"folders/characters/Anim_Knight.yy",
@@ -96,7 +96,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":64,
-    "yorigin":64,
+    "yorigin":74,
   },
   "swatchColours":null,
   "swfPrecision":0.5,
