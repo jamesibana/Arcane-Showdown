@@ -61,6 +61,15 @@ if (!is_poison) {
             y = ny;
             exit;
         }
+		
+		// ==========================================
+        // 🛑 NEW: DISABLE PVP IN CRAWLER ROOM
+        // ==========================================
+        if (hit.object_index == obj_player1 && room != rm_arena) {
+            x = nx;
+            y = ny;
+            exit; // Ignore the player and let the bullet keep flying!
+        }
 
         with (hit) {
 
@@ -156,12 +165,23 @@ if (mode == "cloud") {
         // ignore shooter
         if (id == other.owner_id) continue;
 
+        // 🛑 DISABLE PVP IN CRAWLER ROOM
+        if (object_index == obj_player1 && room != rm_arena) continue;
+
         var dist = point_distance(x, y, other.x, other.y);
 
+        // --- THE SINGLE, UPDATED BLOCK ---
         if (dist < other.cloud_radius * 2.5) {
 
             poison_timer = 60;
-            poison_damage = 1;
+            
+            // Default to 1, but check if the weapon has a specific poison damage!
+            poison_damage = 1; 
+            if (variable_instance_exists(other.id, "weapon_data")) {
+                if (variable_struct_exists(other.weapon_data, "poison_damage")) {
+                    poison_damage = other.weapon_data.poison_damage;
+                }
+            }
 
             hurt_timer = 5;
         }

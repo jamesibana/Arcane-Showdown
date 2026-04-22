@@ -22,6 +22,9 @@ if (!variable_instance_exists(id, "input_seq")) input_seq = [];
 if (!variable_instance_exists(id, "input_seq_timer")) input_seq_timer = 0;
 if (!variable_instance_exists(id, "combo_buffer")) combo_buffer = 0;
 
+if (!variable_instance_exists(id, "clash_timer")) clash_timer = 0;
+if (!variable_instance_exists(id, "current_attack_type")) current_attack_type = "";
+
 
 // =====================================================
 // HIT PAUSE FREEZE
@@ -73,6 +76,8 @@ if (attack_buffer > 0) attack_buffer--;
 if (combo_buffer > 0) combo_buffer--;
 if (input_seq_timer > 0) input_seq_timer--;
 else array_resize(input_seq, 0); // Clear the sequence if they stop pressing keys
+
+if (clash_timer > 0) clash_timer--; 
 
 // =====================================================
 // 4. HITSTUN (OVERRIDES CONTROL)
@@ -394,6 +399,10 @@ if (can_attack && (attack_buffer > 0 || combo_buffer > 0) && attack_cooldown <= 
     combo_buffer = 0;
     attack_cooldown = cooldown;
 
+   // Open a 30-frame window where this player is allowed to "Clash/Block"
+    clash_timer = 120; 
+    current_attack_type = is_combo ? "combo" : "normal";
+
     // ---------- MELEE ----------
     if (active_weapon_type == "melee") {
 
@@ -412,65 +421,138 @@ if (can_attack && (attack_buffer > 0 || combo_buffer > 0) && attack_cooldown <= 
             true
         );
 
-      if (hit != noone && hit.id != id && hit.state != "dead") {
+        if (hit != noone && hit.id != id && hit.state != "dead") {
             
-            var p_dmg = actual_damage; 
-            var p_dir = facing_dir;
-            var p_scale = image_xscale; // Grab player's visual facing
+// ==========================================
+            // 🛑 NEW: DISABLE PVP IN CRAWLER ROOM
+            // ==========================================
+            var can_hurt = true;
+            
+            // If the target is a player, and we are NOT in the arena, cancel the damage!
+            if (hit.object_index == obj_player1 && room != rm_arena) {
+                can_hurt = false;
+            }
 
+            // Only proceed if it's a valid enemy OR a valid Arena PvP target
+            if (can_hurt) {
+                var p_dmg = actual_damage; 
+                var p_dir = facing_dir;
+                var p_scale = image_xscale;
             with (hit) {
 
                 if (!variable_instance_exists(id, "armor")) armor = 0;
                 if (!variable_instance_exists(id, "hp")) hp = 1;
 
-                // Armor first
-                if (armor > 0) {
-                    var absorbed = min(armor, p_dmg);
-                    armor -= absorbed;
-                    p_dmg -= absorbed;
+               // ==========================================
+                // 🛡️ NEW: CLASH / COMBO BLOCK MECHANIC
+                // ==========================================
+                var is_clash = false;
+
+                // 1. Safely check if the target even HAS a clash timer (Monsters don't!)
+                var target_clash = 0;
+                var target_attack_type = "";
+
+                if (variable_instance_exists(id, "clash_timer")) {
+                    target_clash = clash_timer;
+                    target_attack_type = current_attack_type;
                 }
 
-                if (p_dmg > 0) hp -= p_dmg;
+                // 2. Is the victim ALSO currently swinging their weapon?
+                if (target_clash > 0) {
+                    
+                    // 3. Is at least ONE of the players using a Combo?
+                    if (is_combo || target_attack_type == "combo") {
+                        is_clash = true;
+                    }
+                }
 
                 // ==========================================
-                // 💥 HIT EFFECTS: NORMAL vs COMBO
+                // RESOLVE CLASH
                 // ==========================================
-                if (is_combo) {
-                    // --- HEAVY COMBO HIT ---
-                    knockback_hsp = lengthdir_x(10, p_dir); 
-                    knockback_vsp = lengthdir_y(6, p_dir);
-                    
-                    hitstun_timer = 15;
-                    hurt_timer = 15;
-                    global.hitpause = 12; 
-                    
-                    // 🎇 VFX SPAWN
-                    var fx_x = x - lengthdir_x(10, p_dir) + 15;
-                    var fx_y = y - lengthdir_y(10, p_dir) - 50;
+                if (is_clash) {
+                    // 1. Zero out damage and close the clash windows to prevent double-bouncing
+                    p_dmg = 0;
+                    clash_timer = 0;
+                    other.clash_timer = 0;
+
+                    // 2. Dramatic Hitpause (Longer than a normal hit)
+                    global.hitpause = 15;
+
+                    // 3. Massive Knockback for BOTH players
+                    // Victim gets pushed away in the direction of the attack
+                    knockback_hsp = lengthdir_x(15, p_dir); 
+                    knockback_vsp = lengthdir_y(8, p_dir);
+                    hitstun_timer = 20;
+                    hurt_timer = 20;
+
+                    // Attacker gets pushed BACKWARDS (p_dir + 180 degrees)
+                    other.knockback_hsp = lengthdir_x(15, p_dir + 180); 
+                    other.knockback_vsp = lengthdir_y(8, p_dir + 180);
+                    other.hitstun_timer = 20;
+                    other.hurt_timer = 20;
+
+                    // 4. Spawn the Block VFX exactly between the two players
+                    var fx_x = ((x + other.x) / 2) - 50;
+                    var fx_y = ((y + other.y) / 2) - 60; // Slightly above their belts
                     
                     var fx = instance_create_layer(fx_x, fx_y, "Instances", obj_combo_effect);
-                    fx.image_xscale = p_scale * 2; 
-                    fx.image_yscale = p_scale * 2;
+                    fx.sprite_index = spr_block; // <--- MAKE SURE YOUR SPRITE IS NAMED THIS
+                    fx.image_xscale = 2;
+                    fx.image_yscale = 2;
+
+                } 
+                // ==========================================
+                // RESOLVE NORMAL DAMAGE
+                // ==========================================
+                else {
                     
-                    // --- NEW: WEAPON-SPECIFIC SPRITE ---
-                    fx.sprite_index = Anim_Slash_Melee; 
-                    
-                    if (variable_struct_exists(other.current_weapon_data, "combo_fx")) {
-                        fx.sprite_index = other.current_weapon_data.combo_fx;
+                    // Armor first
+                    if (armor > 0) {
+                        var absorbed = min(armor, p_dmg);
+                        armor -= absorbed;
+                        p_dmg -= absorbed;
                     }
-                    
-                } else {
-                    // --- NORMAL HIT ---
-                    knockback_hsp = lengthdir_x(6, p_dir);
-                    knockback_vsp = lengthdir_y(4, p_dir);
-                    
-                    hitstun_timer = 10;
-                    hurt_timer = 10;
-                    global.hitpause = 6; 
+
+                    if (p_dmg > 0) hp -= p_dmg;
+
+                    // 💥 HIT EFFECTS: NORMAL vs COMBO
+                    if (is_combo) {
+                        // --- HEAVY COMBO HIT ---
+                        knockback_hsp = lengthdir_x(10, p_dir); 
+                        knockback_vsp = lengthdir_y(6, p_dir);
+                        
+                        hitstun_timer = 15;
+                        hurt_timer = 15;
+                        global.hitpause = 12; 
+                        
+                        // 🎇 VFX SPAWN
+                        var fx_x = x - lengthdir_x(10, p_dir) + 15;
+                        var fx_y = y - lengthdir_y(10, p_dir) - 50;
+                        
+                        var fx = instance_create_layer(fx_x, fx_y, "Instances", obj_combo_effect);
+                        fx.image_xscale = p_scale * 2; 
+                        fx.image_yscale = p_scale * 2;
+                        
+                        fx.sprite_index = Anim_Slash_Melee; 
+                        
+                        if (variable_struct_exists(other.current_weapon_data, "combo_fx")) {
+                            fx.sprite_index = other.current_weapon_data.combo_fx;
+                        }
+                        
+                    } else {
+                        // --- NORMAL HIT ---
+                        knockback_hsp = lengthdir_x(6, p_dir);
+                        knockback_vsp = lengthdir_y(4, p_dir);
+                        
+                        hitstun_timer = 10;
+                        hurt_timer = 10;
+                        global.hitpause = 6; 
+                    }
                 }
             }
         }
     }
+	}
     // ---------- RANGED ----------
     else {
         var spawn_y = y - 45; 

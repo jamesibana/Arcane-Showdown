@@ -71,6 +71,7 @@
     {"name":"Anim_Rwalk_Knight","order":4,"path":"sprites/Anim_Rwalk_Knight/Anim_Rwalk_Knight.yy",},
     {"name":"game_logo","order":10,"path":"sprites/game_logo/game_logo.yy",},
     {"name":"spr_bg_select","order":7,"path":"sprites/spr_bg_select/spr_bg_select.yy",},
+    {"name":"spr_block","order":5,"path":"sprites/spr_block/spr_block.yy",},
     {"name":"spr_blow_dart","order":2,"path":"sprites/spr_blow_dart/spr_blow_dart.yy",},
     {"name":"spr_btn_help","order":8,"path":"sprites/spr_btn_help/spr_btn_help.yy",},
     {"name":"spr_btn_play","order":10,"path":"sprites/spr_btn_play/spr_btn_play.yy",},

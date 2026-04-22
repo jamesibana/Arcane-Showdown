@@ -101,6 +101,7 @@
     {"id":{"name":"game_logo","path":"sprites/game_logo/game_logo.yy",},},
     {"id":{"name":"spr_bg_menu","path":"sprites/spr_bg_menu/spr_bg_menu.yy",},},
     {"id":{"name":"spr_bg_select","path":"sprites/spr_bg_select/spr_bg_select.yy",},},
+    {"id":{"name":"spr_block","path":"sprites/spr_block/spr_block.yy",},},
     {"id":{"name":"spr_blow_dart","path":"sprites/spr_blow_dart/spr_blow_dart.yy",},},
     {"id":{"name":"spr_Bow_Arrow","path":"sprites/spr_Bow_Arrow/spr_Bow_Arrow.yy",},},
     {"id":{"name":"spr_bow","path":"sprites/spr_bow/spr_bow.yy",},},
