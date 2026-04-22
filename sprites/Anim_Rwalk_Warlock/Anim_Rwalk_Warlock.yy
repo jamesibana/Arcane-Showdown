@@ -2,18 +2,23 @@
   "$GMSprite":"v2",
   "%Name":"Anim_Rwalk_Warlock",
   "bboxMode":0,
-  "bbox_bottom":104,
-  "bbox_left":0,
-  "bbox_right":127,
-  "bbox_top":40,
+  "bbox_bottom":103,
+  "bbox_left":18,
+  "bbox_right":101,
+  "bbox_top":39,
   "collisionKind":1,
   "collisionTolerance":0,
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"b0313092-23a5-4869-a6e6-7747d607484e","name":"b0313092-23a5-4869-a6e6-7747d607484e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"v1","%Name":"c6f14446-6523-48c9-a395-ce08c99d9921","name":"c6f14446-6523-48c9-a395-ce08c99d9921","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"d2b9d004-8aeb-45ad-8e59-425bda5386e0","name":"d2b9d004-8aeb-45ad-8e59-425bda5386e0","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"bb3a6147-88d5-4d34-9d87-c9764247ab48","name":"bb3a6147-88d5-4d34-9d87-c9764247ab48","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"9336a4db-a9e6-4b9f-9bec-c63059032fb4","name":"9336a4db-a9e6-4b9f-9bec-c63059032fb4","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"624ea4e1-6a50-4c3a-a4df-466ffe875fc8","name":"624ea4e1-6a50-4c3a-a4df-466ffe875fc8","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"a1d00274-b536-41e9-a1f6-fa6357157316","name":"a1d00274-b536-41e9-a1f6-fa6357157316","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"60cfbdd0-d6d2-4f59-9bc7-0c02d8ea9879","name":"60cfbdd0-d6d2-4f59-9bc7-0c02d8ea9879","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -50,7 +55,7 @@
     },
     "eventStubScript":null,
     "eventToFunction":{},
-    "length":2.0,
+    "length":7.0,
     "lockOrigin":false,
     "moments":{
       "$KeyframeStore<MomentsEventKeyframe>":"",
@@ -70,11 +75,26 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"b0313092-23a5-4869-a6e6-7747d607484e","path":"sprites/Anim_Rwalk_Warlock/Anim_Rwalk_Warlock.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"d3d349fd-7ccf-440f-9bd5-d66ee3c1df0a","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"c6f14446-6523-48c9-a395-ce08c99d9921","path":"sprites/Anim_Rwalk_Warlock/Anim_Rwalk_Warlock.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"e47ad2b5-536a-4336-b549-0f2d4f28f884","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+              },"Disabled":false,"id":"e47ad2b5-536a-4336-b549-0f2d4f28f884","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"d2b9d004-8aeb-45ad-8e59-425bda5386e0","path":"sprites/Anim_Rwalk_Warlock/Anim_Rwalk_Warlock.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"ce58da52-2957-4bbc-9e0a-2e65f8cb1b94","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"bb3a6147-88d5-4d34-9d87-c9764247ab48","path":"sprites/Anim_Rwalk_Warlock/Anim_Rwalk_Warlock.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"c20111e8-9375-40fd-8b3d-75b7fed009df","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"9336a4db-a9e6-4b9f-9bec-c63059032fb4","path":"sprites/Anim_Rwalk_Warlock/Anim_Rwalk_Warlock.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"44c50d9d-5fad-46b7-99ad-05d932022197","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"624ea4e1-6a50-4c3a-a4df-466ffe875fc8","path":"sprites/Anim_Rwalk_Warlock/Anim_Rwalk_Warlock.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"2fcd7e89-6a58-4cde-8b11-5c51284510b5","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"a1d00274-b536-41e9-a1f6-fa6357157316","path":"sprites/Anim_Rwalk_Warlock/Anim_Rwalk_Warlock.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"a591cdc9-60e6-40b3-8cab-1f01e4b8b2ec","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"60cfbdd0-d6d2-4f59-9bc7-0c02d8ea9879","path":"sprites/Anim_Rwalk_Warlock/Anim_Rwalk_Warlock.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"bb315847-5c45-4404-a83f-7711a9f252bd","IsCreationKey":false,"Key":6.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

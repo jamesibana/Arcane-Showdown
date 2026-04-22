@@ -14,6 +14,10 @@
   "frames":[
     {"$GMSpriteFrame":"v1","%Name":"a5848bf3-e8ba-41ef-a8c4-bf04502c7b81","name":"a5848bf3-e8ba-41ef-a8c4-bf04502c7b81","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"v1","%Name":"190fe976-1ee1-47e3-9678-1f570ea40bf6","name":"190fe976-1ee1-47e3-9678-1f570ea40bf6","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"f95c9b3a-0b70-4ff5-b72a-6ca13ad07495","name":"f95c9b3a-0b70-4ff5-b72a-6ca13ad07495","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"58558451-9b9c-4e63-928c-c17f2f4cfb23","name":"58558451-9b9c-4e63-928c-c17f2f4cfb23","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"5263bf83-ec80-4b9c-bff4-510e5e46b317","name":"5263bf83-ec80-4b9c-bff4-510e5e46b317","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"2639fd29-416d-42ce-a584-ba716185ea8d","name":"2639fd29-416d-42ce-a584-ba716185ea8d","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -50,7 +54,7 @@
     },
     "eventStubScript":null,
     "eventToFunction":{},
-    "length":2.0,
+    "length":6.0,
     "lockOrigin":false,
     "moments":{
       "$KeyframeStore<MomentsEventKeyframe>":"",
@@ -60,7 +64,7 @@
     },
     "name":"Anim_ATK_Assasin",
     "playback":1,
-    "playbackSpeed":30.0,
+    "playbackSpeed":12.0,
     "playbackSpeedType":0,
     "resourceType":"GMSequence",
     "resourceVersion":"2.0",
@@ -75,6 +79,18 @@
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"190fe976-1ee1-47e3-9678-1f570ea40bf6","path":"sprites/Anim_ATK_Assasin/Anim_ATK_Assasin.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"dddd09e9-b66e-4ad3-a696-b83016913590","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"f95c9b3a-0b70-4ff5-b72a-6ca13ad07495","path":"sprites/Anim_ATK_Assasin/Anim_ATK_Assasin.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"b55fecc0-c4d0-4aae-9ee2-cec8c6496564","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"58558451-9b9c-4e63-928c-c17f2f4cfb23","path":"sprites/Anim_ATK_Assasin/Anim_ATK_Assasin.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"98e368a8-3c94-45fa-a5c8-1f2c4d5a6179","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"5263bf83-ec80-4b9c-bff4-510e5e46b317","path":"sprites/Anim_ATK_Assasin/Anim_ATK_Assasin.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"fb79524b-0c4c-4028-889f-e3e4f0cd7115","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"2639fd29-416d-42ce-a584-ba716185ea8d","path":"sprites/Anim_ATK_Assasin/Anim_ATK_Assasin.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"dacb24d4-16e0-4336-894c-7342d0623cc6","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

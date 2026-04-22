@@ -5,7 +5,7 @@
   "bbox_bottom":104,
   "bbox_left":0,
   "bbox_right":127,
-  "bbox_top":46,
+  "bbox_top":27,
   "collisionKind":1,
   "collisionTolerance":0,
   "DynamicTexturePage":false,
@@ -14,6 +14,10 @@
   "frames":[
     {"$GMSpriteFrame":"v1","%Name":"21660e92-de5d-4ff6-aa94-b3927f1b5621","name":"21660e92-de5d-4ff6-aa94-b3927f1b5621","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"v1","%Name":"43f6194c-77e7-4a1f-a9e0-d6bb602ce4cd","name":"43f6194c-77e7-4a1f-a9e0-d6bb602ce4cd","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"c5b6c500-821c-4e3d-87e0-401bb238e653","name":"c5b6c500-821c-4e3d-87e0-401bb238e653","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"692741d5-b86f-463c-b8be-d44357df9f64","name":"692741d5-b86f-463c-b8be-d44357df9f64","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"12c027f3-e0d1-47ec-bbf0-1f741b67eb6f","name":"12c027f3-e0d1-47ec-bbf0-1f741b67eb6f","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"c326420a-ecab-4f78-a011-590178dc66d7","name":"c326420a-ecab-4f78-a011-590178dc66d7","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -50,7 +54,7 @@
     },
     "eventStubScript":null,
     "eventToFunction":{},
-    "length":2.0,
+    "length":6.0,
     "lockOrigin":false,
     "moments":{
       "$KeyframeStore<MomentsEventKeyframe>":"",
@@ -60,7 +64,7 @@
     },
     "name":"Anim_Jump_Assasin",
     "playback":1,
-    "playbackSpeed":30.0,
+    "playbackSpeed":12.0,
     "playbackSpeedType":0,
     "resourceType":"GMSequence",
     "resourceVersion":"2.0",
@@ -75,6 +79,18 @@
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"43f6194c-77e7-4a1f-a9e0-d6bb602ce4cd","path":"sprites/Anim_Jump_Assasin/Anim_Jump_Assasin.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"f8839645-1fd7-44ad-9d4a-101371b9c8d1","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"c5b6c500-821c-4e3d-87e0-401bb238e653","path":"sprites/Anim_Jump_Assasin/Anim_Jump_Assasin.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"e63f21b3-2c32-4b48-a7d6-8aa8c611e6f6","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"692741d5-b86f-463c-b8be-d44357df9f64","path":"sprites/Anim_Jump_Assasin/Anim_Jump_Assasin.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"337025ff-d047-4bfe-8fb9-3ae5566aeee0","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"12c027f3-e0d1-47ec-bbf0-1f741b67eb6f","path":"sprites/Anim_Jump_Assasin/Anim_Jump_Assasin.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"63b46248-36a9-452d-8e01-af9894e229fb","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"c326420a-ecab-4f78-a011-590178dc66d7","path":"sprites/Anim_Jump_Assasin/Anim_Jump_Assasin.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"6fc776e8-8252-4aec-bd8c-63a8be12f7a5","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

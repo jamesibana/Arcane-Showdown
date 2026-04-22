@@ -15,6 +15,10 @@
     {"$GMSpriteFrame":"v1","%Name":"24e994e9-e6eb-4ac7-8c8d-f4973365c1da","name":"24e994e9-e6eb-4ac7-8c8d-f4973365c1da","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"v1","%Name":"7a705583-2913-445f-a3e2-a482682db9ba","name":"7a705583-2913-445f-a3e2-a482682db9ba","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"v1","%Name":"ae165a20-d544-4408-b69f-dc8dbb78df12","name":"ae165a20-d544-4408-b69f-dc8dbb78df12","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"24d7e6cf-dd82-4197-8f0c-d566310cf94a","name":"24d7e6cf-dd82-4197-8f0c-d566310cf94a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"6c0b8011-796c-42dc-bc18-4187db097384","name":"6c0b8011-796c-42dc-bc18-4187db097384","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"355b97bb-a0fa-4d3d-add0-36b694e69e09","name":"355b97bb-a0fa-4d3d-add0-36b694e69e09","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"b6917710-8843-4fe1-a036-0cc21833c580","name":"b6917710-8843-4fe1-a036-0cc21833c580","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -51,7 +55,7 @@
     },
     "eventStubScript":null,
     "eventToFunction":{},
-    "length":3.0,
+    "length":7.0,
     "lockOrigin":false,
     "moments":{
       "$KeyframeStore<MomentsEventKeyframe>":"",
@@ -61,7 +65,7 @@
     },
     "name":"Anim_ATK_Colossus",
     "playback":1,
-    "playbackSpeed":30.0,
+    "playbackSpeed":12.0,
     "playbackSpeedType":0,
     "resourceType":"GMSequence",
     "resourceVersion":"2.0",
@@ -79,6 +83,18 @@
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"ae165a20-d544-4408-b69f-dc8dbb78df12","path":"sprites/Anim_ATK_Colossus/Anim_ATK_Colossus.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"61eee7f0-33df-4e3f-ab9a-5bb539b2caa0","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"24d7e6cf-dd82-4197-8f0c-d566310cf94a","path":"sprites/Anim_ATK_Colossus/Anim_ATK_Colossus.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"2dfef1f8-afad-4f81-9b08-fac2167d8e3c","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"6c0b8011-796c-42dc-bc18-4187db097384","path":"sprites/Anim_ATK_Colossus/Anim_ATK_Colossus.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"f28e2b90-d192-4681-aa17-1d885f863b6e","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"355b97bb-a0fa-4d3d-add0-36b694e69e09","path":"sprites/Anim_ATK_Colossus/Anim_ATK_Colossus.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"9ec7d5d9-e54d-4832-8732-31bd3d9b80f5","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"b6917710-8843-4fe1-a036-0cc21833c580","path":"sprites/Anim_ATK_Colossus/Anim_ATK_Colossus.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"961f7e5f-7b62-49ca-a782-9a640f03d3ad","IsCreationKey":false,"Key":6.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,
