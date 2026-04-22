@@ -43,7 +43,7 @@ global.weapon_data = {
         damage: 10,
         cooldown: 20,
         range: 65,
-		combo: 22,
+		combo: 18,
 		combo_fx: Anim_Slash_Melee
     },
 
@@ -53,7 +53,7 @@ global.weapon_data = {
         damage: 6,
         cooldown: 10,
         range: 35,
-		combo: 15,
+		combo: 12,
 		combo_fx: Anim_Poke_Melee
     },
 
@@ -61,9 +61,9 @@ global.weapon_data = {
 		type: "melee",
         sprite: spr_spear,
         damage: 16,
-        cooldown: 32,
+        cooldown: 55,
         range: 110,
-		combo: 22,
+		combo: 20,
 		combo_fx: Anim_Poke_Melee
     },
 
@@ -73,7 +73,7 @@ global.weapon_data = {
         damage: 12,
         cooldown: 75,
         range: 58,
-		combo: 28,
+		combo: 32,
 		combo_fx: Anim_Hit_Melee
     },
 
@@ -107,7 +107,7 @@ poison_spray: {
     proj_speed: 2,
     cloud_lifetime: 120,
     poison_tick: 10,
-    poison_damage: 3
+    poison_damage: 2
 },
 
     blow_dart: {
