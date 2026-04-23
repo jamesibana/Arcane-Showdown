@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.889229,
+  "duration":187.53307,
   "exportDir":"",
   "name":"snd_music",
   "parent":{
@@ -22,5 +22,5 @@
   "resourceVersion":"2.0",
   "sampleRate":44100,
   "soundFile":"snd_music.mp3",
-  "volume":0.25,
+  "volume":1.0,
 }
