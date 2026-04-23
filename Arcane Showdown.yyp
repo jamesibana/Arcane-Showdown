@@ -62,6 +62,7 @@
     {"id":{"name":"obj_help","path":"objects/obj_help/obj_help.yy",},},
     {"id":{"name":"obj_init","path":"objects/obj_init/obj_init.yy",},},
     {"id":{"name":"obj_lane_divider","path":"objects/obj_lane_divider/obj_lane_divider.yy",},},
+    {"id":{"name":"obj_logo","path":"objects/obj_logo/obj_logo.yy",},},
     {"id":{"name":"obj_menu","path":"objects/obj_menu/obj_menu.yy",},},
     {"id":{"name":"obj_player1","path":"objects/obj_player1/obj_player1.yy",},},
     {"id":{"name":"obj_poison_puff","path":"objects/obj_poison_puff/obj_poison_puff.yy",},},

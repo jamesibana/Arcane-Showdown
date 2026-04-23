@@ -38,6 +38,7 @@
     {"name":"obj_help","order":23,"path":"objects/obj_help/obj_help.yy",},
     {"name":"obj_init","order":11,"path":"objects/obj_init/obj_init.yy",},
     {"name":"obj_lane_divider","order":2,"path":"objects/obj_lane_divider/obj_lane_divider.yy",},
+    {"name":"obj_logo","order":31,"path":"objects/obj_logo/obj_logo.yy",},
     {"name":"obj_menu","order":6,"path":"objects/obj_menu/obj_menu.yy",},
     {"name":"obj_player1","order":6,"path":"objects/obj_player1/obj_player1.yy",},
     {"name":"obj_poison_puff","order":4,"path":"objects/obj_poison_puff/obj_poison_puff.yy",},
