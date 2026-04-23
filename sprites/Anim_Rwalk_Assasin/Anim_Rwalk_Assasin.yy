@@ -5,7 +5,7 @@
   "bbox_bottom":104,
   "bbox_left":0,
   "bbox_right":127,
-  "bbox_top":46,
+  "bbox_top":40,
   "collisionKind":1,
   "collisionTolerance":0,
   "DynamicTexturePage":false,
@@ -18,8 +18,8 @@
     {"$GMSpriteFrame":"v1","%Name":"cacb9621-a783-423e-95c0-c2617ee2ef6d","name":"cacb9621-a783-423e-95c0-c2617ee2ef6d","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"v1","%Name":"f87be26d-f1f8-48b5-a63f-6d61fbc9eedf","name":"f87be26d-f1f8-48b5-a63f-6d61fbc9eedf","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"v1","%Name":"7b1466b2-4cd4-47b8-983c-30551be3dd04","name":"7b1466b2-4cd4-47b8-983c-30551be3dd04","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"v1","%Name":"6a2fdae3-4dfd-441e-b233-81509a312fa4","name":"6a2fdae3-4dfd-441e-b233-81509a312fa4","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"v1","%Name":"924e680d-0a54-4311-86f3-f910dc0748c2","name":"924e680d-0a54-4311-86f3-f910dc0748c2","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"6a2fdae3-4dfd-441e-b233-81509a312fa4","name":"6a2fdae3-4dfd-441e-b233-81509a312fa4","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"v1","%Name":"9705d996-2fdb-48af-a0f3-3ddeccb5e356","name":"9705d996-2fdb-48af-a0f3-3ddeccb5e356","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
@@ -95,11 +95,11 @@
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"7b1466b2-4cd4-47b8-983c-30551be3dd04","path":"sprites/Anim_Rwalk_Assasin/Anim_Rwalk_Assasin.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"a094b283-6939-496f-a782-415bec68ccc0","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"6a2fdae3-4dfd-441e-b233-81509a312fa4","path":"sprites/Anim_Rwalk_Assasin/Anim_Rwalk_Assasin.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"9fc1a61e-91aa-419f-9ac3-e949b9221c93","IsCreationKey":false,"Key":6.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"924e680d-0a54-4311-86f3-f910dc0748c2","path":"sprites/Anim_Rwalk_Assasin/Anim_Rwalk_Assasin.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"ab60c567-dc05-4277-aa25-4726f6420fe0","IsCreationKey":false,"Key":7.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+              },"Disabled":false,"id":"ab60c567-dc05-4277-aa25-4726f6420fe0","IsCreationKey":false,"Key":6.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"6a2fdae3-4dfd-441e-b233-81509a312fa4","path":"sprites/Anim_Rwalk_Assasin/Anim_Rwalk_Assasin.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"9fc1a61e-91aa-419f-9ac3-e949b9221c93","IsCreationKey":false,"Key":7.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"9705d996-2fdb-48af-a0f3-3ddeccb5e356","path":"sprites/Anim_Rwalk_Assasin/Anim_Rwalk_Assasin.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"2ec7a95b-d20f-4a4d-b8ff-aad11dcaf286","IsCreationKey":false,"Key":8.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
