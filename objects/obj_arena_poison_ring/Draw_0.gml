@@ -27,7 +27,7 @@ var bottom = zone_y + zone_h * 0.5;
 // 💨 SET OPACITY
 // =====================================================
 // 1 = completely solid, 0.5 = 50% see-through, 0 = invisible
-draw_set_alpha(0.3); 
+draw_set_alpha(0.67); 
 
 // =====================================================
 // LEFT AREA (FULL COVERAGE)
