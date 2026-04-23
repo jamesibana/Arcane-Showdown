@@ -3,11 +3,10 @@
 // ============================
 if (room != rm_arena) exit;
 
-
 // ============================
 // SPRITE SETUP
 // ============================
-var spr = spr_Poison_Cloud;
+var spr = spr_sandstorm_arena;
 var sw = sprite_get_width(spr);
 var sh = sprite_get_height(spr);
 
@@ -15,7 +14,6 @@ var frame_count = max(1, sprite_get_number(spr));
 var frame = floor(current_time / 100) % frame_count;
 
 var drift = sin(current_time / 300) * 3;
-
 
 // ============================
 // SAFE ZONE BOUNDS
@@ -25,6 +23,11 @@ var right  = zone_x + zone_w * 0.5;
 var top    = zone_y - zone_h * 0.5;
 var bottom = zone_y + zone_h * 0.5;
 
+// =====================================================
+// 💨 SET OPACITY
+// =====================================================
+// 1 = completely solid, 0.5 = 50% see-through, 0 = invisible
+draw_set_alpha(0.3); 
 
 // =====================================================
 // LEFT AREA (FULL COVERAGE)
@@ -41,7 +44,6 @@ for (var lx = 0; lx < left; lx += sw) {
     }
 }
 
-
 // =====================================================
 // RIGHT AREA
 // =====================================================
@@ -56,3 +58,8 @@ for (var rx = right; rx < room_width; rx += sw) {
         );
     }
 }
+
+// =====================================================
+// 🛑 RESET OPACITY (CRITICAL)
+// =====================================================
+draw_set_alpha(1);
