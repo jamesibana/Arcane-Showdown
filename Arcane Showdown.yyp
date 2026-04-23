@@ -78,6 +78,7 @@
     {"id":{"name":"rm_menu","path":"rooms/rm_menu/rm_menu.yy",},},
     {"id":{"name":"scr_characters","path":"scripts/scr_characters/scr_characters.yy",},},
     {"id":{"name":"scr_weapons","path":"scripts/scr_weapons/scr_weapons.yy",},},
+    {"id":{"name":"Shader1","path":"shaders/Shader1/Shader1.yy",},},
     {"id":{"name":"mus_select","path":"sounds/mus_select/mus_select.yy",},},
     {"id":{"name":"snd_music_arena","path":"sounds/snd_music_arena/snd_music_arena.yy",},},
     {"id":{"name":"snd_music_crawler","path":"sounds/snd_music_crawler/snd_music_crawler.yy",},},
