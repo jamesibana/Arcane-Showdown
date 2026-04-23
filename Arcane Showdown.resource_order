@@ -103,11 +103,13 @@
     {"name":"spr_Poison_Cloud","order":2,"path":"sprites/spr_Poison_Cloud/spr_Poison_Cloud.yy",},
     {"name":"spr_poison_spray","order":1,"path":"sprites/spr_poison_spray/spr_poison_spray.yy",},
     {"name":"spr_Quick_Dart","order":3,"path":"sprites/spr_Quick_Dart/spr_Quick_Dart.yy",},
+    {"name":"spr_sand_crawler","order":32,"path":"sprites/spr_sand_crawler/spr_sand_crawler.yy",},
     {"name":"spr_sandstorm_arena","order":23,"path":"sprites/spr_sandstorm_arena/spr_sandstorm_arena.yy",},
     {"name":"spr_spear","order":2,"path":"sprites/spr_spear/spr_spear.yy",},
     {"name":"spr_sword","order":3,"path":"sprites/spr_sword/spr_sword.yy",},
     {"name":"spr_wall_collision","order":16,"path":"sprites/spr_wall_collision/spr_wall_collision.yy",},
     {"name":"spr_wall","order":14,"path":"sprites/spr_wall/spr_wall.yy",},
+    {"name":"tile_crawler","order":33,"path":"tilesets/tile_crawler/tile_crawler.yy",},
     {"name":"tiles_walls","order":15,"path":"tilesets/tiles_walls/tiles_walls.yy",},
   ],
 }

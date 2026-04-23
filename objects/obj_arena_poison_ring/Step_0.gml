@@ -35,7 +35,7 @@ if (zone_timer <= 0) {
 
     // faster intervals over time
     if (zone_steps mod 2 == 0) {
-        zone_interval = max(room_speed, zone_interval - room_speed);
+        zone_interval = max(room_speed * 1.5, zone_interval - room_speed);
     }
 }
 

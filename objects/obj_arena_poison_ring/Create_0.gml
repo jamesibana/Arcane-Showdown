@@ -39,6 +39,6 @@ damage = 2;
 tick_rate = 30;
 dmg_tick = 0;
 
-zone_interval = room_speed * 4; // starts at 4 seconds
+zone_interval = room_speed * 6; // starts at 6 seconds
 zone_timer = zone_interval;
 zone_steps = 0;

@@ -11,7 +11,7 @@ global.spawn_lock = false;
 global.spawner_list = [];
 global.initial_spawn_done = false;
 
-global.time_spawn_timer = room_speed * 5; // first spawn after 5s
+global.time_spawn_timer = 90  * 5; // first spawn after 5s
 global.time_spawn_interval = room_speed * 8; // repeat every 8s
 
 // how many kills before next spawn
