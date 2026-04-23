@@ -29,10 +29,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
+  "spriteId":null,
+  "spriteMaskId":{
     "name":"spr_wall_collision",
     "path":"sprites/spr_wall_collision/spr_wall_collision.yy",
   },
-  "spriteMaskId":null,
   "visible":true,
 }

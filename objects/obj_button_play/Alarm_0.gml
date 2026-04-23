@@ -1,2 +1,4 @@
-room_goto(rm_character_select);
+with (obj_fade) {
+    target_room = rm_crawler;
+}
 

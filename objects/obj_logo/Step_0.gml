@@ -1,0 +1,1 @@
+pulse_time += pulse_speed;

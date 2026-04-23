@@ -81,6 +81,8 @@ if (keyboard_check_pressed(vk_enter)) {
     } else {
 
         global.p2_character = c;
-        room_goto(rm_crawler);
+        with (obj_fade) {
+    target_room = rm_crawler;
+}
     }
 }
