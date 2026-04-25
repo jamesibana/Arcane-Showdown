@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"monsters",
-    "path":"folders/monsters.yy",
+    "name":"Anims_Slime",
+    "path":"folders/monsters/Anims_Slime.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

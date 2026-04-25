@@ -2,8 +2,8 @@
   "$GMSprite":"v2",
   "%Name":"Anim_Combo_Warlock",
   "bboxMode":0,
-  "bbox_bottom":104,
-  "bbox_left":0,
+  "bbox_bottom":103,
+  "bbox_left":3,
   "bbox_right":127,
   "bbox_top":2,
   "collisionKind":1,
@@ -21,6 +21,7 @@
     {"$GMSpriteFrame":"v1","%Name":"4943979b-678c-456e-9169-09f95c12e4ff","name":"4943979b-678c-456e-9169-09f95c12e4ff","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"v1","%Name":"7192d693-f09a-4d3f-bab6-6206da3cdc9e","name":"7192d693-f09a-4d3f-bab6-6206da3cdc9e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"v1","%Name":"de8277ec-c4d2-4a41-9283-d82875a21432","name":"de8277ec-c4d2-4a41-9283-d82875a21432","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"87f3ee8c-ed84-4cbc-86e9-05d0fd0c1b50","name":"87f3ee8c-ed84-4cbc-86e9-05d0fd0c1b50","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"v1","%Name":"5bc81249-6e54-4301-bc98-e3520f936c40","name":"5bc81249-6e54-4301-bc98-e3520f936c40","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"v1","%Name":"02c1977d-da2f-4d62-a726-be80bc449ace","name":"02c1977d-da2f-4d62-a726-be80bc449ace","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"v1","%Name":"69934785-91b8-4d38-ad2e-e30fff551067","name":"69934785-91b8-4d38-ad2e-e30fff551067","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
@@ -34,7 +35,6 @@
     {"$GMSpriteFrame":"v1","%Name":"b7966232-9e44-4356-9a3d-4d8965b877b0","name":"b7966232-9e44-4356-9a3d-4d8965b877b0","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"v1","%Name":"c97ca372-3b40-436c-808e-58721b96b91a","name":"c97ca372-3b40-436c-808e-58721b96b91a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"v1","%Name":"56afa893-6057-4dcb-a8a7-f8060942b80b","name":"56afa893-6057-4dcb-a8a7-f8060942b80b","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"v1","%Name":"0c561ac6-0174-42a9-96fb-044fd33ce505","name":"0c561ac6-0174-42a9-96fb-044fd33ce505","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"v1","%Name":"7bb8b064-aae4-4b65-bd29-f3f0c7909714","name":"7bb8b064-aae4-4b65-bd29-f3f0c7909714","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
@@ -119,47 +119,47 @@
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"de8277ec-c4d2-4a41-9283-d82875a21432","path":"sprites/Anim_Combo_Warlock/Anim_Combo_Warlock.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"4a5b9935-449e-40a9-bb67-a44eaa455690","IsCreationKey":false,"Key":8.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"87f3ee8c-ed84-4cbc-86e9-05d0fd0c1b50","path":"sprites/Anim_Combo_Warlock/Anim_Combo_Warlock.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"a65faff3-da44-4392-8a23-a60d34e9fbb7","IsCreationKey":false,"Key":9.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"5bc81249-6e54-4301-bc98-e3520f936c40","path":"sprites/Anim_Combo_Warlock/Anim_Combo_Warlock.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"727e2927-2821-4cda-b169-85f9376ab2c8","IsCreationKey":false,"Key":9.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+              },"Disabled":false,"id":"727e2927-2821-4cda-b169-85f9376ab2c8","IsCreationKey":false,"Key":10.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"02c1977d-da2f-4d62-a726-be80bc449ace","path":"sprites/Anim_Combo_Warlock/Anim_Combo_Warlock.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"919d824e-a73a-49c9-af03-f621956b4a67","IsCreationKey":false,"Key":10.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+              },"Disabled":false,"id":"919d824e-a73a-49c9-af03-f621956b4a67","IsCreationKey":false,"Key":11.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"69934785-91b8-4d38-ad2e-e30fff551067","path":"sprites/Anim_Combo_Warlock/Anim_Combo_Warlock.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"8a59b427-28f6-4cc6-9198-5849298b7b42","IsCreationKey":false,"Key":11.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+              },"Disabled":false,"id":"8a59b427-28f6-4cc6-9198-5849298b7b42","IsCreationKey":false,"Key":12.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"5984bc54-8c64-4b91-986c-e6fb5f93f818","path":"sprites/Anim_Combo_Warlock/Anim_Combo_Warlock.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"c3ecea2e-f599-456c-93e5-4beff6bbfddb","IsCreationKey":false,"Key":12.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+              },"Disabled":false,"id":"c3ecea2e-f599-456c-93e5-4beff6bbfddb","IsCreationKey":false,"Key":13.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"5dc4a8b7-4c05-4ed4-aaa5-d229bbd5d361","path":"sprites/Anim_Combo_Warlock/Anim_Combo_Warlock.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"97937442-bfcb-4ffd-8555-719b2ac7bb6f","IsCreationKey":false,"Key":13.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+              },"Disabled":false,"id":"97937442-bfcb-4ffd-8555-719b2ac7bb6f","IsCreationKey":false,"Key":14.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"803eef25-094d-4347-b9a5-1d8cf07a4ae1","path":"sprites/Anim_Combo_Warlock/Anim_Combo_Warlock.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"1de377db-4249-4004-887c-e6c817d01a5b","IsCreationKey":false,"Key":14.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+              },"Disabled":false,"id":"1de377db-4249-4004-887c-e6c817d01a5b","IsCreationKey":false,"Key":15.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"928f3821-8e98-4bf7-8915-c3aa72cc4337","path":"sprites/Anim_Combo_Warlock/Anim_Combo_Warlock.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"ac6d22e0-8f09-447f-be51-6a74e5e93dfa","IsCreationKey":false,"Key":15.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+              },"Disabled":false,"id":"ac6d22e0-8f09-447f-be51-6a74e5e93dfa","IsCreationKey":false,"Key":16.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"23ac3139-8289-4649-a5ae-a08bec712307","path":"sprites/Anim_Combo_Warlock/Anim_Combo_Warlock.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"05dbef38-4137-4f44-b80c-9c90bc20e7e2","IsCreationKey":false,"Key":16.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+              },"Disabled":false,"id":"05dbef38-4137-4f44-b80c-9c90bc20e7e2","IsCreationKey":false,"Key":17.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"27bef712-85ca-4b62-9728-e0b2a62c9fc2","path":"sprites/Anim_Combo_Warlock/Anim_Combo_Warlock.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"15568463-464a-4190-a96b-11e2e984e7de","IsCreationKey":false,"Key":17.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+              },"Disabled":false,"id":"15568463-464a-4190-a96b-11e2e984e7de","IsCreationKey":false,"Key":18.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"c169827d-81db-4a32-9200-45d7fe55f4cf","path":"sprites/Anim_Combo_Warlock/Anim_Combo_Warlock.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"fa11fe9c-e6d9-4838-a006-efaa6971b742","IsCreationKey":false,"Key":18.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+              },"Disabled":false,"id":"fa11fe9c-e6d9-4838-a006-efaa6971b742","IsCreationKey":false,"Key":19.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"b7966232-9e44-4356-9a3d-4d8965b877b0","path":"sprites/Anim_Combo_Warlock/Anim_Combo_Warlock.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"3e4af38c-5106-4c93-bd03-efd6e2ae1aea","IsCreationKey":false,"Key":19.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+              },"Disabled":false,"id":"3e4af38c-5106-4c93-bd03-efd6e2ae1aea","IsCreationKey":false,"Key":20.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"c97ca372-3b40-436c-808e-58721b96b91a","path":"sprites/Anim_Combo_Warlock/Anim_Combo_Warlock.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"c3b45d24-c5af-457a-bf3a-0e9f1da151d4","IsCreationKey":false,"Key":20.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+              },"Disabled":false,"id":"c3b45d24-c5af-457a-bf3a-0e9f1da151d4","IsCreationKey":false,"Key":21.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"56afa893-6057-4dcb-a8a7-f8060942b80b","path":"sprites/Anim_Combo_Warlock/Anim_Combo_Warlock.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"58b1bb2e-8cc8-48b1-bdaf-8513e48cdfe4","IsCreationKey":false,"Key":21.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"0c561ac6-0174-42a9-96fb-044fd33ce505","path":"sprites/Anim_Combo_Warlock/Anim_Combo_Warlock.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"9ceb6935-9e61-4a59-bf6c-8d087113654e","IsCreationKey":false,"Key":22.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+              },"Disabled":false,"id":"58b1bb2e-8cc8-48b1-bdaf-8513e48cdfe4","IsCreationKey":false,"Key":22.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"7bb8b064-aae4-4b65-bd29-f3f0c7909714","path":"sprites/Anim_Combo_Warlock/Anim_Combo_Warlock.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"0090e55a-6f0a-4d0e-93ca-7a6d60114cf6","IsCreationKey":false,"Key":23.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},

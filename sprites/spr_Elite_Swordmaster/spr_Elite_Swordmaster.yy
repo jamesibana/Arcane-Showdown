@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"monsters",
-    "path":"folders/monsters.yy",
+    "name":"Anims_Swordmaster",
+    "path":"folders/monsters/Anims_Swordmaster.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

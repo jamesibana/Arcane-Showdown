@@ -26,8 +26,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"monsters",
-    "path":"folders/monsters.yy",
+    "name":"Anims_Obelisk",
+    "path":"folders/monsters/Anims_Obelisk.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
