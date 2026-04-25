@@ -79,7 +79,7 @@
     },
     "name":"Anim_Combo_Knight",
     "playback":1,
-    "playbackSpeed":24.0,
+    "playbackSpeed":60.0,
     "playbackSpeedType":0,
     "resourceType":"GMSequence",
     "resourceVersion":"2.0",

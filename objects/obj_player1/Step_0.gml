@@ -596,11 +596,40 @@ if (state == "alive") {
         var total_frames = sprite_get_number(sprite_index);
         var original_cooldown = max(cooldown, 1); 
         
-        image_speed = total_frames / original_cooldown; 
+        // 🎯 NEW: DYNAMIC EASING TIMING
+        // We find the middle of the sprite to act as the "impact" point
+        var impact_frame = floor(total_frames / 2); 
+        
+        // ⚙️ ADJUST THESE MULTIPLIERS!
+        var windup_speed = 3.2; // 3.2x faster before the hit (Instant snap)
+        var follow_speed = 0.8; // 0.8x slower after the hit (Heavy recovery)
+        
+        var base_speed = total_frames / original_cooldown; 
+        
+        // Apply the dynamic speeds based on which frame we are currently on
+        if (image_index < impact_frame) {
+            image_speed = base_speed * windup_speed;
+        } else {
+            image_speed = base_speed * follow_speed;
+        }
+        
+        // 🛑 PREVENT LOOPING & HOLD THE POSE
+        // Because we manipulated the speed, the animation might finish slightly 
+        // before the cooldown timer hits 0. We lock it on the last frame so 
+        // the character holds a cool follow-through pose until the state ends!
+        if (image_index >= total_frames - 1) {
+            image_index = total_frames - 1;
+            image_speed = 0;
+        }
     }
     // 2. Normal Movement
     else {
         image_speed = 1; 
+
+        // 🏃 SPEED RECOVERY: Clear poison/hitstun slows
+        if (hitstun_timer <= 0 && poison_timer <= 0) {
+             move_speed = character_data.speed;
+        }
 
         if (room == rm_arena) {
             if (!on_ground) {
