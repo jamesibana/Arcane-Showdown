@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Anim_Knight",
-    "path":"folders/characters/Anim_Knight.yy",
+    "name":"Anims_Knight",
+    "path":"folders/characters/Anims_Knight.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
