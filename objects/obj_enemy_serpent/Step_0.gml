@@ -142,6 +142,15 @@ if (state == "return") {
     vsp = lengthdir_y(move_speed, dir);
 }
 
+// =====================================================
+// 👀 FACING DIRECTION
+// =====================================================
+if (hsp != 0) {
+    // Because the base sprite faces LEFT:
+    // A positive hsp (moving right) becomes -1 (flipped)
+    // A negative hsp (moving left) becomes 1 (normal)
+    image_xscale = -sign(hsp);
+}
 
 // =====================================================
 // 🧱 COLLISION MOVE

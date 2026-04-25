@@ -149,6 +149,15 @@ if (state == "return") {
 if (!place_meeting(x + hsp, y, obj_wall_segment)) x += hsp;
 if (!place_meeting(x, y + vsp, obj_wall_segment)) y += vsp;
 
+// =====================================================
+// 👀 FACING DIRECTION
+// =====================================================
+if (hsp != 0) {
+    // Because the base sprite faces LEFT:
+    // A positive hsp (moving right) becomes -1 (flipped)
+    // A negative hsp (moving left) becomes 1 (normal)
+    image_xscale = -sign(hsp);
+}
 
 // =====================================================
 // ☠️ POISON DAMAGE

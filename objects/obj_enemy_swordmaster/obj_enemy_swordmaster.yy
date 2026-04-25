@@ -10,8 +10,8 @@
   "name":"obj_enemy_swordmaster",
   "overriddenProperties":[],
   "parent":{
-    "name":"functions",
-    "path":"folders/monsters/functions.yy",
+    "name":"Arcane Showdown",
+    "path":"Arcane Showdown.yyp",
   },
   "parentObjectId":{
     "name":"obj_enemy_parent",

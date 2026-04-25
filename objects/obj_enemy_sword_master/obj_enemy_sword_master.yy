@@ -10,8 +10,8 @@
   "name":"obj_enemy_sword_master",
   "overriddenProperties":[],
   "parent":{
-    "name":"monsters",
-    "path":"folders/monsters.yy",
+    "name":"functions",
+    "path":"folders/monsters/functions.yy",
   },
   "parentObjectId":{
     "name":"obj_enemy_parent",

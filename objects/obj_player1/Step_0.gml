@@ -596,13 +596,42 @@ if (state == "alive") {
         var total_frames = sprite_get_number(sprite_index);
         var original_cooldown = max(cooldown, 1); 
         
-        // 🎯 NEW: DYNAMIC EASING TIMING
         // We find the middle of the sprite to act as the "impact" point
         var impact_frame = floor(total_frames / 2); 
         
-        // ⚙️ ADJUST THESE MULTIPLIERS!
-        var windup_speed = 3.2; // 3.2x faster before the hit (Instant snap)
-        var follow_speed = 0.8; // 0.8x slower after the hit (Heavy recovery)
+        // ⚙️ DEFAULT SPEEDS
+        var windup_speed = 1.0; 
+        var follow_speed = 1.0; 
+
+        // 🎯 NEW: CLASS-SPECIFIC EASING
+        if (current_attack_type == "combo") {
+            switch (sprite_index) {
+                
+                case Anim_Combo_Knight:
+                    windup_speed = 3.2; // Fast windup
+                    follow_speed = 0.8; // Heavy recovery
+                    break;
+                    
+                case Anim_Combo_Assasin:
+                    windup_speed = 3.5; // Blindingly fast windup
+                    follow_speed = 0.8; // Quick recovery (can dodge away sooner)
+                    break;
+                    
+                case Anim_Combo_Colossus:
+                    windup_speed = 0.8; // Slow, menacing windup
+                    follow_speed = 0.2; // Massive, earth-shattering follow-through
+                    break;
+                    
+                case Anim_Combo_Warlock:
+                    windup_speed = 1.5; // Smooth, magical cast
+                    follow_speed = 1.5; // Consistent speed through the whole animation
+                    break;
+            }
+        } else {
+            // Optional: Give normal attacks a slight punchy feel too
+            windup_speed = 1.5;
+            follow_speed = 0.8;
+        }
         
         var base_speed = total_frames / original_cooldown; 
         
@@ -614,9 +643,6 @@ if (state == "alive") {
         }
         
         // 🛑 PREVENT LOOPING & HOLD THE POSE
-        // Because we manipulated the speed, the animation might finish slightly 
-        // before the cooldown timer hits 0. We lock it on the last frame so 
-        // the character holds a cool follow-through pose until the state ends!
         if (image_index >= total_frames - 1) {
             image_index = total_frames - 1;
             image_speed = 0;
