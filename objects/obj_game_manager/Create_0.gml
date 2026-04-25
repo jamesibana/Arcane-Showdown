@@ -128,3 +128,12 @@ global.round_active = false;
 // Arena player tracking
 p1_exists = false;
 p2_exists = false;
+
+// =====================================================
+// ARENA ROUND SYSTEM INIT
+// =====================================================
+global.current_round = 1;
+global.max_lives = 2; // Change this to 3 or 5 for longer matches!
+
+global.p1_lives = global.max_lives;
+global.p2_lives = global.max_lives;

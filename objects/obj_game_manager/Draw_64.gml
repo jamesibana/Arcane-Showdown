@@ -29,7 +29,7 @@ with (obj_player1) {
 }
 
 // =====================================================
-// 1. TOP HUD (PORTRAITS & BARS)
+// 1. TOP HUD (PORTRAITS, BARS & LIVES)
 // =====================================================
 draw_set_valign(fa_top);
 
@@ -48,25 +48,22 @@ if (p1 != noone) {
     }
 
     var px = margin_x;
-    // 📏 DYNAMIC SPACING: Measure the exact height of the font and add 5 pixels of padding
     var py = margin_y + string_height(p1_name) + 5; 
 
     draw_set_halign(fa_left);
     _draw_text_outlined(px, margin_y, p1_name, c_white, c_red);
 
+    // Portrait Frame Background
     draw_set_color(c_dkgray);
     draw_rectangle(px, py, px + portrait_size, py + portrait_size, false);
 
-    // 🖼️ ASPECT-LOCKED PORTRAIT
+    // Aspect-Locked Half-Body Portrait
     if (sprite_exists(p1.sprite)) {
         var sw = sprite_get_width(p1.sprite);
         var sh = sprite_get_height(p1.sprite);
-        var crop_h = sh * 0.65; // Top 65% (Half-body)
+        var crop_h = sh * 0.65; 
         
-        // Find the single scale that fits the sprite without stretching it
         var uniform_scale = min(portrait_size / sw, portrait_size / crop_h);
-        
-        // Calculate the empty space to perfectly center the sprite in the box
         var x_offset = (portrait_size - (sw * uniform_scale)) / 2;
         var y_offset = (portrait_size - (crop_h * uniform_scale)) / 2;
         
@@ -102,6 +99,25 @@ if (p1 != noone) {
     draw_rectangle(bar_x, hp_y, bar_x + bar_w, hp_y + bar_h, false); 
     draw_set_color(c_lime);
     draw_rectangle(bar_x, hp_y, bar_x + (bar_w * hp_pct), hp_y + bar_h, false); 
+
+// ❤️ PLAYER 1 HEARTS
+    var heart_scale = 2.5; 
+    var heart_space = 18 * heart_scale; 
+    
+    // ⚙️ TWEAK THESE TO MOVE PLAYER 1'S HEARTS!
+    // Example: change bar_x to (bar_x - 10) to move them left.
+    var p1_heart_x = bar_x + 20; 
+    var p1_heart_y = hp_y + bar_h + 16; 
+    
+    for (var i = 0; i < global.max_lives; i++) {
+        var hx = p1_heart_x + (i * heart_space);
+        
+        if (i < global.p1_lives) {
+            draw_sprite_ext(spr_heart_full, 0, hx, p1_heart_y, heart_scale, heart_scale, 0, c_white, 1);
+        } else {
+            draw_sprite_ext(spr_heart_full, 0, hx, p1_heart_y, heart_scale, heart_scale, 0, c_dkgray, 0.4);
+        }
+    }
 }
 
 // --- 🔵 PLAYER 2 (TOP RIGHT) ---
@@ -112,16 +128,16 @@ if (p2 != noone) {
     }
 
     var px = gui_w - margin_x - portrait_size;
-    // 📏 DYNAMIC SPACING
     var py = margin_y + string_height(p2_name) + 5;
 
     draw_set_halign(fa_right);
     _draw_text_outlined(gui_w - margin_x, margin_y, p2_name, c_white, c_blue);
 
+    // Portrait Frame Background
     draw_set_color(c_dkgray);
     draw_rectangle(px, py, px + portrait_size, py + portrait_size, false); 
 
-    // 🖼️ ASPECT-LOCKED PORTRAIT (MIRRORED)
+    // Aspect-Locked Half-Body Portrait (Mirrored)
     if (sprite_exists(p2.sprite)) {
         var sw = sprite_get_width(p2.sprite);
         var sh = sprite_get_height(p2.sprite);
@@ -131,7 +147,6 @@ if (p2 != noone) {
         var x_offset = (portrait_size - (sw * uniform_scale)) / 2;
         var y_offset = (portrait_size - (crop_h * uniform_scale)) / 2;
         
-        // Drawing with a negative horizontal scale means the X-coordinate acts as the RIGHT edge.
         var right_edge = px + portrait_size - x_offset;
         draw_sprite_part_ext(p2.sprite, 0, 0, 0, sw, crop_h, right_edge, py + y_offset, -uniform_scale, uniform_scale, c_white, 1);
     }
@@ -168,11 +183,31 @@ if (p2 != noone) {
     draw_rectangle(bar_x, hp_y, bar_x + bar_w, hp_y + bar_h, false); 
     draw_set_color(c_lime);
     draw_rectangle(bar_x + missing_hp, hp_y, bar_x + bar_w, hp_y + bar_h, false); 
+
+// ❤️ PLAYER 2 HEARTS (Filling Right-to-Left)
+    var heart_scale = 2.5; 
+    var heart_space = 18 * heart_scale; 
+    var heart_w = sprite_get_width(spr_heart_full) * heart_scale;
+    
+    // ⚙️ TWEAK THESE TO MOVE PLAYER 2'S HEARTS!
+    // Example: change (bar_x + bar_w) to (bar_x + bar_w + 10) to move them right.
+    var p2_heart_x = (bar_x + bar_w + 18) - heart_w; 
+    var p2_heart_y = hp_y + bar_h + 16; 
+    
+    for (var i = 0; i < global.max_lives; i++) {
+        var hx = p2_heart_x - (i * heart_space); // Notice the minus sign to draw backwards!
+        
+        if (i < global.p2_lives) {
+            draw_sprite_ext(spr_heart_full, 0, hx, p2_heart_y, heart_scale, heart_scale, 0, c_white, 1);
+        } else {
+            draw_sprite_ext(spr_heart_full, 0, hx, p2_heart_y, heart_scale, heart_scale, 0, c_dkgray, 0.4);
+        }
+    }
 }
 
 
 // =====================================================
-// 2. CENTER ANNOUNCEMENTS (3, 2, 1, FIGHT / K.O.)
+// 2. CENTER ANNOUNCEMENTS (ROUND, 3, 2, 1, FIGHT / K.O.)
 // =====================================================
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
@@ -187,6 +222,10 @@ if (p1 != noone && p2 != noone && !global.round_over) {
         if (global.start_timer > 180) txt = "3";
         else if (global.start_timer > 120) txt = "2";
         else if (global.start_timer > 60) txt = "1";
+        
+        // 🥊 Draw the Round Number above the countdown
+        draw_set_color(c_white);
+        draw_text_transformed(cx, cy - 60, "ROUND " + string(global.current_round), 2, 2, 0);
         
         draw_set_color(c_yellow);
         draw_text_transformed(cx, cy, txt, 4, 4, 0); 

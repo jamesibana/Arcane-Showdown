@@ -62,7 +62,14 @@ if (state == "dead") {
     vsp = 0;
     image_alpha -= 0.05;
     image_angle += 5;
-    if (image_alpha <= 0) instance_destroy();
+    
+    if (image_alpha <= 0) {
+        if (room == rm_arena) {
+            image_alpha = 0; // 🛑 IN ARENA: Stay invisible, wait for the round to reset!
+        } else {
+            instance_destroy(); // 🗑️ IN CRAWLER: Destroy normally
+        }
+    }
     exit;
 }
 
@@ -135,7 +142,24 @@ if (!initialized && is_struct(character_data)) {
     spr_combo = character_data.spr_combo;
     sprite_index = sprite; 
     
+    // 📍 NEW: CAPTURE ENTRY STATS FOR ROUND RESETS
+    start_x = x;
+    start_y = y;
+    entry_armor = armor; // Saves whatever armor they walked into the arena with!
+    
     initialized = true;
+}
+
+// =====================================================
+// 5.5 ARENA ENTRY CAPTURE (THE FIX)
+// =====================================================
+if (room == rm_arena && !variable_instance_exists(id, "arena_armor_saved")) {
+    
+    // Take a snapshot of whatever armor they brought into the room!
+    entry_armor = armor; 
+    
+    // Mark it as saved so we don't accidentally overwrite it during the round
+    arena_armor_saved = true; 
 }
 
 // =====================================================
