@@ -13,9 +13,9 @@ home_x = x;
 home_y = y;
 leash_max = 160;
 
-attack_damage = 1;   // 👈 change per enemy
+attack_damage = 5;   // 👈 change per enemy
 attack_range  = 20;  // optional but recommended
-attack_speed  = 30;  // cooldown
+attack_speed  = 55;  // cooldown
 
 sprite_index = spr_MidTier_Golem; // IMPORTANT
 //==================================================

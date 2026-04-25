@@ -2,14 +2,37 @@
 // ============================
 // DRAW PLAYER WITH Y-OFFSET
 // ============================
-// Adjust this number until the feet sit perfectly on the floor!
 var y_offset = 32; 
+var py = y - y_offset; // Store the shifted Y so we don't have to calculate it 5 times!
 
+// ------------------------------------
+// 1. DYNAMIC OUTLINE
+// ------------------------------------
+var outline_color = (owner_player == 1) ? c_red : c_blue;
+var outline_alpha = 0.6; 
+
+// 👇 NEW: Change this number to make the outline thicker!
+var thickness = 2; 
+
+gpu_set_fog(true, outline_color, 0, 0); 
+
+// Draw the 4 main directions using our new thickness variable
+draw_sprite_ext(sprite_index, image_index, x + thickness, py, image_xscale, image_yscale, image_angle, outline_color, outline_alpha);
+draw_sprite_ext(sprite_index, image_index, x - thickness, py, image_xscale, image_yscale, image_angle, outline_color, outline_alpha);
+draw_sprite_ext(sprite_index, image_index, x, py + thickness, image_xscale, image_yscale, image_angle, outline_color, outline_alpha);
+draw_sprite_ext(sprite_index, image_index, x, py - thickness, image_xscale, image_yscale, image_angle, outline_color, outline_alpha);
+
+gpu_set_fog(false, c_white, 0, 0);
+
+
+// ------------------------------------
+// 2. ACTUAL PLAYER SPRITE
+// ------------------------------------
 draw_sprite_ext(
     sprite_index, 
     image_index, 
     x, 
-    y - y_offset,  // Shifts the art UP without moving the collision box
+    py, // Using our saved py variable!
     image_xscale, 
     image_yscale, 
     image_angle, 
@@ -98,34 +121,50 @@ var spr = (owner_player == 1)
 
 draw_sprite(spr, 0, ind_x, ind_y);
 
-// =====================
-// PLAYER BARS
-// =====================
+// =====================================================
+// PLAYER BARS (DYNAMIC ROOM)
+// =====================================================
 
-// bar settings
-var bar_w = 40;
-var bar_h = 4;
+// Only draw the small floating bars if we are NOT in the arena!
+if (room != rm_arena) {
 
-// position above player
-var bx = x - bar_w / 2;
-var by = y - 70;
+    // =====================
+    // PLAYER BARS (FIXED WIDTH)
+    // =====================
+    var fixed_bar_w = 60; // Change this to make BOTH bars wider or narrower together
+    var bar_h = 4;
 
-// =====================
-// ARMOR BAR (TOP)
-// =====================
-draw_set_color(c_gray);
-draw_rectangle(bx, by, bx + bar_w, by + bar_h, false);
+    // Center the UI above the player based on our fixed width
+    var bx = x - (fixed_bar_w / 2);
+    var by = y - 70;
 
-draw_set_color(c_aqua);
-draw_rectangle(bx, by, bx + (bar_w * (armor / max_armor)), by + bar_h, false);
+    // --- SAFETY MATH ---
+    var hp_percent = clamp(hp / max(1, max_hp), 0, 1);
+    var armor_percent = 0; 
+    if (max_armor > 0) {
+        armor_percent = clamp(armor / max_armor, 0, 1);
+    }
 
-// =====================
-// HP BAR (BOTTOM)
-// =====================
-draw_set_color(c_black);
-draw_rectangle(bx, by + 6, bx + bar_w, by + 6 + bar_h, false);
+    // =====================
+    // ARMOR BAR (TOP)
+    // =====================
+    if (max_armor > 0) {
+        draw_set_color(c_gray);
+        draw_rectangle(bx, by, bx + fixed_bar_w, by + bar_h, false);
 
-draw_set_color(c_lime);
-draw_rectangle(bx, by + 6, bx + (bar_w * (hp / max_hp)), by + 6 + bar_h, false);
+        draw_set_color(c_aqua);
+        draw_rectangle(bx, by, bx + (fixed_bar_w * armor_percent), by + bar_h, false);
+    }
 
-draw_set_color(c_white);
+    // =====================
+    // HP BAR (BOTTOM)
+    // =====================
+    draw_set_color(c_black);
+    draw_rectangle(bx, by + 6, bx + fixed_bar_w, by + 6 + bar_h, false);
+
+    draw_set_color(c_lime);
+    draw_rectangle(bx, by + 6, bx + (fixed_bar_w * hp_percent), by + 6 + bar_h, false);
+
+    draw_set_color(c_white); // Always reset at the end!
+    
+} // <--- END OF ROOM CHECK

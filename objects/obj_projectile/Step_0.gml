@@ -71,21 +71,25 @@ if (!is_poison) {
             exit; // Ignore the player and let the bullet keep flying!
         }
 
-        with (hit) {
-
+with (hit) {
             var dmg = other.damage;
+
+            // --- 🐌 NEW: PROJECTILE SLOWDOWN ---
+            // If the weapon has a slow multiplier (e.g., 0.5), apply it!
+            if (variable_struct_exists(other.weapon_data, "slow_multiplier")) {
+                move_speed = character_data.speed * other.weapon_data.slow_multiplier;
+                // Note: We don't need a timer here because your Player's Step Event
+                // will naturally reset move_speed to normal once the hitstun/hurt state ends!
+            }
 
             if (!variable_instance_exists(id, "armor")) armor = 0;
             if (!variable_instance_exists(id, "hp")) hp = 1;
 
-            // armor first
             if (armor > 0) {
                 var absorbed = min(armor, dmg);
                 armor -= absorbed;
                 dmg -= absorbed;
             }
-
-            // hp damage
             if (dmg > 0) hp -= dmg;
 
             hurt_timer = 10;
@@ -157,25 +161,26 @@ if (mode == "cloud") {
     image_alpha = lifetime / 60;
     image_speed = 0.3;
 
-    // =========================
+// =========================
     // 🔥 FIXED: MULTI TARGET POISON
     // =========================
     with (obj_damageable) {
-
-        // ignore shooter
         if (id == other.owner_id) continue;
-
-        // 🛑 DISABLE PVP IN CRAWLER ROOM
         if (object_index == obj_player1 && room != rm_arena) continue;
 
         var dist = point_distance(x, y, other.x, other.y);
 
-        // --- THE SINGLE, UPDATED BLOCK ---
-        if (dist < other.cloud_radius * 2.5) {
+ if (dist < other.cloud_radius * 2.5) {
 
             poison_timer = 60;
             
-            // Default to 1, but check if the weapon has a specific poison damage!
+            // 🐌 NEW: Safely pass the slowdown multiplier to the victim!
+            if (variable_struct_exists(other.weapon_data, "slow_multiplier")) {
+                poison_slow_mult = other.weapon_data.slow_multiplier;
+            } else {
+                poison_slow_mult = 1; // Normal speed if weapon has no slow
+            }
+            
             poison_damage = 1; 
             if (variable_instance_exists(other.id, "weapon_data")) {
                 if (variable_struct_exists(other.weapon_data, "poison_damage")) {
