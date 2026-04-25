@@ -39,6 +39,9 @@
     "name":"spr_btn_help",
     "path":"sprites/spr_btn_help/spr_btn_help.yy",
   },
-  "spriteMaskId":null,
+  "spriteMaskId":{
+    "name":"spr_btn_help",
+    "path":"sprites/spr_btn_help/spr_btn_help.yy",
+  },
   "visible":true,
 }
