@@ -1,6 +1,7 @@
 // =====================================================
 // 0. SAFETY INIT (ALWAYS FIRST)
 // =====================================================
+if (!variable_instance_exists(id, "attack_startup_timer")) attack_startup_timer = 0;
 if (!variable_instance_exists(id, "state")) state = "alive";
 
 if (!variable_instance_exists(id, "vsp")) vsp = 0;
@@ -25,46 +26,45 @@ if (!variable_instance_exists(id, "combo_buffer")) combo_buffer = 0;
 if (!variable_instance_exists(id, "clash_timer")) clash_timer = 0;
 if (!variable_instance_exists(id, "current_attack_type")) current_attack_type = "";
 
+// 🟢 NEW: Poison and Speed Calculator variables initialized safely here!
+if (!variable_instance_exists(id, "poison_timer")) poison_timer = 0;
+if (!variable_instance_exists(id, "poison_tick")) poison_tick = 0;
+if (!variable_instance_exists(id, "poison_damage")) poison_damage = 100;
+if (!variable_instance_exists(id, "poison_slow_mult")) poison_slow_mult = 1;
+if (!variable_instance_exists(id, "in_poison_ring")) in_poison_ring = false;
+
 
 // =====================================================
 // HIT PAUSE FREEZE
 // =====================================================
 if (global.hitpause > 0) {
-
-    // allow only visual effects during pause
-    if (hurt_timer > 0) hurt_timer--;
-
-    exit;
+    image_speed = 0; // Completely freeze the sprite animation!
+    if (hurt_timer > 0) hurt_timer--;
+    exit;
 }
 
 // =====================================================
 // 1. DEATH TRIGGER
 // =====================================================
 if (hp <= 0 && state != "dead") {
-    state = "dead";
-
-    attack_cooldown = 0;
-    swap_cooldown = 0;
-    vsp = 0;
-
-    image_speed = 0;
-    image_blend = c_red;
+    state = "dead";
+    attack_cooldown = 0;
+    swap_cooldown = 0;
+    vsp = 0;
+    image_speed = 0;
+    image_blend = c_red;
 }
-
 
 // =====================================================
 // 2. DEATH STATE
 // =====================================================
 if (state == "dead") {
-
-    vsp = 0;
-    image_alpha -= 0.05;
-    image_angle += 5;
-
-    if (image_alpha <= 0) instance_destroy();
-    exit;
+    vsp = 0;
+    image_alpha -= 0.05;
+    image_angle += 5;
+    if (image_alpha <= 0) instance_destroy();
+    exit;
 }
-
 
 // =====================================================
 // 3. TIMERS
@@ -75,7 +75,7 @@ if (attack_buffer > 0) attack_buffer--;
 
 if (combo_buffer > 0) combo_buffer--;
 if (input_seq_timer > 0) input_seq_timer--;
-else array_resize(input_seq, 0); // Clear the sequence if they stop pressing keys
+else array_resize(input_seq, 0); 
 
 if (clash_timer > 0) clash_timer--; 
 
@@ -84,35 +84,33 @@ if (clash_timer > 0) clash_timer--;
 // =====================================================
 if (hitstun_timer > 0) {
 
+    attack_startup_timer = 0; // Cancel attack wind-up if hit!
     hitstun_timer--;
 
-    // Horizontal Knockback Collision
+    // Horizontal Knockback
     if (place_meeting(x + knockback_hsp, y, obj_wall_segment)) {
-        // Scoot flush against the wall
         while (!place_meeting(x + sign(knockback_hsp), y, obj_wall_segment)) {
             x += sign(knockback_hsp);
         }
-        knockback_hsp = 0; // Stop horizontal momentum
+        knockback_hsp = 0; 
     } else {
         x += knockback_hsp;
     }
 
-    // Vertical Knockback Collision
+    // Vertical Knockback
     if (place_meeting(x, y + knockback_vsp, obj_wall_segment)) {
-        // Scoot flush against the wall
         while (!place_meeting(x, y + sign(knockback_vsp), obj_wall_segment)) {
             y += sign(knockback_vsp);
         }
-        knockback_vsp = 0; // Stop vertical momentum
+        knockback_vsp = 0; 
     } else {
         y += knockback_vsp;
     }
 
-    // Friction decay
     knockback_hsp *= 0.8;
     knockback_vsp *= 0.8;
 
-    exit; // Continues to override standard movement}
+    exit; 
 }
 
 // =====================================================
@@ -120,21 +118,25 @@ if (hitstun_timer > 0) {
 // =====================================================
 if (!initialized && is_struct(character_data)) {
     hp = character_data.hp;
+    max_hp = character_data.hp; 
     move_speed = character_data.speed;
     
-    // --- NEW: Load specific character animations ---
+    if (variable_struct_exists(character_data, "armor")) {
+        armor = character_data.armor; 
+        max_armor = character_data.armor; 
+    } else {
+        armor = 0; 
+        max_armor = 0;
+    }
+    
     sprite = character_data.sprite;
-	
-	spr_move = character_data.spr_move;
+    spr_move = character_data.spr_move;
     spr_jump = character_data.spr_jump;
     spr_combo = character_data.spr_combo;
-    
-    // Set the initial starting sprite
     sprite_index = sprite; 
     
     initialized = true;
 }
-
 
 // =====================================================
 // 6. DOUBLE TAP → ATTACK BUFFER
@@ -142,49 +144,43 @@ if (!initialized && is_struct(character_data)) {
 var move_key = -1;
 
 if (owner_player == 1) {
-    if (keyboard_check_pressed(ord("W"))) move_key = ord("W");
-    else if (keyboard_check_pressed(ord("A"))) move_key = ord("A");
-    else if (keyboard_check_pressed(ord("S"))) move_key = ord("S");
-    else if (keyboard_check_pressed(ord("D"))) move_key = ord("D");
+    if (keyboard_check_pressed(ord("W"))) move_key = ord("W");
+    else if (keyboard_check_pressed(ord("A"))) move_key = ord("A");
+    else if (keyboard_check_pressed(ord("S"))) move_key = ord("S");
+    else if (keyboard_check_pressed(ord("D"))) move_key = ord("D");
 } else {
-    if (keyboard_check_pressed(vk_up)) move_key = vk_up;
-    else if (keyboard_check_pressed(vk_left)) move_key = vk_left;
-    else if (keyboard_check_pressed(vk_down)) move_key = vk_down;
-    else if (keyboard_check_pressed(vk_right)) move_key = vk_right;
+    if (keyboard_check_pressed(vk_up)) move_key = vk_up;
+    else if (keyboard_check_pressed(vk_left)) move_key = vk_left;
+    else if (keyboard_check_pressed(vk_down)) move_key = vk_down;
+    else if (keyboard_check_pressed(vk_right)) move_key = vk_right;
 }
 
 if (last_move_timer > 0) last_move_timer--;
 else {
-    last_move_count = 0;
-    last_move_key = -1;
+    last_move_count = 0;
+    last_move_key = -1;
 }
 
 if (move_key != -1) {
-
-    if (last_move_timer > 0 && last_move_key == move_key) {
-
-        last_move_count++;
-
-        if (last_move_count >= 2) {
-            attack_buffer = 6;
-            last_move_count = 0;
-            last_move_timer = 0;
-        }
-
-    } else {
-        last_move_count = 1;
-        last_move_key = move_key;
-    }
-
-    last_move_timer = 15;
+    if (last_move_timer > 0 && last_move_key == move_key) {
+        last_move_count++;
+        if (last_move_count >= 2) {
+            attack_buffer = 6;
+            last_move_count = 0;
+            last_move_timer = 0;
+        }
+    } else {
+        last_move_count = 1;
+        last_move_key = move_key;
+    }
+    last_move_timer = 15;
 }
 
 // =====================================================
-// 6.5 COMBO SEQUENCE TRACKER (Side -> Up -> Down)
+// 6.5 COMBO SEQUENCE TRACKER
 // =====================================================
 var seq_key = "";
 
-// Detect directional inputs for the combo tracker
 if (owner_player == 1) {
     if (keyboard_check_pressed(ord("D")) || keyboard_check_pressed(ord("A"))) seq_key = "side";
     else if (keyboard_check_pressed(ord("W"))) seq_key = "up";
@@ -197,20 +193,15 @@ if (owner_player == 1) {
 
 if (seq_key != "") {
     array_push(input_seq, seq_key);
-    input_seq_timer = 45; // They have roughly half a second to press the next key
+    input_seq_timer = 45; 
 
     var len = array_length(input_seq);
-    
-    // Check if the last 3 inputs match the combo
     if (len >= 3) {
         if (input_seq[len-3] == "side" && input_seq[len-2] == "up" && input_seq[len-1] == "down") {
-            
-            // Only allow in Side View and with Melee weapons
             if (room == rm_arena && active_weapon_type == "melee") {
                 combo_buffer = 6; 
             }
-            
-            array_resize(input_seq, 0); // Clear sequence so they can't spam it
+            array_resize(input_seq, 0); 
         }
     }
 }
@@ -221,10 +212,26 @@ if (seq_key != "") {
 var h = 0;
 var v = 0;
 
+// 🐌 DYNAMIC SPEED CALCULATOR
+// Safely initialize flags in case the player hasn't been hit yet
+if (!variable_instance_exists(id, "poison_slow_mult")) poison_slow_mult = 1;
+if (!variable_instance_exists(id, "in_poison_ring")) in_poison_ring = false;
+
+// Start with the character's base speed
+var active_speed = move_speed; 
+
+// Apply Projectile Gas Slowdown
+if (poison_timer > 0) {
+    active_speed *= poison_slow_mult; 
+}
+// Apply Arena Ring Slowdown (Stacks with poison gas!)
+if (in_poison_ring) {
+    active_speed *= 0.5; 
+}
+
 
 // ---------- SIDE VIEW (ARENA) ----------
 if (room == rm_arena) {
-
     var jump_pressed = false;
 
     if (owner_player == 1) {
@@ -234,78 +241,66 @@ if (room == rm_arena) {
         h = keyboard_check(vk_right) - keyboard_check(vk_left);
         if (keyboard_check_pressed(vk_up)) jump_pressed = true;
     }
-	
-	// --- NEW: BLOCK MOVEMENT ---
+    
+    // Block movement before the round starts or after it ends
     if (room == rm_arena && (!global.round_active || global.round_over)) {
         h = 0;
         jump_pressed = false;
     }
 
-    // 1. Execute Jump first, relying on the 'on_ground' state from the previous frame
+    // 1. Execute Jump first
     if (jump_pressed && on_ground) {
         vsp = -10;
-        on_ground = false; // Instantly register as in the air
+        on_ground = false; 
     }
 
     // 2. Apply Gravity
     vsp += grav;
 
-    // 3. Horizontal Movement
-    var nx = x + h * move_speed;
+    // 3. Horizontal Movement (👇 USING ACTIVE SPEED)
+    var nx = x + h * active_speed;
     if (!place_meeting(nx, y, obj_wall_segment)) x = nx;
 
     // 4. Vertical Movement & Ground Check
     var ny = y + vsp;
 
     if (place_meeting(x, ny, obj_wall_segment)) {
-        
-        // Scoot flush against the floor/ceiling
         while (!place_meeting(x, y + sign(vsp), obj_wall_segment)) {
             y += sign(vsp);
         }
-        
-        // If we were falling downwards and hit a surface, we are officially grounded!
-        if (vsp > 0) {
-            on_ground = true;
-        }
-        
+        if (vsp > 0) on_ground = true;
         vsp = 0;
-        
     } else {
         y = ny;
-        on_ground = false; // We are in the air (falling or jumping)
+        on_ground = false; 
     }
 }
 
-
 // ---------- TOP-DOWN (CRAWLER) ----------
 else {
+    if (owner_player == 1) {
+        h = keyboard_check(ord("D")) - keyboard_check(ord("A"));
+        v = keyboard_check(ord("S")) - keyboard_check(ord("W"));
+    } else {
+        h = keyboard_check(vk_right) - keyboard_check(vk_left);
+        v = keyboard_check(vk_down) - keyboard_check(vk_up);
+    }
 
-    if (owner_player == 1) {
-        h = keyboard_check(ord("D")) - keyboard_check(ord("A"));
-        v = keyboard_check(ord("S")) - keyboard_check(ord("W"));
-    } else {
-        h = keyboard_check(vk_right) - keyboard_check(vk_left);
-        v = keyboard_check(vk_down) - keyboard_check(vk_up);
-    }
+    // 👇 USING ACTIVE SPEED
+    var nx = x + h * active_speed;
+    var ny = y + v * active_speed;
 
-    var nx = x + h * move_speed;
-    var ny = y + v * move_speed;
-
-    if (!place_meeting(nx, y, obj_wall_segment)) x = nx;
-    if (!place_meeting(x, ny, obj_wall_segment)) y = ny;
+    if (!place_meeting(nx, y, obj_wall_segment)) x = nx;
+    if (!place_meeting(x, ny, obj_wall_segment)) y = ny;
 }
-
 
 // =====================================================
 // 8. FACING
 // =====================================================
 if (h != 0) image_xscale = sign(h);
-
 if (h != 0 || v != 0) {
-    facing_dir = point_direction(0, 0, h, v);
+    facing_dir = point_direction(0, 0, h, v);
 }
-
 
 // =====================================================
 // 9. SWAP SYSTEM
@@ -313,53 +308,44 @@ if (h != 0 || v != 0) {
 var pressed = false;
 
 if (swap_cooldown <= 0) {
-    if (owner_player == 1 && keyboard_check_pressed(ord("Q"))) pressed = true;
-    if (owner_player == 2 && keyboard_check_pressed(vk_control)) pressed = true;
+    if (owner_player == 1 && keyboard_check_pressed(ord("Q"))) pressed = true;
+    if (owner_player == 2 && keyboard_check_pressed(vk_control)) pressed = true;
 }
 
-// --- NEW: BLOCK WEAPON SWAP ---
-if (room == rm_arena && (!global.round_active || global.round_over)) {
-    pressed = false;
-}
+if (room == rm_arena && (!global.round_active || global.round_over)) pressed = false;
 
 if (pressed) {
+    var pickup = instance_nearest(x, y, obj_weapon_pickup);
 
-    var pickup = instance_nearest(x, y, obj_weapon_pickup);
+    if (pickup != noone && point_distance(x, y, pickup.x, pickup.y) < 80) {
+        var new_key = pickup.weapon_key;
+        var new_data = get_weapon(new_key);
 
-    if (pickup != noone && point_distance(x, y, pickup.x, pickup.y) < 80) {
+        if (new_data != undefined) {
+            var new_type = new_data.type;
+            var drop_key = (new_type == "melee") ? weapon_melee : weapon_ranged;
 
-        var new_key = pickup.weapon_key;
-        var new_data = get_weapon(new_key);
+            var drop = instance_create_layer(x, y, "Instances", obj_weapon_pickup);
+            drop.weapon_key = drop_key;
 
-        if (new_data != undefined) {
+            var drop_data = get_weapon(drop_key);
+            if (drop_data != undefined) drop.weapon_sprite = drop_data.sprite;
 
-            var new_type = new_data.type;
-            var drop_key = (new_type == "melee") ? weapon_melee : weapon_ranged;
+            if (new_type == "melee") {
+                weapon_melee = new_key;
+                weapon_melee_data = new_data;
+            } else {
+                weapon_ranged = new_key;
+                weapon_ranged_data = new_data;
+            }
 
-            var drop = instance_create_layer(x, y, "Instances", obj_weapon_pickup);
-            drop.weapon_key = drop_key;
-
-            var drop_data = get_weapon(drop_key);
-            if (drop_data != undefined) drop.weapon_sprite = drop_data.sprite;
-
-            if (new_type == "melee") {
-                weapon_melee = new_key;
-                weapon_melee_data = new_data;
-            } else {
-                weapon_ranged = new_key;
-                weapon_ranged_data = new_data;
-            }
-
-            instance_destroy(pickup);
-        }
-
-    } else {
-        active_weapon_type = (active_weapon_type == "melee") ? "ranged" : "melee";
-    }
-
-    swap_cooldown = 10;
+            instance_destroy(pickup);
+        }
+    } else {
+        active_weapon_type = (active_weapon_type == "melee") ? "ranged" : "melee";
+    }
+    swap_cooldown = 10;
 }
-
 
 // =====================================================
 // 10. WEAPON RESOLVE
@@ -370,13 +356,12 @@ if (active_weapon_type == "melee") resolved = weapon_melee_data;
 else resolved = weapon_ranged_data;
 
 if (resolved == undefined) {
-    resolved = get_weapon("sword");
-    weapon_melee_data = resolved;
-    active_weapon_type = "melee";
+    resolved = get_weapon("sword");
+    weapon_melee_data = resolved;
+    active_weapon_type = "melee";
 }
 
 current_weapon_data = resolved;
-
 weapon_sprite = resolved.sprite;
 damage = resolved.damage;
 cooldown = resolved.cooldown;
@@ -384,195 +369,181 @@ range = resolved.range;
 
 
 // =====================================================
-// 11. ATTACK
+// 11. ATTACK (REVERTED TO TIMER-BASED WINDUP)
 // =====================================================
-
 var can_attack = true;
 if (room == rm_arena && (!global.round_active || global.round_over)) can_attack = false;
 
-// Trigger if allowed to attack AND a normal/combo attack is buffered
+// --- PHASE 1: WIND-UP ---
 if (can_attack && (attack_buffer > 0 || combo_buffer > 0) && attack_cooldown <= 0) {
 
-    var is_combo = (combo_buffer > 0); // Remember if this was a combo!
+    var is_combo = (combo_buffer > 0); 
     
     attack_buffer = 0;
     combo_buffer = 0;
     attack_cooldown = cooldown;
 
-   // Open a 30-frame window where this player is allowed to "Clash/Block"
     clash_timer = 120; 
     current_attack_type = is_combo ? "combo" : "normal";
+    
+    image_index = 0; 
+    
+    // Set the Windup Timer
+    attack_startup_timer = is_combo ? 10 : 4; 
+}
 
-    // ---------- MELEE ----------
-    if (active_weapon_type == "melee") {
-
-        // Determine actual damage: Override with combo damage if applicable
-        var actual_damage = damage;
-        if (is_combo && variable_struct_exists(current_weapon_data, "combo")) {
-            actual_damage = current_weapon_data.combo;
-        }
-
-        var hit = collision_circle(
-            x + lengthdir_x(10, facing_dir),
-            y + lengthdir_y(10, facing_dir),
-            range,
-            obj_damageable,
-            false,
-            true
-        );
-
-        if (hit != noone && hit.id != id && hit.state != "dead") {
-            
-// ==========================================
-            // 🛑 NEW: DISABLE PVP IN CRAWLER ROOM
-            // ==========================================
-            var can_hurt = true;
-            
-            // If the target is a player, and we are NOT in the arena, cancel the damage!
-            if (hit.object_index == obj_player1 && room != rm_arena) {
-                can_hurt = false;
-            }
-
-            // Only proceed if it's a valid enemy OR a valid Arena PvP target
-            if (can_hurt) {
-                var p_dmg = actual_damage; 
-                var p_dir = facing_dir;
-                var p_scale = image_xscale;
-            with (hit) {
-
-                if (!variable_instance_exists(id, "armor")) armor = 0;
-                if (!variable_instance_exists(id, "hp")) hp = 1;
-
-               // ==========================================
-                // 🛡️ NEW: CLASH / COMBO BLOCK MECHANIC
-                // ==========================================
-                var is_clash = false;
-
-                // 1. Safely check if the target even HAS a clash timer (Monsters don't!)
-                var target_clash = 0;
-                var target_attack_type = "";
-
-                if (variable_instance_exists(id, "clash_timer")) {
-                    target_clash = clash_timer;
-                    target_attack_type = current_attack_type;
-                }
-
-                // 2. Is the victim ALSO currently swinging their weapon?
-                if (target_clash > 0) {
-                    
-                    // 3. Is at least ONE of the players using a Combo?
-                    if (is_combo || target_attack_type == "combo") {
-                        is_clash = true;
-                    }
-                }
-
-                // ==========================================
-                // RESOLVE CLASH
-                // ==========================================
-                if (is_clash) {
-                    // 1. Zero out damage and close the clash windows to prevent double-bouncing
-                    p_dmg = 0;
-                    clash_timer = 0;
-                    other.clash_timer = 0;
-
-                    // 2. Dramatic Hitpause (Longer than a normal hit)
-                    global.hitpause = 15;
-
-                    // 3. Massive Knockback for BOTH players
-                    // Victim gets pushed away in the direction of the attack
-                    knockback_hsp = lengthdir_x(15, p_dir); 
-                    knockback_vsp = lengthdir_y(8, p_dir);
-                    hitstun_timer = 20;
-                    hurt_timer = 20;
-
-                    // Attacker gets pushed BACKWARDS (p_dir + 180 degrees)
-                    other.knockback_hsp = lengthdir_x(15, p_dir + 180); 
-                    other.knockback_vsp = lengthdir_y(8, p_dir + 180);
-                    other.hitstun_timer = 20;
-                    other.hurt_timer = 20;
-
-                    // 4. Spawn the Block VFX exactly between the two players
-                    var fx_x = ((x + other.x) / 2) - 50;
-                    var fx_y = ((y + other.y) / 2) - 60; // Slightly above their belts
-                    
-                    var fx = instance_create_layer(fx_x, fx_y, "Instances", obj_combo_effect);
-                    fx.sprite_index = spr_block; // <--- MAKE SURE YOUR SPRITE IS NAMED THIS
-                    fx.image_xscale = 2;
-                    fx.image_yscale = 2;
-
-                } 
-                // ==========================================
-                // RESOLVE NORMAL DAMAGE
-                // ==========================================
-                else {
-                    
-                    // Armor first
-                    if (armor > 0) {
-                        var absorbed = min(armor, p_dmg);
-                        armor -= absorbed;
-                        p_dmg -= absorbed;
-                    }
-
-                    if (p_dmg > 0) hp -= p_dmg;
-
-                    // 💥 HIT EFFECTS: NORMAL vs COMBO
-                    if (is_combo) {
-                        // --- HEAVY COMBO HIT ---
-                        knockback_hsp = lengthdir_x(10, p_dir); 
-                        knockback_vsp = lengthdir_y(6, p_dir);
-                        
-                        hitstun_timer = 15;
-                        hurt_timer = 15;
-                        global.hitpause = 12; 
-                        
-                        // 🎇 VFX SPAWN
-                        var fx_x = x - lengthdir_x(10, p_dir) + 15;
-                        var fx_y = y - lengthdir_y(10, p_dir) - 50;
-                        
-                        var fx = instance_create_layer(fx_x, fx_y, "Instances", obj_combo_effect);
-                        fx.image_xscale = p_scale * 2; 
-                        fx.image_yscale = p_scale * 2;
-                        
-                        fx.sprite_index = Anim_Slash_Melee; 
-                        
-                        if (variable_struct_exists(other.current_weapon_data, "combo_fx")) {
-                            fx.sprite_index = other.current_weapon_data.combo_fx;
-                        }
-                        
-                    } else {
-                        // --- NORMAL HIT ---
-                        knockback_hsp = lengthdir_x(6, p_dir);
-                        knockback_vsp = lengthdir_y(4, p_dir);
-                        
-                        hitstun_timer = 10;
-                        hurt_timer = 10;
-                        global.hitpause = 6; 
-                    }
-                }
-            }
-        }
-    }
-	}
-    // ---------- RANGED ----------
-    else {
-        var spawn_y = y - 45; 
+// --- PHASE 2: THE ACTIVE HITBOX ---
+if (attack_startup_timer > 0) {
+    attack_startup_timer--;
+    
+    if (attack_startup_timer == 0) {
         
-        var proj = instance_create_layer(
-            x + lengthdir_x(20, facing_dir),
-            spawn_y + lengthdir_y(20, facing_dir), 
-            "Instances",
-            obj_projectile
-        );
+        var is_combo = (current_attack_type == "combo");
+        
+        // Smart Aim fix included so Arena jumps don't shoot the floor!
+        var aim_dir = (room == rm_arena) ? ((image_xscale == 1) ? 0 : 180) : facing_dir;
 
-        proj.direction = facing_dir;
-        proj.speed = 10;
-        proj.damage = damage;
-        proj.weapon_data = current_weapon_data;
+        // ---------- MELEE ----------
+        if (active_weapon_type == "melee") {
 
-        proj.owner_id = id;
-        proj.owner_player = owner_player;
+            var actual_damage = damage;
+            if (is_combo && variable_struct_exists(current_weapon_data, "combo")) {
+                actual_damage = current_weapon_data.combo;
+            }
+
+            var hit = collision_circle(
+                x + lengthdir_x(20, aim_dir), 
+                y + lengthdir_y(20, aim_dir),
+                range,
+                obj_damageable,
+                false,
+                true
+            );
+
+            if (hit != noone && hit.id != id && hit.state != "dead") {
+                
+                var can_hurt = true;
+                if (hit.object_index == obj_player1 && room != rm_arena) can_hurt = false;
+
+                if (can_hurt) {
+                    
+                    var p_dmg = actual_damage; 
+                    var p_dir = aim_dir; 
+                    var p_scale = image_xscale;
+                    
+                    with (hit) {
+                        if (!variable_instance_exists(id, "armor")) armor = 0;
+                        if (!variable_instance_exists(id, "hp")) hp = 1;
+
+                        var is_clash = false;
+                        var target_clash = 0;
+                        var target_attack_type = "";
+
+                        if (variable_instance_exists(id, "clash_timer")) {
+                            target_clash = clash_timer;
+                            target_attack_type = current_attack_type;
+                        }
+
+                        if (target_clash > 0) {
+                            if (is_combo || target_attack_type == "combo") {
+                                is_clash = true;
+                            }
+                        }
+
+                        // ==========================================
+                        // RESOLVE CLASH
+                        // ==========================================
+                        if (is_clash) {
+                            p_dmg = 0;
+                            clash_timer = 0;
+                            other.clash_timer = 0;
+
+                            global.hitpause = 15;
+
+                            knockback_hsp = lengthdir_x(15, p_dir); 
+                            knockback_vsp = lengthdir_y(8, p_dir);
+                            hitstun_timer = 20;
+                            hurt_timer = 20;
+
+                            other.knockback_hsp = lengthdir_x(15, p_dir + 180); 
+                            other.knockback_vsp = lengthdir_y(8, p_dir + 180);
+                            other.hitstun_timer = 20;
+                            other.hurt_timer = 20;
+
+                            var fx_x = ((x + other.x) / 2) - 50;
+                            var fx_y = ((y + other.y) / 2) - 60; 
+                            
+                            var fx = instance_create_layer(fx_x, fx_y, "Instances", obj_combo_effect);
+                            fx.sprite_index = spr_block; 
+                            fx.image_xscale = 2;
+                            fx.image_yscale = 2;
+
+                        } 
+                        // ==========================================
+                        // RESOLVE NORMAL DAMAGE
+                        // ==========================================
+                        else {
+                            if (armor > 0) {
+                                var absorbed = min(armor, p_dmg);
+                                armor -= absorbed;
+                                p_dmg -= absorbed;
+                            }
+
+                            if (p_dmg > 0) hp -= p_dmg;
+
+                            if (is_combo) {
+                                knockback_hsp = lengthdir_x(10, p_dir); 
+                                knockback_vsp = lengthdir_y(6, p_dir);
+                                
+                                hitstun_timer = 15;
+                                hurt_timer = 15;
+                                global.hitpause = 12; 
+                                
+                                var fx_x = x - lengthdir_x(10, p_dir) + 15;
+                                var fx_y = y - lengthdir_y(10, p_dir) - 50;
+                                
+                                var fx = instance_create_layer(fx_x, fx_y, "Instances", obj_combo_effect);
+                                fx.image_xscale = p_scale * 2; 
+                                fx.image_yscale = p_scale * 2;
+                                
+                                fx.sprite_index = Anim_Slash_Melee; 
+                                
+                                if (variable_struct_exists(other.current_weapon_data, "combo_fx")) {
+                                    fx.sprite_index = other.current_weapon_data.combo_fx;
+                                }
+                            } else {
+                                knockback_hsp = lengthdir_x(6, p_dir);
+                                knockback_vsp = lengthdir_y(4, p_dir);
+                                
+                                hitstun_timer = 10;
+                                hurt_timer = 10;
+                                global.hitpause = 6; 
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        // ---------- RANGED ----------
+        else {
+            var spawn_y = y - 45; 
+            
+            var proj = instance_create_layer(
+                x + lengthdir_x(20, aim_dir),
+                spawn_y + lengthdir_y(20, aim_dir), 
+                "Instances",
+                obj_projectile
+            );
+
+            proj.direction = aim_dir;
+            proj.speed = 10;
+            proj.damage = damage;
+            proj.weapon_data = current_weapon_data;
+            proj.owner_id = id;
+            proj.owner_player = owner_player;
+        }
     }
-} // <--- THIS is the closing bracket that was missing!
+}
 
 // =====================================================
 // 12. POISON
@@ -582,61 +553,64 @@ if (!variable_instance_exists(id, "poison_tick")) poison_tick = 0;
 if (!variable_instance_exists(id, "poison_damage")) poison_damage = 100;
 
 if (poison_timer > 0) {
+    poison_timer--;
+    poison_tick++;
 
-    poison_timer--;
-    poison_tick++;
+    if (poison_tick >= 15) {
+        var dmg = poison_damage;
+        if (armor > 0) {
+            var absorbed = min(armor, dmg);
+            armor -= absorbed;
+            dmg -= absorbed;
+        }
+        if (dmg > 0) hp -= dmg;
 
-    if (poison_tick >= 15) {
-
-        var dmg = poison_damage;
-
-        if (armor > 0) {
-            var absorbed = min(armor, dmg);
-            armor -= absorbed;
-            dmg -= absorbed;
-        }
-
-        if (dmg > 0) hp -= dmg;
-
-        hurt_timer = 10;
-        poison_tick = 0;
-    }
+        hurt_timer = 10;
+        poison_tick = 0;
+    }
 }
-
 
 // =====================================================
 // 13. HURT FLASH
 // =====================================================
 if (hurt_timer > 0) {
-    hurt_timer--;
-    image_blend = c_red;
+    hurt_timer--;
+    image_blend = c_red;
 } else {
-    image_blend = c_white;
+    image_blend = c_white;
 }
 
 // =====================================================
-// 14. ANIMATION RESOLUTION
+// 14. ANIMATION RESOLUTION & SPEED RECOVERY
 // =====================================================
 if (state == "alive") {
     
-    // 1. Attack Animation (Overrides Movement)
-    // If the attack is on cooldown, we assume the player is currently swinging/shooting
+    // 1. Attack Animation
     if (attack_cooldown > 0) {
-        sprite_index = spr_move;
-    } 
+        if (current_attack_type == "combo") {
+            sprite_index = spr_combo;
+        } else {
+            sprite_index = spr_move; 
+        }
+        
+        var total_frames = sprite_get_number(sprite_index);
+        var original_cooldown = max(cooldown, 1); 
+        
+        image_speed = total_frames / original_cooldown; 
+    }
     // 2. Normal Movement
     else {
-        // ---------- SIDE VIEW (ARENA) ----------
+        image_speed = 1; 
+
         if (room == rm_arena) {
             if (!on_ground) {
                 sprite_index = spr_jump;
             } else if (h != 0) {
                 sprite_index = spr_move;
             } else {
-                sprite_index = sprite; // This maps to your base 'sprite'
+                sprite_index = sprite; 
             }
         } 
-        // ---------- TOP-DOWN (CRAWLER) ----------
         else {
             if (h != 0 || v != 0) {
                 sprite_index = spr_move;
@@ -645,7 +619,4 @@ if (state == "alive") {
             }
         }
     }
-    
-    // Ensure animation plays at normal speed
-    image_speed = 1; 
 }

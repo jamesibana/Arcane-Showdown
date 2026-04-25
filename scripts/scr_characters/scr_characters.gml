@@ -1,8 +1,8 @@
 global.characters = [
     {
         name: "Vanguard Knight",
-        hp: 100,
-		armor: 40,
+        hp: 300,
+		armor: 120,
         speed: 5,
         luck: 1.0,
         desc: "Basic default fighter",
@@ -15,8 +15,8 @@ global.characters = [
     },
 	   {
         name: "Iron Colossus",
-        hp: 100,
-		armor: 60,
+        hp: 300,
+		armor: 180,
         speed: 3.5,
         luck: 0.9,
         desc: "Slow tank with high durability",
@@ -29,8 +29,8 @@ global.characters = [
     },
     {
         name: "Assassin",
-        hp: 100,
-		armor: 20,
+        hp: 300,
+		armor: 60,
         speed: 6.5,
         luck: 1.0,
         desc: "Speedy but fragile fighter",
@@ -43,8 +43,8 @@ global.characters = [
     },
     {
         name: "Warlock",
-        hp: 100,
-		armor: 36,
+        hp: 300,
+		armor: 108,
         speed: 4.5,
         luck: 1.3,
         desc: "High-luck warrior",

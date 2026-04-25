@@ -30,6 +30,15 @@ zone_y = room_height / 2;
 zone_w = room_width;
 zone_h = room_height;
 
+// Add a buffer so the billows start hidden.
+// room_width + (billow_size * 2) covers the wave peaks.
+// Adding an extra 100-200px ensures it's truly off-screen.
+var spawn_buffer = 20; 
+zone_w = room_width + (45 * 2) + spawn_buffer; 
+
+// Keep height the same if you aren't shrinking vertically
+zone_h = room_height;
+
 min_w = 600;
 min_h = 600;
 
@@ -42,3 +51,5 @@ dmg_tick = 0;
 zone_interval = room_speed * 6; // starts at 6 seconds
 zone_timer = zone_interval;
 zone_steps = 0;
+
+storm_active_timer = 0;

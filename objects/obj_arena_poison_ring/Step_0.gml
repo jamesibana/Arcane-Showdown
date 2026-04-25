@@ -3,6 +3,14 @@
 // ============================
 if (room != rm_arena) exit;
 
+// =====================================================
+// ROUND ACTIVE CHECK
+// =====================================================
+if (!global.round_active || global.round_over) exit;
+
+// 🕒 NEW: Increase the storm timer only when the round is active
+storm_active_timer++;
+
 // ============================
 // BOUNDS CALCULATION
 // ============================
@@ -37,6 +45,27 @@ if (zone_timer <= 0) {
     if (zone_steps mod 2 == 0) {
         zone_interval = max(room_speed * 1.5, zone_interval - room_speed);
     }
+}
+
+// =====================================================
+// 🌪️ POISON RING TRACKER & WIND PULL
+// =====================================================
+var pull_force = 1.5; 
+
+with (obj_player1) {
+    // 1. Reset the ring flag every frame
+    if (!variable_instance_exists(id, "in_poison_ring")) in_poison_ring = false;
+    in_poison_ring = false; 
+    
+    // 2. Apply wind and flag the player if they are in the storm
+    if (x < other.left) {
+        in_poison_ring = true;
+        if (!place_meeting(x - pull_force, y, obj_wall_segment)) x -= pull_force; 
+    } 
+    else if (x > other.right) {
+        in_poison_ring = true;
+        if (!place_meeting(x + pull_force, y, obj_wall_segment)) x += pull_force; 
+    } 
 }
 
 // ============================

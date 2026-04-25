@@ -13,9 +13,9 @@ home_x = x;
 home_y = y;
 leash_max = 160;
 
-attack_damage = 8;   // 👈 change per enemy
+attack_damage = 245;   // 👈 change per enemy
 attack_range  = 20;  // optional but recommended
-attack_speed  = 50;  // cooldown
+attack_speed  = 65;  // cooldown
 
 sprite_index = spr_Elite_Obelisk; // IMPORTANT
 //==================================================

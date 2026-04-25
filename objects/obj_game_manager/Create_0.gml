@@ -107,7 +107,8 @@ poison_spray: {
     proj_speed: 2,
     cloud_lifetime: 120,
     poison_tick: 10,
-    poison_damage: 2
+    poison_damage: 1.75,
+	slow_multiplier: 0.6
 },
 
     blow_dart: {
