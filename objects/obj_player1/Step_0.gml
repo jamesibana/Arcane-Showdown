@@ -636,7 +636,7 @@ if (state == "alive") {
                     follow_speed = 0.8; // Heavy recovery
                     break;
                     
-                case Anim_Combo_Assasin:
+                case Anim_Combo_Assassin:
                     windup_speed = 3.5; // Blindingly fast windup
                     follow_speed = 0.8; // Quick recovery (can dodge away sooner)
                     break;

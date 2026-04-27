@@ -35,11 +35,11 @@ global.characters = [
         luck: 1.0,
         desc: "Speedy but fragile fighter",
 		unlock_wins: 5,
-		sprite: char_player3_Assasin,
+		sprite: char_player3_Assassin,
 		
-		spr_move: Anim_Rwalk_Assasin,
-		spr_jump: Anim_Jump_Assasin,
-		spr_combo: Anim_Combo_Assasin
+		spr_move: Anim_Rwalk_Assassin,
+		spr_jump: Anim_Jump_Assassin,
+		spr_combo: Anim_Combo_Assassin
     },
     {
         name: "Warlock",
