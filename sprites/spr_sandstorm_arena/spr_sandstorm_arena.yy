@@ -12,9 +12,9 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"c3e2b3a9-3d05-435a-9fa1-5a359ebd0882","name":"c3e2b3a9-3d05-435a-9fa1-5a359ebd0882","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"v1","%Name":"567d4449-eee1-4871-8caf-99afaf70aed5","name":"567d4449-eee1-4871-8caf-99afaf70aed5","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"v1","%Name":"3dfceea1-f8d0-4aac-a685-ffc194bdf820","name":"3dfceea1-f8d0-4aac-a685-ffc194bdf820","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"771824f3-70a2-48f6-ac4b-e69d10f83e3c","name":"771824f3-70a2-48f6-ac4b-e69d10f83e3c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"be32e97f-fb23-4b28-8212-70be6037b874","name":"be32e97f-fb23-4b28-8212-70be6037b874","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"f8ced3ce-70dd-4153-8c00-7e30d245f401","name":"f8ced3ce-70dd-4153-8c00-7e30d245f401","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -61,7 +61,7 @@
     },
     "name":"spr_sandstorm_arena",
     "playback":1,
-    "playbackSpeed":12.0,
+    "playbackSpeed":8.0,
     "playbackSpeedType":0,
     "resourceType":"GMSequence",
     "resourceVersion":"2.0",
@@ -71,14 +71,14 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"c3e2b3a9-3d05-435a-9fa1-5a359ebd0882","path":"sprites/spr_sandstorm_arena/spr_sandstorm_arena.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"92ea7e40-2c2d-4335-a7d8-4510bfaf3a78","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"771824f3-70a2-48f6-ac4b-e69d10f83e3c","path":"sprites/spr_sandstorm_arena/spr_sandstorm_arena.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"3dba1d4d-168b-48a0-ac19-1fb30604aabb","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"567d4449-eee1-4871-8caf-99afaf70aed5","path":"sprites/spr_sandstorm_arena/spr_sandstorm_arena.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"47eab399-d27e-4373-9c47-3a73996985cc","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"be32e97f-fb23-4b28-8212-70be6037b874","path":"sprites/spr_sandstorm_arena/spr_sandstorm_arena.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"1b781ab0-734a-4eb7-bad0-3b24fa26be30","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"3dfceea1-f8d0-4aac-a685-ffc194bdf820","path":"sprites/spr_sandstorm_arena/spr_sandstorm_arena.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"d74bd6a8-37ab-4f40-b6d0-5055f3557438","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"f8ced3ce-70dd-4153-8c00-7e30d245f401","path":"sprites/spr_sandstorm_arena/spr_sandstorm_arena.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"05759580-b5b6-4641-bfa3-8a22bd1a6764","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

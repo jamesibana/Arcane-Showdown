@@ -13,7 +13,7 @@
   "For3D":false,
   "frames":[
     {"$GMSpriteFrame":"v1","%Name":"7002d718-a7ce-4a0c-8da7-f9fe99f0eac1","name":"7002d718-a7ce-4a0c-8da7-f9fe99f0eac1","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"v1","%Name":"ce9f3499-2a6c-48c9-84b7-762c90c9210c","name":"ce9f3499-2a6c-48c9-84b7-762c90c9210c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"2fe17b94-4efa-4721-8fc3-9bfbb2364e6e","name":"2fe17b94-4efa-4721-8fc3-9bfbb2364e6e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"v1","%Name":"56a33967-7cd6-4707-94e0-fecbb8c547a5","name":"56a33967-7cd6-4707-94e0-fecbb8c547a5","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"v1","%Name":"2ed12cf9-0361-4c02-8c92-6fa8151295b0","name":"2ed12cf9-0361-4c02-8c92-6fa8151295b0","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"v1","%Name":"76bcda7b-93e1-40ac-b020-5775db80656a","name":"76bcda7b-93e1-40ac-b020-5775db80656a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
@@ -76,8 +76,8 @@
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"7002d718-a7ce-4a0c-8da7-f9fe99f0eac1","path":"sprites/Anim_Slash_Melee/Anim_Slash_Melee.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"08a2c4d3-ab48-4ee3-88a2-3e25226d816a","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"ce9f3499-2a6c-48c9-84b7-762c90c9210c","path":"sprites/Anim_Slash_Melee/Anim_Slash_Melee.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"48523adf-be2d-4469-bd57-a84869dabb2b","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"2fe17b94-4efa-4721-8fc3-9bfbb2364e6e","path":"sprites/Anim_Slash_Melee/Anim_Slash_Melee.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"7a9449a2-14ea-40a6-8d83-b0f0dc923fc2","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"56a33967-7cd6-4707-94e0-fecbb8c547a5","path":"sprites/Anim_Slash_Melee/Anim_Slash_Melee.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"6e903ef6-e395-46d9-ada5-b56a6ebf59ea","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
