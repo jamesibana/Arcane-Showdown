@@ -250,10 +250,35 @@ if (poison_timer > 0) {
     poison_tick++;
 
     if (poison_tick >= 15) {
+        
+        // 1. Calculate the enemy-specific tweaked damage!
+        var dmg_to_show = (poison_damage * 0.67); 
 
-        hp -= poison_damage;
+        // 2. Resolve Armor (Just in case you give slimes armor later!)
+        if (variable_instance_exists(id, "armor") && armor > 0) {
+            var absorbed = min(armor, dmg_to_show);
+            armor -= absorbed;
+            dmg_to_show -= absorbed;
+        }
+        
+        // 3. Subtract HP
+        if (dmg_to_show > 0) {
+            hp -= dmg_to_show;
+        }
+        
+        // 🛑 4. SPAWN THE FLOATING TEXT!
+        if (dmg_to_show > 0) {
+            var float_x = x + random_range(-10, 10);
+            var float_y = y - 40; // Spawns lower since it's a small slime
+            
+            var float_text = instance_create_layer(float_x, float_y, "Instances", obj_damage_indicator);
+            
+            // Optional: Use round() if you don't want decimals like "0.67" floating on screen!
+            float_text.damage = round(dmg_to_show); 
+            float_text.color = c_fuchsia; // Purple poison color!
+        }
+
         hurt_timer = 10;
-
         poison_tick = 0;
     }
 }

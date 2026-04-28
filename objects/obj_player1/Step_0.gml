@@ -842,7 +842,7 @@ if (state == "alive") {
         if (current_attack_type == "combo") {
             switch (sprite_index) {
                 case Anim_Combo_Knight:
-                    windup_speed = 3.2; 
+                    windup_speed = 3.6; 
                     follow_speed = 0.8; 
                     break;
                 case Anim_Combo_Assassin:

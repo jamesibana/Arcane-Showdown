@@ -1,7 +1,7 @@
 //==================================================
 
-hp = 50;
-move_speed = 1.5 * random_range(0.8, 1.2);
+hp = 45;
+move_speed = 1.3 * random_range(0.8, 1.2);
 armor = 0;
 
 // Aggro system

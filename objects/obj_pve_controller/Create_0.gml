@@ -1,4 +1,4 @@
-pve_timer = room_speed * 90; //90 sec timer
+pve_timer = room_speed * 120; //120 sec timer
 
 // safety check
 if (!is_struct(global.p1_character) || !is_struct(global.p2_character)) {
