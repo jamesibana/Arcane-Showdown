@@ -678,7 +678,7 @@ if (state == "alive") {
                     follow_speed = 0.45; 
                     break;
                 case Anim_Combo_Colossus:
-                    windup_speed = 3.2; 
+                    windup_speed = 8.2; 
                     follow_speed = 0.8; 
                     break;
                 case Anim_Combo_Warlock:
