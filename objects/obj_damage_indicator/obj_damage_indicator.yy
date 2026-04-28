@@ -1,24 +1,19 @@
 {
   "$GMObject":"",
-  "%Name":"obj_player1",
+  "%Name":"obj_damage_indicator",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":2,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":4,"eventType":7,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_player1",
+  "name":"obj_damage_indicator",
   "overriddenProperties":[],
   "parent":{
-    "name":"characters",
-    "path":"folders/characters.yy",
+    "name":"object functions",
+    "path":"folders/object functions.yy",
   },
-  "parentObjectId":{
-    "name":"obj_damageable",
-    "path":"objects/obj_damageable/obj_damageable.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -37,9 +32,6 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":null,
-  "spriteMaskId":{
-    "name":"spr_player_mask",
-    "path":"sprites/spr_player_mask/spr_player_mask.yy",
-  },
+  "spriteMaskId":null,
   "visible":true,
 }

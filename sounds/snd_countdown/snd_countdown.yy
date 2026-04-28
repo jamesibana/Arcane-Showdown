@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"snd_bow",
+  "%Name":"snd_countdown",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,17 +10,17 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":1.3449659,
+  "duration":4.2880273,
   "exportDir":"",
-  "name":"snd_bow",
+  "name":"snd_countdown",
   "parent":{
-    "name":"ranged",
-    "path":"folders/sound effects/ranged.yy",
+    "name":"sound effects",
+    "path":"folders/sound effects.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_bow.mp3",
-  "volume":0.25,
+  "soundFile":"snd_countdown.mp3",
+  "volume":0.24,
 }

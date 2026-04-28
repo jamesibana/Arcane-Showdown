@@ -294,3 +294,27 @@ if (global.round_over) {
         }
     }
 }
+
+// =====================================================
+// ARENA COUNTDOWN AUDIO (FOOLPROOF FLAG)
+// =====================================================
+if (room == rm_arena && !global.round_over) {
+    
+    // 1. Safety Init: Create a lock so it only plays once per round
+    if (!variable_instance_exists(id, "countdown_played")) countdown_played = false;
+    
+    // 2. Are we currently in the pre-round countdown phase?
+    if (!global.round_active && global.start_timer > 0) {
+        
+        // 3. Have we played the sound yet?
+        if (!countdown_played) {
+            audio_play_sound(snd_countdown, 1, false);
+            countdown_played = true; // 🔒 LOCK THE DOOR!
+        }
+        
+    } 
+    // 4. Reset the lock once the round officially starts!
+    else if (global.round_active) {
+        countdown_played = false; // Ready for Round 2!
+    }
+}

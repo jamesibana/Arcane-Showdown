@@ -123,12 +123,28 @@ if (state == "attack") {
                 if (!variable_instance_exists(id, "armor")) armor = 0;
                 if (!variable_instance_exists(id, "hp")) hp = 1;
 
+                // 🛑 Save the damage before armor eats it!
+                var dmg_to_show = dmg;
+
                 if (armor > 0) {
                     var absorbed = min(armor, dmg);
                     armor -= absorbed;
                     dmg -= absorbed;
                 }
-                if (dmg > 0) hp -= dmg;
+                
+                if (dmg > 0) {
+                    hp -= dmg; 
+                }
+                
+                // 🛑 SPAWN THE TEXT (EXACTLY ONCE!)
+                if (dmg_to_show > 0) {
+                    var float_x = x + random_range(-15, 15);
+                    var float_y = y - 70; // High up so it clears the player sprite
+                    
+                    var float_text = instance_create_layer(float_x, float_y, "Instances", obj_damage_indicator);
+                    float_text.damage = dmg_to_show;
+                    float_text.color = c_yellow; 
+                }
 
                 hurt_timer = 10;
             }
@@ -185,6 +201,27 @@ if (state != "attack" && state != "dead") {
     }
 }
 
+// =====================================================
+// 🫧 NEW: SOFT COLLISION (PERSONAL SPACE BUBBLE)
+// =====================================================
+if (state == "chase" || state == "return") {
+    
+    // Look for another enemy of this exact same type right where we are standing
+    var neighbor = instance_place(x, y, object_index);
+    
+    if (neighbor != noone && neighbor.id != id) {
+        
+        // Figure out which way to push away from the neighbor
+        var push_dir = point_direction(neighbor.x, neighbor.y, x, y);
+        
+        // ⚙️ ADJUST THIS: How hard they push each other apart (0.3 to 0.8 is usually best)
+        var push_force = 0.5; 
+        
+        // Gently add the push force to our current movement speed!
+        hsp += lengthdir_x(push_force, push_dir);
+        vsp += lengthdir_y(push_force, push_dir);
+    }
+}
 
 // =====================================================
 // 🧱 COLLISION MOVE

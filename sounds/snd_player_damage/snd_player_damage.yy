@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"snd_bow",
+  "%Name":"snd_player_damage",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,17 +10,17 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":1.3449659,
+  "duration":0.7089796,
   "exportDir":"",
-  "name":"snd_bow",
+  "name":"snd_player_damage",
   "parent":{
-    "name":"ranged",
-    "path":"folders/sound effects/ranged.yy",
+    "name":"sound effects",
+    "path":"folders/sound effects.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_bow.mp3",
-  "volume":0.25,
+  "soundFile":"snd_player_damage.mp3",
+  "volume":0.3,
 }

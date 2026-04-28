@@ -61,8 +61,8 @@ if (!is_poison) {
             y = ny;
             exit;
         }
-		
-		// ==========================================
+        
+        // ==========================================
         // 🛑 NEW: DISABLE PVP IN CRAWLER ROOM
         // ==========================================
         if (hit.object_index == obj_player1 && room != rm_arena) {
@@ -71,24 +71,17 @@ if (!is_poison) {
             exit; // Ignore the player and let the bullet keep flying!
         }
 
-with (hit) {
+        with (hit) {
             var dmg = other.damage;
 
             // ==========================================
-            // 🏹 NEW: REVERSE DAMAGE FALLOFF (DISTANCE SCALING)
+            // 🏹 REVERSE DAMAGE FALLOFF (DISTANCE SCALING)
             // ==========================================
             if (variable_struct_exists(other.weapon_data, "distance_scaling") && other.weapon_data.distance_scaling == true) {
                 
-                // Safely ensure max_range exists (fallback to 400 if it somehow doesn't)
                 var safe_max_range = variable_instance_exists(other.id, "max_range") ? other.max_range : 400;
-                
-                // GameMaker automatically tracks where an object was spawned using xstart and ystart!
                 var dist = point_distance(other.xstart, other.ystart, other.x, other.y);
-                
-                // Convert the distance into a percentage (0.0 = point-blank, 1.0 = max range)
                 var travel_pct = clamp(dist / safe_max_range, 0, 1);
-                
-                // lerp() smoothly blends between 67% (0.67) and 100% (1.0) based on how far it traveled
                 var multiplier = lerp(0.67, 1.0, travel_pct);
                 
                 dmg = dmg * multiplier;
@@ -104,24 +97,45 @@ with (hit) {
             if (!variable_instance_exists(id, "armor")) armor = 0;
             if (!variable_instance_exists(id, "hp")) hp = 1;
 
+            // 🛑 THE FIX: Save the damage BEFORE armor eats it!
+            var dmg_to_show = dmg; 
+
+            // Resolve Armor
             if (armor > 0) {
                 var absorbed = min(armor, dmg);
                 armor -= absorbed;
                 dmg -= absorbed;
             }
             
+            // Resolve HP
             if (dmg > 0) hp -= dmg;
+
+            // 🛑 NEW: SPAWN THE FLOATING TEXT!
+            if (dmg_to_show > 0) {
+                
+                var spawn_height = 40; 
+                if (object_index == obj_player1) spawn_height = 180; // Taller for players!
+                
+                var float_x = x + random_range(-15, 15);
+                var float_y = y - spawn_height;
+                
+                var float_text = instance_create_layer(float_x, float_y, "Instances", obj_damage_indicator);
+                
+                // 🎯 round() ensures it prints "7" instead of "6.73" from the distance scaling math!
+                float_text.damage = round(dmg_to_show); 
+                float_text.color = c_white; 
+            }
 
             hurt_timer = 10;
         }
-		global.hitpause = 4;
+        
+        global.hitpause = 4;
         instance_destroy();
         exit;
     }
 
     x = nx;
     y = ny;
-
     image_angle = direction - 45;
 
     exit;

@@ -1,7 +1,7 @@
 //==================================================
 
 hp = 70;
-move_speed = 1.5;
+move_speed = 1.5 * random_range(0.8, 1.2);
 armor = 0;
 
 // Aggro system
@@ -47,6 +47,14 @@ image_blend = c_white;
 
 image_alpha = 1
 
-
-
 poison_damage = 1;
+
+// =====================================================
+// 🎬 ANIMATION & SPRITES
+// =====================================================
+spr_idle   = spr_Fodder_Minion;       // Base/Idle sprite
+spr_walk   = spr_Fodder_Minion;  // 👈 Change this to your walk sprite!
+spr_attack = spr_Fodder_Minion;// 👈 Change this to your attack sprite!
+
+attack_hit_frame = 0; // The frame of animation where the damage actually happens!
+damage_dealt = false; // Prevents the slime from hitting multiple times in one swing

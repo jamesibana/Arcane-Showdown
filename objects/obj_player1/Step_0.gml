@@ -33,6 +33,36 @@ if (!variable_instance_exists(id, "poison_damage")) poison_damage = 100;
 if (!variable_instance_exists(id, "poison_slow_mult")) poison_slow_mult = 1;
 if (!variable_instance_exists(id, "in_poison_ring")) in_poison_ring = false;
 
+// =====================================================
+// 0.5 INSTANT DAMAGE AUDIO TRACKER
+// =====================================================
+// Calculate total health pool (HP + Armor) safely
+var current_vitality = hp;
+if (variable_instance_exists(id, "armor")) current_vitality += armor;
+
+if (!variable_instance_exists(id, "prev_vitality")) prev_vitality = current_vitality;
+if (!variable_instance_exists(id, "is_poison_damage")) is_poison_damage = false;
+
+// Did our total health/armor pool drop this frame?
+if (current_vitality < prev_vitality) {
+    
+    var hurt_snd = audio_play_sound(snd_player_damage, 1, false);
+    
+    // 🟢 IF POISON: Lower the volume to 15% and make it slightly higher pitched
+    if (is_poison_damage) {
+        audio_sound_gain(hurt_snd, 0.15, 0); // 👈 Change 0.15 to 0.0 to completely mute it!
+        audio_sound_pitch(hurt_snd, random_range(1.2, 1.4));
+        
+        is_poison_damage = false; // Reset the flag so swords are loud again!
+    } 
+    // 🔴 IF NORMAL HIT: Full volume, heavy crunch
+    else {
+        audio_sound_gain(hurt_snd, 1.0, 0); 
+        audio_sound_pitch(hurt_snd, random_range(0.9, 1.1));
+    }
+}
+
+prev_vitality = current_vitality;
 
 // =====================================================
 // HIT PAUSE FREEZE
@@ -53,6 +83,40 @@ if (hp <= 0 && state != "dead") {
     vsp = 0;
     image_speed = 0;
     image_blend = c_red;
+
+    // ==========================================
+    // 🔊 K.O. AUDIO SEQUENCE
+    // ==========================================
+    
+    // 1. Play the instant heavy impact effect (Plays in Crawler & Arena)
+    var effect = audio_play_sound(snd_ko_effect, 1, false);
+    audio_sound_pitch(effect, random_range(0.9, 1.1)); // Slight variance for juice!
+
+    // 2. Announcer logic (Only plays in the Arena!)
+    if (room == rm_arena) {
+        
+        // Check if this death ends the entire match.
+        // Assuming your GameManager deducts lives AFTER death, if they are 
+        // currently at 1 life, this death means they hit 0 and lose the match!
+        var is_match_end = false;
+        if (owner_player == 1 && global.p1_lives <= 1) is_match_end = true;
+        if (owner_player == 2 && global.p2_lives <= 1) is_match_end = true;
+
+        // ⚙️ ADJUST THIS: How many frames before the announcer speaks? (60 = 1 second)
+        var announcer_delay = 140; 
+
+        if (is_match_end) {
+            // 🏆 MATCH END!
+            call_later(announcer_delay, time_source_units_frames, function() {
+                audio_play_sound(snd_match_end, 1, false);
+            });
+        } else {
+            // 🥊 NORMAL ROUND K.O.
+            call_later(announcer_delay, time_source_units_frames, function() {
+                audio_play_sound(snd_ko_announce, 1, false);
+            });
+        }
+    }
 }
 
 // =====================================================
@@ -567,13 +631,46 @@ if (attack_startup_timer > 0) {
                         // RESOLVE NORMAL DAMAGE
                         // ==========================================
                         else {
+                            // 🛑 THE FIX: Save the damage BEFORE armor absorbs it!
+                            var dmg_to_show = p_dmg; 
+
                             if (armor > 0) {
                                 var absorbed = min(armor, p_dmg);
                                 armor -= absorbed;
                                 p_dmg -= absorbed;
                             }
 
-                            if (p_dmg > 0) hp -= p_dmg;
+                            if (p_dmg > 0) {
+                                hp -= p_dmg;
+                            }
+
+                            // 🛑 THE NEW FCT LOGIC! (Checks dmg_to_show instead of p_dmg)
+                            if (dmg_to_show > 0) {
+                                
+                                // 🎯 NEW: Check who we just hit!
+                                var spawn_height = 40; // Default height for small monsters
+                                
+                                // If the target is a player in the Arena, make the text spawn higher!
+                                if (object_index == obj_player1) {
+                                    spawn_height = 180; // Taller height for players!
+                                }
+                                
+                                // Add random horizontal spread so rapid-fire hits don't overlap
+                                var float_x = x + random_range(-15, 15);
+                                var float_y = y - spawn_height;
+                                
+                                // Spawn the text!
+                                var float_text = instance_create_layer(float_x, float_y, "Instances", obj_damage_indicator);
+                                float_text.damage = dmg_to_show; // 👈 Pass the full damage number!
+                                
+                                // Make standard attacks white, and heavy combos red!
+                                if (is_combo) {
+                                    float_text.color = c_red;
+                                    float_text.scale = 1.0; 
+                                } else {
+                                    float_text.color = c_white;
+                                }
+                            }
 
                             if (is_combo) {
                                 knockback_hsp = lengthdir_x(10, p_dir); 
@@ -671,13 +768,39 @@ if (poison_timer > 0) {
     poison_tick++;
 
     if (poison_tick >= 15) {
+        
+        is_poison_damage = true; 
+        
         var dmg = poison_damage;
+        // 🛑 THE FIX: Save the damage before armor absorbs it!
+        var dmg_to_show = dmg; 
+        
         if (armor > 0) {
             var absorbed = min(armor, dmg);
             armor -= absorbed;
             dmg -= absorbed;
         }
-        if (dmg > 0) hp -= dmg;
+        
+        if (dmg > 0) {
+            hp -= dmg;
+        }
+
+        // 🛑 NEW: SPAWN THE POISON FLOATING TEXT!
+        if (dmg_to_show > 0) {
+            
+            var spawn_height = 40; 
+            if (object_index == obj_player1) spawn_height = 180; // Taller for players!
+            
+            var float_x = x + random_range(-15, 15);
+            var float_y = y - spawn_height;
+            
+            var float_text = instance_create_layer(float_x, float_y, "Instances", obj_damage_indicator);
+            float_text.damage = dmg_to_show;
+            
+            // 🧪 Make poison text purple so it stands out from standard hits!
+            float_text.color = c_fuchsia; 
+            // (You can also change this to c_lime if you prefer green poison!)
+        }
 
         hurt_timer = 10;
         poison_tick = 0;
