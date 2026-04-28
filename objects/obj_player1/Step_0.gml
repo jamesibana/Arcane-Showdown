@@ -275,7 +275,7 @@ if (room == rm_arena) {
 
     // 1. Execute Jump first
     if (jump_pressed && on_ground) {
-        vsp = -10;
+        vsp = -14;
         on_ground = false; 
     }
 
@@ -320,9 +320,20 @@ else {
 }
 
 // =====================================================
-// 8. FACING
+// 8. FACING & SCALING (HITBOX FIX)
 // =====================================================
-if (h != 0) image_xscale = sign(h);
+var scale_mult = (room == rm_arena) ? 2 : 1;
+
+// Apply facing direction AND the scale multiplier to the built-in variables!
+if (h != 0) {
+    image_xscale = sign(h) * scale_mult;
+} else {
+    // If not moving, ensure we stay scaled but keep our current facing direction
+    image_xscale = sign(image_xscale == 0 ? 1 : image_xscale) * scale_mult; 
+}
+
+image_yscale = 1 * scale_mult;
+
 if (h != 0 || v != 0) {
     facing_dir = point_direction(0, 0, h, v);
 }
@@ -425,21 +436,23 @@ if (attack_startup_timer > 0) {
         
         var is_combo = (current_attack_type == "combo");
         
-        // Smart Aim fix included so Arena jumps don't shoot the floor!
-        var aim_dir = (room == rm_arena) ? ((image_xscale == 1) ? 0 : 180) : facing_dir;
+        // 🎯 THE FIX: Check if greater than 0 instead of exactly equal to 1!
+        var aim_dir = (room == rm_arena) ? ((image_xscale > 0) ? 0 : 180) : facing_dir;
+
+        var scale_mult = (room == rm_arena) ? 2 : 1;
 
         // ---------- MELEE ----------
         if (active_weapon_type == "melee") {
-
             var actual_damage = damage;
             if (is_combo && variable_struct_exists(current_weapon_data, "combo")) {
                 actual_damage = current_weapon_data.combo;
             }
 
+            // ⚔️ HITBOX FIX: Multiply offsets and range by the scale_mult!
             var hit = collision_circle(
-                x + lengthdir_x(20, aim_dir), 
-                y + lengthdir_y(20, aim_dir),
-                range,
+                x + lengthdir_x(20 * scale_mult, aim_dir), 
+                y + lengthdir_y(20 * scale_mult, aim_dir),
+                range * scale_mult, // Giant sword = Giant hitbox!
                 obj_damageable,
                 false,
                 true
@@ -495,13 +508,26 @@ if (attack_startup_timer > 0) {
                             other.hitstun_timer = 20;
                             other.hurt_timer = 20;
 
-                            var fx_x = ((x + other.x) / 2) - 50;
-                            var fx_y = ((y + other.y) / 2) - 60; 
+							var fx_x = ((x + other.x) / 2) - 60;
+                            var fx_y = ((y + other.y) / 2) - 120; 
                             
                             var fx = instance_create_layer(fx_x, fx_y, "Instances", obj_combo_effect);
                             fx.sprite_index = spr_block; 
-                            fx.image_xscale = 2;
-                            fx.image_yscale = 2;
+                            
+                            // 💥 MAKE IT MASSIVE
+                            fx.image_xscale = 3; // Bumped up from 2!
+                            fx.image_yscale = 3;
+                            
+                            // 🐌 MAKE IT LAST LONGER
+                            fx.image_speed = 0.075; 
+                            
+                            // 🎨 TINT THE GLOW (Optional but awesome)
+                            // Because it's using bm_add, tinting it yellow or orange makes it look like sparks!
+                            fx.image_blend = c_yellow; 
+                            
+                            // 🎲 RANDOM ROTATION
+                            // Tilting it slightly every time makes it feel incredibly chaotic and raw
+                            fx.image_angle = random_range(-25, 25);
 
                         } 
                         // ==========================================
@@ -551,11 +577,12 @@ if (attack_startup_timer > 0) {
         }
         // ---------- RANGED ----------
         else {
-            var spawn_y = y - 45; 
+            // 🏹 HITBOX FIX: Shoot from the giant's chest, not their knees!
+            var spawn_y = y - (45 * scale_mult); 
             
             var proj = instance_create_layer(
-                x + lengthdir_x(20, aim_dir),
-                spawn_y + lengthdir_y(20, aim_dir), 
+                x + lengthdir_x(20 * scale_mult, aim_dir),
+                spawn_y + lengthdir_y(20 * scale_mult, aim_dir), 
                 "Instances",
                 obj_projectile
             );
@@ -566,8 +593,12 @@ if (attack_startup_timer > 0) {
             proj.weapon_data = current_weapon_data;
             proj.owner_id = id;
             proj.owner_player = owner_player;
-        }
+            
+            // Scale the bullet up too so it doesn't look like a tiny pebble!
+            proj.image_xscale = scale_mult;
+            proj.image_yscale = scale_mult;
     }
+}
 }
 
 // =====================================================
