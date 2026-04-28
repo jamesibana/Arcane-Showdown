@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"snd_music",
+  "%Name":"snd_spear",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,17 +10,17 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":187.53307,
+  "duration":0.9969841,
   "exportDir":"",
-  "name":"snd_music",
+  "name":"snd_spear",
   "parent":{
-    "name":"music",
-    "path":"folders/music.yy",
+    "name":"melee",
+    "path":"folders/sound effects/melee.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_music.mp3",
-  "volume":0.18,
+  "soundFile":"snd_spear.mp3",
+  "volume":1.0,
 }

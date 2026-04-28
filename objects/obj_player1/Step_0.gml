@@ -452,10 +452,14 @@ if (attack_startup_timer > 0) {
 
         // ---------- MELEE ----------
         if (active_weapon_type == "melee") {
+            
             var actual_damage = damage;
             if (is_combo && variable_struct_exists(current_weapon_data, "combo")) {
                 actual_damage = current_weapon_data.combo;
             }
+
+            // 🛑 1. Create our hit confirm flag!
+            var hit_successful = false; 
 
             // ⚔️ HITBOX FIX: Multiply offsets and range by the scale_mult!
             var hit = collision_circle(
@@ -473,6 +477,9 @@ if (attack_startup_timer > 0) {
                 if (hit.object_index == obj_player1 && room != rm_arena) can_hurt = false;
 
                 if (can_hurt) {
+                    
+                    // 🛑 2. We hit a valid target! Flip the flag to true!
+                    hit_successful = true; 
                     
                     var p_dmg = actual_damage; 
                     var p_dir = aim_dir; 
@@ -506,6 +513,25 @@ if (attack_startup_timer > 0) {
                             other.clash_timer = 0;
 
                             global.hitpause = 15;
+							
+							// ==========================================
+                            // 🔊 NEW: DELAYED CLASH SOUND!
+                            // ==========================================
+                            // ⚙️ ADJUST THIS: How many frames to wait before the sound plays
+                            var sound_delay_frames = 5; 
+
+                            if (sound_delay_frames <= 0) {
+                                // Play instantly if delay is 0
+                                var clash_snd = audio_play_sound(snd_block, 1, false); 
+                                audio_sound_pitch(clash_snd, random_range(0.8, 1.1));
+                            } else {
+                                // Tell GameMaker to wait, and THEN play the sound!
+                                call_later(sound_delay_frames, time_source_units_frames, function() {
+                                    var clash_snd = audio_play_sound(snd_block, 1, false); 
+                                    audio_sound_pitch(clash_snd, random_range(0.8, 1.1));
+                                });
+                            }
+                            // ==========================================
 
                             knockback_hsp = lengthdir_x(15, p_dir); 
                             knockback_vsp = lengthdir_y(8, p_dir);
@@ -517,25 +543,23 @@ if (attack_startup_timer > 0) {
                             other.hitstun_timer = 20;
                             other.hurt_timer = 20;
 
-							var fx_x = ((x + other.x) / 2) - 60;
+                            var fx_x = ((x + other.x) / 2) - 60;
                             var fx_y = ((y + other.y) / 2) - 120; 
                             
                             var fx = instance_create_layer(fx_x, fx_y, "Instances", obj_combo_effect);
                             fx.sprite_index = spr_block; 
                             
                             // 💥 MAKE IT MASSIVE
-                            fx.image_xscale = 3; // Bumped up from 2!
+                            fx.image_xscale = 3; 
                             fx.image_yscale = 3;
                             
                             // 🐌 MAKE IT LAST LONGER
                             fx.image_speed = 0.075; 
                             
-                            // 🎨 TINT THE GLOW (Optional but awesome)
-                            // Because it's using bm_add, tinting it yellow or orange makes it look like sparks!
+                            // 🎨 TINT THE GLOW
                             fx.image_blend = c_yellow; 
                             
                             // 🎲 RANDOM ROTATION
-                            // Tilting it slightly every time makes it feel incredibly chaotic and raw
                             fx.image_angle = random_range(-25, 25);
 
                         } 
@@ -583,6 +607,22 @@ if (attack_startup_timer > 0) {
                     }
                 }
             }
+
+            // ==========================================
+            // 🔊 3. PLAY SOUNDS BASED ON HIT FLAG
+            // ==========================================
+            // Plays the heavy combo sound ONLY if it connected with flesh!
+            if (is_combo && hit_successful) {
+                var snd = audio_play_sound(snd_combo, 1, false);
+                audio_sound_pitch(snd, random_range(0.85, 1.0)); // Slightly deeper for impact
+            } else {
+                // Unique Normal Weapon Sound (plays for normal hits AND missed combos!)
+                if (variable_struct_exists(current_weapon_data, "attack_sound")) {
+                    var snd = audio_play_sound(current_weapon_data.attack_sound, 1, false);
+                    audio_sound_pitch(snd, random_range(0.9, 1.1)); 
+                }
+            }
+
         }
         // ---------- RANGED ----------
         else {
@@ -603,11 +643,20 @@ if (attack_startup_timer > 0) {
             proj.owner_id = id;
             proj.owner_player = owner_player;
             
+            // ==========================================
+            // 🔊 PLAY THE SHOOTING SOUND!
+            // ==========================================
+            if (variable_struct_exists(current_weapon_data, "shoot_sound")) {
+                var snd = audio_play_sound(current_weapon_data.shoot_sound, 1, false);
+                // Slightly randomize the pitch between 0.9 (deeper) and 1.1 (higher)
+                audio_sound_pitch(snd, random_range(0.9, 1.1)); 
+            }
+            
             // Scale the bullet up too so it doesn't look like a tiny pebble!
             proj.image_xscale = scale_mult;
             proj.image_yscale = scale_mult;
+        }
     }
-}
 }
 
 // =====================================================
@@ -678,8 +727,8 @@ if (state == "alive") {
                     follow_speed = 0.45; 
                     break;
                 case Anim_Combo_Colossus:
-                    windup_speed = 8.2; 
-                    follow_speed = 0.8; 
+                    windup_speed = 9.6; 
+                    follow_speed = 2.1; 
                     break;
                 case Anim_Combo_Warlock:
                     windup_speed = 2.25; 

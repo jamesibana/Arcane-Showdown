@@ -44,7 +44,8 @@ global.weapon_data = {
         cooldown: 60,
         range: 65,
 		combo: 26,
-		combo_fx: Anim_Slash_Melee
+		combo_fx: Anim_Slash_Melee,
+		attack_sound: snd_sword
     },
 
     dagger: {
@@ -54,7 +55,8 @@ global.weapon_data = {
         cooldown: 40,
         range: 35,
 		combo: 20,
-		combo_fx: Anim_Poke_Melee
+		combo_fx: Anim_Poke_Melee,
+		attack_sound: snd_dagger
     },
 
     spear: {
@@ -64,7 +66,8 @@ global.weapon_data = {
         cooldown: 80,
         range: 110,
 		combo: 22,
-		combo_fx: Anim_Poke_Melee
+		combo_fx: Anim_Poke_Melee,
+		attack_sound: snd_spear
     },
 
     mace: {
@@ -74,7 +77,8 @@ global.weapon_data = {
         cooldown: 88,
         range: 58,
 		combo: 32,
-		combo_fx: Anim_Hit_Melee
+		combo_fx: Anim_Hit_Melee,
+		attack_sound: snd_mace
     },
 
     bow: {
@@ -84,7 +88,8 @@ global.weapon_data = {
         damage: 24,
         cooldown: 65,
         range: 200,
-		distance_scaling: true
+		distance_scaling: true,
+		shoot_sound: snd_bow
     },
 
     crossbow: {
@@ -94,7 +99,8 @@ global.weapon_data = {
         damage: 53,
         cooldown: 140,
         range: 220,
-		distance_scaling: true
+		distance_scaling: true,
+		shoot_sound: snd_crossbow
     },
 
 poison_spray: {
@@ -104,6 +110,7 @@ poison_spray: {
     damage: 8,
     cooldown: 110,
     range: 40,
+	shoot_sound: snd_poison_spray,
 
     // 🔥 ADD THESE
     proj_speed: 2,
@@ -120,7 +127,8 @@ poison_spray: {
         damage: 10.6,
         cooldown: 30,
         range: 50,
-		distance_scaling: true
+		distance_scaling: true,
+		shoot_sound: snd_blow_dart
     }
 };
 

@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"snd_music_crawler",
   "parent":{
-    "name":"Arcane Showdown",
-    "path":"Arcane Showdown.yyp",
+    "name":"music",
+    "path":"folders/music.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

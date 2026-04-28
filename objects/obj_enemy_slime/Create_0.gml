@@ -50,3 +50,13 @@ image_alpha = 1
 
 
 poison_damage = 1;
+
+// =====================================================
+// 🎬 ANIMATION & SPRITES
+// =====================================================
+spr_idle   = spr_Fodder_Slime;       // Base/Idle sprite
+spr_walk   = Anim_Walk_Slime;  // 👈 Change this to your walk sprite!
+spr_attack = Anim_ATK_Slime;// 👈 Change this to your attack sprite!
+
+attack_hit_frame = 2; // The frame of animation where the damage actually happens!
+damage_dealt = false; // Prevents the slime from hitting multiple times in one swing

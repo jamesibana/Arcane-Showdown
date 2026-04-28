@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"snd_music",
+  "%Name":"snd_poison_spray",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,17 +10,17 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":187.53307,
+  "duration":2.5809977,
   "exportDir":"",
-  "name":"snd_music",
+  "name":"snd_poison_spray",
   "parent":{
-    "name":"music",
-    "path":"folders/music.yy",
+    "name":"ranged",
+    "path":"folders/sound effects/ranged.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_music.mp3",
-  "volume":0.18,
+  "soundFile":"snd_poison_spray.mp3",
+  "volume":1.0,
 }

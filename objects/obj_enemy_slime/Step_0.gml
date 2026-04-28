@@ -79,38 +79,68 @@ if (state == "alive") {
 }
 
 if (state == "chase") {
-	
-	target = instance_nearest(x, y, obj_player1);
+    
+    target = instance_nearest(x, y, obj_player1);
 
     if (target != noone) {
 
         var dist = point_distance(x, y, target.x, target.y);
 
-if (dist < attack_range) {
-
-    if (attack_cooldown <= 0) {
-
-        with (target) {
-            armor -= other.attack_damage;
-
-// safety fallback (prevents crashes)
-if (!variable_instance_exists(id, "armor")) armor = 0;
-if (!variable_instance_exists(id, "hp")) hp = 1;
-
-            if (armor < 0) armor = 0;
-
-            hurt_timer = 10;
+        // 🛑 NEW: Triggers the attack state instead of instant damage!
+        if (dist < attack_range) {
+            if (attack_cooldown <= 0) {
+                state = "attack";
+                sprite_index = spr_attack;
+                image_index = 0;
+                damage_dealt = false;
+            }
         }
-
-        attack_cooldown = attack_speed;
-    }
-}
     }
 
     attack_cooldown--;
 
     if (dist_to_player > aggro_exit) {
         state = "return";
+    }
+}
+
+// ⚔️ NEW: THE ATTACK STATE
+if (state == "attack") {
+    
+    // 1. Stop moving while attacking!
+    hsp = 0;
+    vsp = 0;
+    
+    // 2. Deal damage on the specific hit frame
+    if (floor(image_index) == attack_hit_frame && !damage_dealt) {
+        
+        target = instance_nearest(x, y, obj_player1);
+        
+        // Double check the player hasn't run away during the wind-up!
+        if (target != noone && point_distance(x, y, target.x, target.y) <= attack_range + 10) {
+            with (target) {
+                var dmg = other.attack_damage;
+                if (!variable_instance_exists(id, "armor")) armor = 0;
+                if (!variable_instance_exists(id, "hp")) hp = 1;
+
+                if (armor > 0) {
+                    var absorbed = min(armor, dmg);
+                    armor -= absorbed;
+                    dmg -= absorbed;
+                }
+                if (dmg > 0) hp -= dmg;
+
+                hurt_timer = 10;
+            }
+        }
+        
+        damage_dealt = true; // Mark as hit so it doesn't trigger again next frame
+    }
+    
+    // 3. End the attack when the animation finishes
+    if (image_index >= image_number - 1) {
+        state = "chase";
+        attack_cooldown = attack_speed;
     }
 }
 
@@ -123,23 +153,36 @@ if (state == "return") {
 
 
 // =====================================================
-// 🚶 MOVEMENT
+// 🚶 MOVEMENT & ANIMATION
 // =====================================================
 var hsp = 0;
 var vsp = 0;
 
 if (state == "chase" && target != noone) {
-
     var dir = point_direction(x, y, target.x, target.y);
     hsp = lengthdir_x(move_speed, dir);
     vsp = lengthdir_y(move_speed, dir);
 }
 
 if (state == "return") {
-
     var dir = point_direction(x, y, home_x, home_y);
     hsp = lengthdir_x(move_speed, dir);
     vsp = lengthdir_y(move_speed, dir);
+}
+
+// 🛑 NEW: Ensure no movement if attacking or dead
+if (state == "attack" || state == "dead") {
+    hsp = 0;
+    vsp = 0;
+}
+
+// 🎬 NEW: SWAP SPRITES BASED ON MOVEMENT
+if (state != "attack" && state != "dead") {
+    if (hsp != 0 || vsp != 0) {
+        sprite_index = spr_walk;
+    } else {
+        sprite_index = spr_idle;
+    }
 }
 
 
@@ -148,6 +191,7 @@ if (state == "return") {
 // =====================================================
 if (!place_meeting(x + hsp, y, obj_wall_segment)) x += hsp;
 if (!place_meeting(x, y + vsp, obj_wall_segment)) y += vsp;
+
 
 // =====================================================
 // 👀 FACING DIRECTION
@@ -158,6 +202,7 @@ if (hsp != 0) {
     // A negative hsp (moving left) becomes 1 (normal)
     image_xscale = -sign(hsp);
 }
+
 
 // =====================================================
 // ☠️ POISON DAMAGE
