@@ -87,7 +87,7 @@ global.weapon_data = {
         projectile_sprite: spr_Bow_Arrow,
         damage: 24,
         cooldown: 65,
-        range: 200,
+        range: 350,
 		distance_scaling: true,
 		shoot_sound: snd_bow
     },
@@ -96,9 +96,9 @@ global.weapon_data = {
         type: "ranged",
         sprite: spr_crossbow,
         projectile_sprite: spr_Metal_Arrow,
-        damage: 53,
+        damage: 45,
         cooldown: 140,
-        range: 220,
+        range: 500,
 		distance_scaling: true,
 		shoot_sound: snd_crossbow
     },
@@ -126,7 +126,7 @@ poison_spray: {
         projectile_sprite: spr_Quick_Dart,
         damage: 10.6,
         cooldown: 30,
-        range: 50,
+        range: 240,
 		distance_scaling: true,
 		shoot_sound: snd_blow_dart
     }
