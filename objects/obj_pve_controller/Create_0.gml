@@ -1,4 +1,4 @@
-pve_timer = room_speed * 60; //60 sec timer
+pve_timer = room_speed * 120; //120 sec timer
 
 // safety check
 if (!is_struct(global.p1_character) || !is_struct(global.p2_character)) {
@@ -9,11 +9,11 @@ if (!is_struct(global.p1_character) || !is_struct(global.p2_character)) {
 var mid = room_width / 2;
 
 // spawn players
-var p1 = instance_create_layer(mid/2, room_height/2, "Instances", obj_player1);
+var p1 = instance_create_layer(mid, room_height/2 - 100, "Instances", obj_player1);
 p1.owner_player = 1;
 p1.character_data = global.p1_character;
 
-var p2 = instance_create_layer(mid + mid/2, room_height/2, "Instances", obj_player1);
+var p2 = instance_create_layer(mid, room_height/2 + 100, "Instances", obj_player1);
 p2.owner_player = 2;
 p2.character_data = global.p2_character;
 
