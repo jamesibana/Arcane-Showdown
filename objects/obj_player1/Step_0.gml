@@ -140,6 +140,7 @@ if (!initialized && is_struct(character_data)) {
     spr_move = character_data.spr_move;
     spr_jump = character_data.spr_jump;
     spr_combo = character_data.spr_combo;
+	spr_attack = character_data.spr_attack;
     sprite_index = sprite; 
     
     // 📍 NEW: CAPTURE ENTRY STATS FOR ROUND RESETS
@@ -611,55 +612,50 @@ if (state == "alive") {
     
     // 1. Attack Animation
     if (attack_cooldown > 0) {
+        
+        // 🗡️ Differentiate between Combo and Normal Attack sprites
         if (current_attack_type == "combo") {
             sprite_index = spr_combo;
         } else {
-            sprite_index = spr_move; 
+            sprite_index = spr_attack; 
         }
         
         var total_frames = sprite_get_number(sprite_index);
-        var original_cooldown = max(cooldown, 1); 
-        
-        // We find the middle of the sprite to act as the "impact" point
         var impact_frame = floor(total_frames / 2); 
         
-        // ⚙️ DEFAULT SPEEDS
         var windup_speed = 1.0; 
         var follow_speed = 1.0; 
 
-        // 🎯 NEW: CLASS-SPECIFIC EASING
+        // 🎯 CLASS-SPECIFIC EASING
         if (current_attack_type == "combo") {
             switch (sprite_index) {
-                
                 case Anim_Combo_Knight:
-                    windup_speed = 3.2; // Fast windup
-                    follow_speed = 0.8; // Heavy recovery
+                    windup_speed = 3.2; 
+                    follow_speed = 0.8; 
                     break;
-                    
                 case Anim_Combo_Assassin:
-                    windup_speed = 3.5; // Blindingly fast windup
-                    follow_speed = 0.8; // Quick recovery (can dodge away sooner)
+                    windup_speed = 5.48; 
+                    follow_speed = 0.45; 
                     break;
-                    
                 case Anim_Combo_Colossus:
-                    windup_speed = 0.8; // Slow, menacing windup
-                    follow_speed = 0.2; // Massive, earth-shattering follow-through
+                    windup_speed = 3.2; 
+                    follow_speed = 0.8; 
                     break;
-                    
                 case Anim_Combo_Warlock:
-                    windup_speed = 1.5; // Smooth, magical cast
-                    follow_speed = 1.5; // Consistent speed through the whole animation
+                    windup_speed = 2.25; 
+                    follow_speed = 0.4; 
                     break;
             }
         } else {
-            // Optional: Give normal attacks a slight punchy feel too
             windup_speed = 1.5;
             follow_speed = 0.8;
         }
         
-        var base_speed = total_frames / original_cooldown; 
+        // 🛑 FIXED VISUAL DURATION
+        // Animation will always complete in exactly this many frames!
+        var visual_duration = 20; 
+        var base_speed = total_frames / visual_duration; 
         
-        // Apply the dynamic speeds based on which frame we are currently on
         if (image_index < impact_frame) {
             image_speed = base_speed * windup_speed;
         } else {

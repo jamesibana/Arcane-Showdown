@@ -65,7 +65,7 @@
     },
     "name":"Anim_ATK_Knight",
     "playback":1,
-    "playbackSpeed":12.0,
+    "playbackSpeed":48.0,
     "playbackSpeedType":0,
     "resourceType":"GMSequence",
     "resourceVersion":"2.0",

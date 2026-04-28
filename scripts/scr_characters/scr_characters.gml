@@ -11,7 +11,8 @@ global.characters = [
 		
 		spr_move: Anim_Rwalk_Knight,
 		spr_jump: Anim_Jump_Knight,
-		spr_combo: Anim_Combo_Knight
+		spr_combo: Anim_Combo_Knight,
+		spr_attack: Anim_ATK_Knight
     },
 	   {
         name: "Iron Colossus",
@@ -25,7 +26,8 @@ global.characters = [
 		
 		spr_move: Anim_Rwalk_Colossus,
 		spr_jump: Anim_Jump_Colossus,
-		spr_combo: Anim_Combo_Colossus
+		spr_combo: Anim_Combo_Colossus,
+		spr_attack: Anim_ATK_Colossus
     },
     {
         name: "Assassin",
@@ -39,7 +41,8 @@ global.characters = [
 		
 		spr_move: Anim_Rwalk_Assassin,
 		spr_jump: Anim_Jump_Assassin,
-		spr_combo: Anim_Combo_Assassin
+		spr_combo: Anim_Combo_Assassin,
+		spr_attack: Anim_ATK_Assassin
     },
     {
         name: "Warlock",
@@ -51,8 +54,9 @@ global.characters = [
 		unlock_wins: 8,
 		sprite: char_player2_Warlock,
 		
-		spr_move: spr_indicator_1,
-		spr_jump: spr_indicator_1,
-		spr_combo: spr_indicator_1
+		spr_move: Anim_Rwalk_Warlock,
+		spr_jump: Anim_Jump_Warlock,
+		spr_combo: Anim_Combo_Warlock,
+		spr_attack: Anim_ATK_Warlock
     }
 ];

@@ -6,15 +6,20 @@ if (room != rm_arena) exit;
 var gui_w = display_get_gui_width();
 var gui_h = display_get_gui_height();
 
-// 🪄 HELPER FUNCTION: Draw Outlined Text
-var _draw_text_outlined = function(_x, _y, _str, _in_col, _out_col) {
+// 🪄 UPGRADED HELPER FUNCTION: Now supports dynamic scaling!
+var _draw_text_outlined = function(_x, _y, _str, _in_col, _out_col, _scale) {
+    if (is_undefined(_scale)) _scale = 1; // Safe fallback
     draw_set_color(_out_col);
-    draw_text(_x - 2, _y, _str); draw_text(_x + 2, _y, _str);
-    draw_text(_x, _y - 2, _str); draw_text(_x, _y + 2, _str);
-    draw_text(_x - 2, _y - 2, _str); draw_text(_x + 2, _y + 2, _str);
-    draw_text(_x + 2, _y - 2, _str); draw_text(_x - 2, _y + 2, _str);
+    draw_text_transformed(_x - 2, _y, _str, _scale, _scale, 0); 
+    draw_text_transformed(_x + 2, _y, _str, _scale, _scale, 0);
+    draw_text_transformed(_x, _y - 2, _str, _scale, _scale, 0); 
+    draw_text_transformed(_x, _y + 2, _str, _scale, _scale, 0);
+    draw_text_transformed(_x - 2, _y - 2, _str, _scale, _scale, 0); 
+    draw_text_transformed(_x + 2, _y + 2, _str, _scale, _scale, 0);
+    draw_text_transformed(_x + 2, _y - 2, _str, _scale, _scale, 0); 
+    draw_text_transformed(_x - 2, _y + 2, _str, _scale, _scale, 0);
     draw_set_color(_in_col);
-    draw_text(_x, _y, _str);
+    draw_text_transformed(_x, _y, _str, _scale, _scale, 0);
 };
 
 // =====================================================
@@ -51,7 +56,7 @@ if (p1 != noone) {
     var py = margin_y + string_height(p1_name) + 5; 
 
     draw_set_halign(fa_left);
-    _draw_text_outlined(px, margin_y, p1_name, c_white, c_red);
+    _draw_text_outlined(px, margin_y, p1_name, c_white, c_red, 1);
 
     // Portrait Frame Background
     draw_set_color(c_dkgray);
@@ -86,6 +91,14 @@ if (p1 != noone) {
         draw_rectangle(bar_x, bar_y, bar_x + bar_w, bar_y + bar_h, false); 
         draw_set_color(c_aqua);
         draw_rectangle(bar_x, bar_y, bar_x + (bar_w * arm_pct), bar_y + bar_h, false); 
+        
+        // 🔢 ARMOR TEXT
+        draw_set_halign(fa_center);
+        draw_set_valign(fa_middle);
+        var arm_str = string(ceil(armor_val)) + " / " + string(ceil(max_arm_val));
+        var text_scale = min(1, (bar_h - 2) / string_height(arm_str)); 
+        _draw_text_outlined(bar_x + (bar_w / 2), bar_y + (bar_h / 2), arm_str, c_white, c_black, text_scale);
+        
     } else {
         draw_set_color(c_black);
         draw_rectangle(bar_x, bar_y, bar_x + bar_w, bar_y + bar_h, false);
@@ -100,12 +113,21 @@ if (p1 != noone) {
     draw_set_color(c_lime);
     draw_rectangle(bar_x, hp_y, bar_x + (bar_w * hp_pct), hp_y + bar_h, false); 
 
-// ❤️ PLAYER 1 HEARTS
+    // 🔢 HP TEXT
+    draw_set_halign(fa_center);
+    draw_set_valign(fa_middle);
+    var hp_str = string(ceil(p1.hp)) + " / " + string(ceil(p1.max_hp));
+    var text_scale = min(1, (bar_h - 2) / string_height(hp_str)); 
+    _draw_text_outlined(bar_x + (bar_w / 2), hp_y + (bar_h / 2), hp_str, c_white, c_black, text_scale);
+
+    // Reset alignment for Hearts
+    draw_set_valign(fa_top);
+    draw_set_halign(fa_left);
+
+    // ❤️ PLAYER 1 HEARTS
     var heart_scale = 2.5; 
     var heart_space = 18 * heart_scale; 
     
-    // ⚙️ TWEAK THESE TO MOVE PLAYER 1'S HEARTS!
-    // Example: change bar_x to (bar_x - 10) to move them left.
     var p1_heart_x = bar_x + 20; 
     var p1_heart_y = hp_y + bar_h + 16; 
     
@@ -131,7 +153,7 @@ if (p2 != noone) {
     var py = margin_y + string_height(p2_name) + 5;
 
     draw_set_halign(fa_right);
-    _draw_text_outlined(gui_w - margin_x, margin_y, p2_name, c_white, c_blue);
+    _draw_text_outlined(gui_w - margin_x, margin_y, p2_name, c_white, c_blue, 1);
 
     // Portrait Frame Background
     draw_set_color(c_dkgray);
@@ -169,6 +191,14 @@ if (p2 != noone) {
         draw_rectangle(bar_x, bar_y, bar_x + bar_w, bar_y + bar_h, false); 
         draw_set_color(c_aqua);
         draw_rectangle(bar_x + missing_arm, bar_y, bar_x + bar_w, bar_y + bar_h, false); 
+        
+        // 🔢 ARMOR TEXT
+        draw_set_halign(fa_center);
+        draw_set_valign(fa_middle);
+        var arm_str = string(ceil(armor_val)) + " / " + string(ceil(max_arm_val));
+        var text_scale = min(1, (bar_h - 2) / string_height(arm_str)); 
+        _draw_text_outlined(bar_x + (bar_w / 2), bar_y + (bar_h / 2), arm_str, c_white, c_black, text_scale);
+        
     } else {
         draw_set_color(c_black);
         draw_rectangle(bar_x, bar_y, bar_x + bar_w, bar_y + bar_h, false);
@@ -184,18 +214,27 @@ if (p2 != noone) {
     draw_set_color(c_lime);
     draw_rectangle(bar_x + missing_hp, hp_y, bar_x + bar_w, hp_y + bar_h, false); 
 
-// ❤️ PLAYER 2 HEARTS (Filling Right-to-Left)
+    // 🔢 HP TEXT
+    draw_set_halign(fa_center);
+    draw_set_valign(fa_middle);
+    var hp_str = string(ceil(p2.hp)) + " / " + string(ceil(p2.max_hp));
+    var text_scale = min(1, (bar_h - 2) / string_height(hp_str)); 
+    _draw_text_outlined(bar_x + (bar_w / 2), hp_y + (bar_h / 2), hp_str, c_white, c_black, text_scale);
+
+    // Reset alignment for Hearts
+    draw_set_valign(fa_top);
+    draw_set_halign(fa_left);
+
+    // ❤️ PLAYER 2 HEARTS (Filling Right-to-Left)
     var heart_scale = 2.5; 
     var heart_space = 18 * heart_scale; 
     var heart_w = sprite_get_width(spr_heart_full) * heart_scale;
     
-    // ⚙️ TWEAK THESE TO MOVE PLAYER 2'S HEARTS!
-    // Example: change (bar_x + bar_w) to (bar_x + bar_w + 10) to move them right.
     var p2_heart_x = (bar_x + bar_w + 18) - heart_w; 
     var p2_heart_y = hp_y + bar_h + 16; 
     
     for (var i = 0; i < global.max_lives; i++) {
-        var hx = p2_heart_x - (i * heart_space); // Notice the minus sign to draw backwards!
+        var hx = p2_heart_x - (i * heart_space); 
         
         if (i < global.p2_lives) {
             draw_sprite_ext(spr_heart_full, 0, hx, p2_heart_y, heart_scale, heart_scale, 0, c_white, 1);
@@ -235,6 +274,28 @@ if (p1 != noone && p2 != noone && !global.round_over) {
         draw_text_transformed(cx, cy, "FIGHT!", 4, 4, 0);
     }
 }
+
+
+// =====================================================
+// 3. BOTTOM INSTRUCTIONS
+// =====================================================
+draw_set_halign(fa_center);
+draw_set_valign(fa_bottom);
+
+var text_scale = 0.7; 
+
+var line1 = "Double press Move to Attack";
+var line2 = "Press Move, Up, Down quickly to Combo";
+
+// 👻 THE FIX: Set Opacity (0.0 is invisible, 1.0 is fully solid)
+draw_set_alpha(0.76); // Makes the text 50% transparent!
+
+_draw_text_outlined(gui_w / 2, gui_h - 40, line1, c_yellow, c_black, text_scale);
+_draw_text_outlined(gui_w / 2, gui_h - 15, line2, c_yellow, c_black, text_scale);
+
+// 🛑 CRITICAL: Always reset alpha back to 1.0 so you don't accidentally fade the rest of your game!
+draw_set_alpha(1.0);
+
 
 // --- END ANNOUNCEMENT ---
 if (global.round_over && global.end_timer <= 180) {
