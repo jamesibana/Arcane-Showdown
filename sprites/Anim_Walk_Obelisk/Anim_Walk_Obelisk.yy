@@ -13,8 +13,9 @@
   "For3D":false,
   "frames":[
     {"$GMSpriteFrame":"v1","%Name":"586c5b65-2ad8-4679-9acc-b23f5658e181","name":"586c5b65-2ad8-4679-9acc-b23f5658e181","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"v1","%Name":"5852d44e-c1fa-413f-978f-629ab6f8034f","name":"5852d44e-c1fa-413f-978f-629ab6f8034f","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"v1","%Name":"ac4bb061-ca80-4dff-88de-80a35d43c2b5","name":"ac4bb061-ca80-4dff-88de-80a35d43c2b5","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"c1a129a5-d16d-49b0-a510-20682607e5f1","name":"c1a129a5-d16d-49b0-a510-20682607e5f1","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"889c56f7-7099-413c-9e22-a3938d266933","name":"889c56f7-7099-413c-9e22-a3938d266933","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -52,7 +53,7 @@
     },
     "eventStubScript":null,
     "eventToFunction":{},
-    "length":3.0,
+    "length":4.0,
     "lockOrigin":false,
     "moments":{
       "$KeyframeStore<MomentsEventKeyframe>":"",
@@ -75,11 +76,14 @@
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"586c5b65-2ad8-4679-9acc-b23f5658e181","path":"sprites/Anim_Walk_Obelisk/Anim_Walk_Obelisk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"fc344785-96e7-42b7-9229-cc2a4363ffd0","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"5852d44e-c1fa-413f-978f-629ab6f8034f","path":"sprites/Anim_Walk_Obelisk/Anim_Walk_Obelisk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"bd43d605-4148-4597-ba69-6b83854e98c6","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"ac4bb061-ca80-4dff-88de-80a35d43c2b5","path":"sprites/Anim_Walk_Obelisk/Anim_Walk_Obelisk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"eea28e2e-b626-4c39-8d76-33e435fec859","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+              },"Disabled":false,"id":"eea28e2e-b626-4c39-8d76-33e435fec859","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"c1a129a5-d16d-49b0-a510-20682607e5f1","path":"sprites/Anim_Walk_Obelisk/Anim_Walk_Obelisk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"57b7a513-9a4c-4edf-8bb6-013ebc9baf70","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"889c56f7-7099-413c-9e22-a3938d266933","path":"sprites/Anim_Walk_Obelisk/Anim_Walk_Obelisk.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"2e02f8fa-f7b3-4c4f-8ad1-4542dc2cff16","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,
