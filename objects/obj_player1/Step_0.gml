@@ -5,7 +5,7 @@ if (!variable_instance_exists(id, "attack_startup_timer")) attack_startup_timer 
 if (!variable_instance_exists(id, "state")) state = "alive";
 
 if (!variable_instance_exists(id, "vsp")) vsp = 0;
-if (!variable_instance_exists(id, "grav")) grav = 0.4;
+if (!variable_instance_exists(id, "grav")) grav = 1.2;
 if (!variable_instance_exists(id, "on_ground")) on_ground = false;
 
 if (!variable_instance_exists(id, "hurt_timer")) hurt_timer = 0;
@@ -417,7 +417,16 @@ if (can_attack && (attack_buffer > 0 || combo_buffer > 0) && attack_cooldown <= 
     
     attack_buffer = 0;
     combo_buffer = 0;
-    attack_cooldown = cooldown;
+    
+    // ⚙️ THE FIX: Adjustable Combo Cooldown Multiplier!
+    var combo_cooldown_multiplier = 2; // 👈 Change this number to tweak the penalty!
+    
+    // Apply the penalty ONLY to melee combos
+    if (is_combo && active_weapon_type == "melee") {
+        attack_cooldown = cooldown * combo_cooldown_multiplier;
+    } else {
+        attack_cooldown = cooldown; // Normal attacks and ranged weapons use base cooldown
+    }
 
     clash_timer = 120; 
     current_attack_type = is_combo ? "combo" : "normal";

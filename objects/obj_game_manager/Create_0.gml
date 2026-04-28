@@ -41,37 +41,37 @@ global.weapon_data = {
 		type: "melee",
         sprite: spr_sword,
         damage: 10,
-        cooldown: 20,
+        cooldown: 60,
         range: 65,
-		combo: 18,
+		combo: 26,
 		combo_fx: Anim_Slash_Melee
     },
 
     dagger: {
 		type: "melee",
         sprite: spr_dagger,
-        damage: 6,
-        cooldown: 10,
+        damage: 8.5,
+        cooldown: 40,
         range: 35,
-		combo: 12,
+		combo: 20,
 		combo_fx: Anim_Poke_Melee
     },
 
     spear: {
 		type: "melee",
         sprite: spr_spear,
-        damage: 16,
-        cooldown: 55,
+        damage: 14,
+        cooldown: 80,
         range: 110,
-		combo: 20,
+		combo: 22,
 		combo_fx: Anim_Poke_Melee
     },
 
     mace: {
 		type: "melee",
         sprite: spr_mace,
-        damage: 12,
-        cooldown: 75,
+        damage: 14,
+        cooldown: 88,
         range: 58,
 		combo: 32,
 		combo_fx: Anim_Hit_Melee
@@ -81,18 +81,20 @@ global.weapon_data = {
         type: "ranged",
         sprite: spr_bow,
         projectile_sprite: spr_Bow_Arrow,
-        damage: 18,
+        damage: 24,
         cooldown: 65,
-        range: 200
+        range: 200,
+		distance_scaling: true
     },
 
     crossbow: {
         type: "ranged",
         sprite: spr_crossbow,
         projectile_sprite: spr_Metal_Arrow,
-        damage: 40,
+        damage: 53,
         cooldown: 140,
-        range: 220
+        range: 220,
+		distance_scaling: true
     },
 
 poison_spray: {
@@ -115,9 +117,10 @@ poison_spray: {
         type: "ranged",
         sprite: spr_blow_dart,
         projectile_sprite: spr_Quick_Dart,
-        damage: 8,
+        damage: 10.6,
         cooldown: 30,
-        range: 50
+        range: 50,
+		distance_scaling: true
     }
 };
 

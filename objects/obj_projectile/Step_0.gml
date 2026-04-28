@@ -74,12 +74,31 @@ if (!is_poison) {
 with (hit) {
             var dmg = other.damage;
 
-            // --- 🐌 NEW: PROJECTILE SLOWDOWN ---
-            // If the weapon has a slow multiplier (e.g., 0.5), apply it!
+            // ==========================================
+            // 🏹 NEW: REVERSE DAMAGE FALLOFF (DISTANCE SCALING)
+            // ==========================================
+            if (variable_struct_exists(other.weapon_data, "distance_scaling") && other.weapon_data.distance_scaling == true) {
+                
+                // Safely ensure max_range exists (fallback to 400 if it somehow doesn't)
+                var safe_max_range = variable_instance_exists(other.id, "max_range") ? other.max_range : 400;
+                
+                // GameMaker automatically tracks where an object was spawned using xstart and ystart!
+                var dist = point_distance(other.xstart, other.ystart, other.x, other.y);
+                
+                // Convert the distance into a percentage (0.0 = point-blank, 1.0 = max range)
+                var travel_pct = clamp(dist / safe_max_range, 0, 1);
+                
+                // lerp() smoothly blends between 67% (0.67) and 100% (1.0) based on how far it traveled
+                var multiplier = lerp(0.67, 1.0, travel_pct);
+                
+                dmg = dmg * multiplier;
+            }
+
+            // ==========================================
+            // --- 🐌 PROJECTILE SLOWDOWN ---
+            // ==========================================
             if (variable_struct_exists(other.weapon_data, "slow_multiplier")) {
                 move_speed = character_data.speed * other.weapon_data.slow_multiplier;
-                // Note: We don't need a timer here because your Player's Step Event
-                // will naturally reset move_speed to normal once the hitstun/hurt state ends!
             }
 
             if (!variable_instance_exists(id, "armor")) armor = 0;
@@ -90,6 +109,7 @@ with (hit) {
                 armor -= absorbed;
                 dmg -= absorbed;
             }
+            
             if (dmg > 0) hp -= dmg;
 
             hurt_timer = 10;
