@@ -118,37 +118,41 @@ if (state == "attack") {
         
         // Double check the player hasn't run away during the wind-up!
         if (target != noone && point_distance(x, y, target.x, target.y) <= attack_range + 10) {
-            with (target) {
+           with (target) {
                 var dmg = other.attack_damage;
                 if (!variable_instance_exists(id, "armor")) armor = 0;
                 if (!variable_instance_exists(id, "hp")) hp = 1;
 
-                // 🛑 Save the damage before armor eats it!
-                var dmg_to_show = dmg;
+                // 🛑 THE FIX: Only track damage dealt to armor!
+                var dmg_to_show = 0;
 
+                // Only subtract if they actually have armor to hit
                 if (armor > 0) {
                     var absorbed = min(armor, dmg);
                     armor -= absorbed;
-                    dmg -= absorbed;
+                    dmg_to_show = absorbed; // Save this so we can pop the text!
                 }
                 
-                if (dmg > 0) {
-                    hp -= dmg; 
-                }
+                // 🗑️ (The "hp -= dmg" block has been completely deleted!)
                 
-                // 🛑 SPAWN THE TEXT (EXACTLY ONCE!)
+                // 🛑 SPAWN THE TEXT (Only if armor was actually damaged)
                 if (dmg_to_show > 0) {
                     var float_x = x + random_range(-15, 15);
                     var float_y = y - 70; // High up so it clears the player sprite
                     
                     var float_text = instance_create_layer(float_x, float_y, "Instances", obj_damage_indicator);
                     float_text.damage = dmg_to_show;
-                    float_text.color = c_yellow; 
+                    
+                    // 💡 GAME JUICE TIP: Change this color to c_aqua or c_silver 
+                    // so the player visually knows their armor absorbed it, not their flesh!
+                    float_text.color = c_aqua; 
                 }
 
-                hurt_timer = 10;
+                // Only trigger the hurt flash if the armor took a hit!
+                if (dmg_to_show > 0) {
+                    hurt_timer = 10;
+                }
             }
-        }
         
         damage_dealt = true; // Mark as hit so it doesn't trigger again next frame
     }
