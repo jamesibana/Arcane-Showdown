@@ -86,7 +86,6 @@ if (state == "chase") {
 
         var dist = point_distance(x, y, target.x, target.y);
 
-        // 🛑 NEW: Triggers the attack state instead of instant damage!
         if (dist < attack_range) {
             if (attack_cooldown <= 0) {
                 state = "attack";
@@ -104,7 +103,9 @@ if (state == "chase") {
     }
 }
 
-// ⚔️ NEW: THE ATTACK STATE
+// =====================================================
+// ⚔️ THE ATTACK STATE
+// =====================================================
 if (state == "attack") {
     
     // 1. Stop moving while attacking!
@@ -118,12 +119,13 @@ if (state == "attack") {
         
         // Double check the player hasn't run away during the wind-up!
         if (target != noone && point_distance(x, y, target.x, target.y) <= attack_range + 10) {
-           with (target) {
+            
+            with (target) {
                 var dmg = other.attack_damage;
                 if (!variable_instance_exists(id, "armor")) armor = 0;
                 if (!variable_instance_exists(id, "hp")) hp = 1;
 
-                // 🛑 THE FIX: Only track damage dealt to armor!
+                // 🛑 ONLY track damage dealt to armor!
                 var dmg_to_show = 0;
 
                 // Only subtract if they actually have armor to hit
@@ -133,8 +135,6 @@ if (state == "attack") {
                     dmg_to_show = absorbed; // Save this so we can pop the text!
                 }
                 
-                // 🗑️ (The "hp -= dmg" block has been completely deleted!)
-                
                 // 🛑 SPAWN THE TEXT (Only if armor was actually damaged)
                 if (dmg_to_show > 0) {
                     var float_x = x + random_range(-15, 15);
@@ -142,9 +142,6 @@ if (state == "attack") {
                     
                     var float_text = instance_create_layer(float_x, float_y, "Instances", obj_damage_indicator);
                     float_text.damage = dmg_to_show;
-                    
-                    // 💡 GAME JUICE TIP: Change this color to c_aqua or c_silver 
-                    // so the player visually knows their armor absorbed it, not their flesh!
                     float_text.color = c_aqua; 
                 }
 
@@ -153,6 +150,7 @@ if (state == "attack") {
                     hurt_timer = 10;
                 }
             }
+        } 
         
         damage_dealt = true; // Mark as hit so it doesn't trigger again next frame
     }
@@ -190,13 +188,13 @@ if (state == "return") {
     vsp = lengthdir_y(move_speed, dir);
 }
 
-// 🛑 NEW: Ensure no movement if attacking or dead
+// 🛑 Ensure no movement if attacking or dead
 if (state == "attack" || state == "dead") {
     hsp = 0;
     vsp = 0;
 }
 
-// 🎬 NEW: SWAP SPRITES BASED ON MOVEMENT
+// 🎬 SWAP SPRITES BASED ON MOVEMENT
 if (state != "attack" && state != "dead") {
     if (hsp != 0 || vsp != 0) {
         sprite_index = spr_walk;
@@ -206,7 +204,7 @@ if (state != "attack" && state != "dead") {
 }
 
 // =====================================================
-// 🫧 NEW: SOFT COLLISION (PERSONAL SPACE BUBBLE)
+// 🫧 SOFT COLLISION (PERSONAL SPACE BUBBLE)
 // =====================================================
 if (state == "chase" || state == "return") {
     
@@ -218,7 +216,7 @@ if (state == "chase" || state == "return") {
         // Figure out which way to push away from the neighbor
         var push_dir = point_direction(neighbor.x, neighbor.y, x, y);
         
-        // ⚙️ ADJUST THIS: How hard they push each other apart (0.3 to 0.8 is usually best)
+        // How hard they push each other apart (0.3 to 0.8 is usually best)
         var push_force = 0.5; 
         
         // Gently add the push force to our current movement speed!

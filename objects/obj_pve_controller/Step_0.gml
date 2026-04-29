@@ -1,5 +1,9 @@
 pve_timer--;
 
+if (instruction_timer > 0) {
+    instruction_timer--;
+}
+
 if (pve_timer <= 0) {
     room_goto(rm_arena);
 }
